@@ -4,9 +4,5 @@
 
 int	main()
 {
-	int	x = 0;
-	char *str = NULL;
-
-	x = printf("%s\n",str);
-	printf("%d\n",x);
+	ft_printf("hello my name is %s I am currently studying in %d KL \n","wee",42);
 }

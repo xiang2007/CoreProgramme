@@ -1,26 +1,26 @@
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -I./include
 AR = ar rcs
 RM = rm -f
 
 SRC = $(shell find -name "*.c")
 OBJ = $(SRC:.c=.o)
-NAME = a.out
-AFILE = libft.a
+NAME = libftprintf.a
 
-$(NAME):
-	$(CC) $(CFLAGS) $(SRC) $(AFILE)
+$(NAME): $(OBJ)
+	$(AR) $(NAME) $(OBJ)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-.PHONY: clean fclean re all cc
-
+.PHONY: clean fclean re all
 clean:
-	$(RM) $(NAME)
+	$(RM) $(OBJ)
 
 fclean:	clean
+	$(RM) $(NAME)
 
 all: $(NAME)
+	$(AR) $(NAME) $(OBJ)
 
 re: fclean all

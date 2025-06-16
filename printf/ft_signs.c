@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 18:32:43 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/06/16 16:00:38 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/06/16 17:56:15 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_signs(char signs, va_list args)
 	if (signs == 'c')
 		count += (ft_putchar(va_arg(args, int)));
 	if (signs == 'd' || signs == 'i')
-		count += (ft_putnbr(va_arg(args, int)));
+		count += (ft_putnbr(va_arg(args, long)));
 	if (signs == 'u')
 		count += (ft_putdec(va_arg(args, unsigned int)));
 	if (signs == 'x')

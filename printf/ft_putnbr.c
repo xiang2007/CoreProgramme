@@ -16,6 +16,11 @@ int	ft_putnbr(long nbr)
 {
 	int		size;
 
+	if (nbr == -2147483648)
+	{
+		write(1, "-2147483648", 12);
+		return (12);
+	}
 	size = 0;
 	if (nbr < 0)
 	{
@@ -23,7 +28,7 @@ int	ft_putnbr(long nbr)
 		size++;
 		write(1, "-", 1);
 	}
-	if (nbr > 10)
+	if (nbr >= 10)
 		ft_putnbr(nbr / 10);
 	size += ft_putchar((nbr % 10) + '0');
 	return (size);

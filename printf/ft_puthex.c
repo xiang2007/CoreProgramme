@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 11:18:12 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/06/16 11:55:16 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/06/16 17:49:28 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_putlowhex(unsigned long nbr)
 	if (nbr >= 16)
 		index += ft_puthex((nbr / 16),1);
 	write(1, &lowhex[nbr % 16], 1);
-	return (index);
+	return (index + 1);
 }
 
 int	ft_putuphex(unsigned long nbr)
@@ -35,7 +35,7 @@ int	ft_putuphex(unsigned long nbr)
 	if (nbr >= 16)
 		index += ft_puthex((nbr / 16),2);
 	write(1, &uphex[nbr % 16], 1);
-	return (index);
+	return (index + 1);
 }
 
 int	ft_puthex(unsigned long nbr, int flag)
