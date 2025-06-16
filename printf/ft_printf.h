@@ -19,17 +19,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int		ft_putchar(char c);
+int		ft_putchar(int c);
 size_t	ft_strlen(const char *str);
 int		ft_putstr(const char *c);
 int		ft_isprint(int c);
 char	*ft_itoa(unsigned int n);
-int		ft_putint(int nbr);
+int		ft_putnbr(long nbr);
 int		ft_count(unsigned int n);
 int		ft_printpercent();
 int		ft_putdec(unsigned int nbr);
 int		ft_signs(char signs, va_list args);
 int		ft_printvoid(void *ptr);
 int		ft_puthex(unsigned long nbr, int flag);
+int		ft_printf(const char *format, ...);
+char	*ft_itoa(unsigned int n);
+size_t	ft_strlen(const char *str);
+int		ft_isprint(int c);
+char	*ft_strdup(const char *str);
 
 #endif

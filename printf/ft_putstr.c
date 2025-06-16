@@ -18,7 +18,7 @@ int	ft_putstr(const char *c)
 	int	index;
 
 	if (!c)
-		return (-1);
+		return (ft_putstr("(null)"));
 	index = 0;
 	size = ft_strlen(c);
 	while (index < size)

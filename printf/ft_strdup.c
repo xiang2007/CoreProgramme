@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putvoid.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/15 11:38:42 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/06/16 16:57:47 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/06/16 13:59:29 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/06/16 13:59:35 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printvoid(void *ptr)
-{
-	int	count;
+char	*ft_strdup(const char *str)
 
-	count = 0;
-	if (!ptr)
-		return (ft_putstr("(nil)"));
-	count += ft_putstr("0x");
-	count += ft_puthex((unsigned long)ptr,1);
-	return (count);
+{
+	char	*dst;
+	int		len;
+	int		i;
+
+	i = 0;
+	len = ft_strlen(str);
+	dst = (char *)malloc(sizeof(char) * (len + 1));
+	while (i < len)
+	{
+		dst[i] = str[i];
+		i++;
+	}
+	dst[len] = '\0';
+	return (dst);
 }

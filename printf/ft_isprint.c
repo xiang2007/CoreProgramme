@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putvoid.c                                       :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/15 11:38:42 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/06/16 16:57:47 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/06/16 13:56:42 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/06/16 13:56:53 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printvoid(void *ptr)
+int	ft_isprint(int c)
 {
-	int	count;
-
-	count = 0;
-	if (!ptr)
-		return (ft_putstr("(nil)"));
-	count += ft_putstr("0x");
-	count += ft_puthex((unsigned long)ptr,1);
-	return (count);
+	if (c >= 32 && c <= 126)
+		return (1);
+	else
+		return (0);
 }

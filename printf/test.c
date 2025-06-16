@@ -1,8 +1,12 @@
 #include <stdio.h>
+#include <stddef.h>
 #include "ft_printf.h"
 
 int	main()
 {
-	printf("%d\n",ft_putdec(4294967295));
-	printf("\n");
+	int	x = 0;
+	char *str = NULL;
+
+	x = printf("%s\n",str);
+	printf("%d\n",x);
 }

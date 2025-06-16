@@ -12,27 +12,19 @@
 
 #include "ft_printf.h"
 
-int	ft_putnbr(int nbr)
+int	ft_putnbr(long nbr)
 {
-	char	*dest;
-	int		index;
 	int		size;
 
-	index = 0;
 	size = 0;
-	if (nbr == -2147483648)
-	{
-		write(1, "-2147483648", 12);
-		return (12);
-	}
 	if (nbr < 0)
 	{
 		nbr = -nbr;
 		size++;
 		write(1, "-", 1);
 	}
-	if (nbr > 0)
+	if (nbr > 10)
 		ft_putnbr(nbr / 10);
-	size += ft_putchar((nbr % 10));
+	size += ft_putchar((nbr % 10) + '0');
 	return (size);
 }
