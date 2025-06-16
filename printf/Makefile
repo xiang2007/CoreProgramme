@@ -3,7 +3,7 @@ CFLAGS = -Wall -Werror -Wextra -I./include
 AR = ar rcs
 RM = rm -f
 
-SRC = $(shell find -name "*.c")
+SRC = ./ft_utils1.c ./ft_utils2.c ./ft_printf.c ./ft_itoa.c ./ft_signs.c ./ft_utils3.c
 OBJ = $(SRC:.c=.o)
 NAME = libftprintf.a
 

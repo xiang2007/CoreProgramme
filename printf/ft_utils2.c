@@ -1,16 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthex.c                                        :+:      :+:    :+:   */
+/*   ft_utils2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/16 11:18:12 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/06/16 17:49:28 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/06/16 22:24:24 by marvin            #+#    #+#             */
+/*   Updated: 2025/06/16 22:24:24 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+char	*ft_strdup(const char *str)
+{
+	char	*dst;
+	int		len;
+	int		i;
+
+	i = 0;
+	len = ft_strlen(str);
+	dst = (char *)malloc(sizeof(char) * (len + 1));
+	while (i < len)
+	{
+		dst[i] = str[i];
+		i++;
+	}
+	dst[len] = '\0';
+	return (dst);
+}
+
+size_t	ft_strlen(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
 
 int	ft_putlowhex(unsigned long nbr)
 {

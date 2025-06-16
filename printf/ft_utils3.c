@@ -1,16 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_utils3.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/16 13:54:49 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/06/16 14:00:46 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/06/16 22:29:10 by marvin            #+#    #+#             */
+/*   Updated: 2025/06/16 22:29:10 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	ft_putnbr(long nbr)
+{
+	int		size;
+
+	size = 0;
+	if (nbr < 0)
+	{
+		write(1, "-", 1);
+		nbr = -nbr;
+		size++;
+	}
+	if (nbr >= 10)
+		size += ft_putnbr(nbr / 10);
+	size += ft_putchar((nbr % 10) + '0');
+	return (size);
+}
 
 static int	ft_c(unsigned int n);
 static char	*pcha(unsigned int n, int size, int sign);
@@ -58,4 +75,16 @@ static int	ft_c(unsigned int n)
 		size++;
 	}
 	return (size);
+}
+
+int	ft_printvoid(void *ptr)
+{
+	int	count;
+
+	count = 0;
+	if (!ptr)
+		return (ft_putstr("(nil)"));
+	count += ft_putstr("0x");
+	count += ft_puthex((unsigned long)ptr,1);
+	return (count);
 }
