@@ -1,42 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/05 19:21:55 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/06/17 15:20:11 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/06/17 14:23:20 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/06/17 17:23:11 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <fcntl.h>
+#include <stdio.h>
 
-size_t	ft_strlen(const char *str)
+int	main()
 {
-	int	i;
+	int	fd;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strdup(const char *str)
-
-{
-	char	*dst;
-	int		len;
-	int		i;
-
-	i = 0;
-	len = ft_strlen(str);
-	dst = (char *)malloc(sizeof(char) * (len + 1));
-	while (i < len)
-	{
-		dst[i] = str[i];
-		i++;
-	}
-	dst[len] = '\0';
-	return (dst);
+	fd = open("test.txt",O_RDONLY);
+	printf("%s",get_next_line(fd));
+	printf("\n");
+	return (0);
 }
