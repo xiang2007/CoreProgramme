@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 19:22:23 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/06/17 17:23:08 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/06/18 12:39:08 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@
 #include <stdio.h>
 
 #ifndef BUFFER_SIZE
-# define BUFFER_SIZE BUFSIZ
+# define BUFFER_SIZE 5
 #endif
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *str);
 char	*ft_strdup(const char *str);
+void	*ft_calloc(size_t nitems, size_t size);
 
 #endif
