@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 19:21:55 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/06/18 11:57:12 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/06/20 12:45:53 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,22 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_strdup(const char *str)
-
+char	*ft_strchr(const char *src, int c)
 {
-	char	*dst;
-	int		len;
-	int		i;
+	int	i;
 
 	i = 0;
-	len = ft_strlen(str);
-	dst = (char *)malloc(sizeof(char) * (len + 1));
-	while (i < len)
+	if (!src)
+		return (NULL);
+	while (src[i])
 	{
-		dst[i] = str[i];
+		if (src[i] == (char)c)
+			return ((char *)&src[i]);
 		i++;
 	}
-	dst[len] = '\0';
-	return (dst);
+	if ((char)c == '\0')
+		return ((char *)&src[i]);
+	return (NULL);
 }
 
 void	*ft_calloc(size_t nitems, size_t size)
