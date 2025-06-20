@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 19:18:52 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/06/20 13:20:55 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/06/20 18:28:20 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,39 @@ char	*readfile(int fd, char *res)
 			free(buffer);
 			return (NULL);
 		}
-		ft_strchr(buffer, '\n');
+		buffer[BUFFER_SIZE] = '\0';
+		res = ft_free(res, buffer);
+		if (ft_strchr(buffer, '\n'))
+			break ;
+	}
+	free (buffer);
+	return (res);
+}
+
+char	*ft_free(char *src, char *buffer)
+{
+	char *temp;
+	
+	temp = ft_strjoin(src, buffer);
+	free(buffer);
+	return (temp);
+}
+
+char	*ft_line(char *buffer)
+{
+	char	*line;
+	int		size;
+	int		index;
+
+	index = 0;
+	if (!buffer)
+		return (NULL);
+	size = ft_strlen(buffer);
+	line = malloc((size * sizeof(char)) + 1);
+	if (!line)
+		return (NULL);
+	while (line[index] && line[index] != '\n')
+	{
+		
 	}
 }
