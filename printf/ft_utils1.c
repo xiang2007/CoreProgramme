@@ -35,49 +35,32 @@ int	ft_isprint(int c)
 		return (0);
 }
 
-int	ft_putstr(const char *c)
-{
-	int	size;
-	int	index;
 
-	if (!c)
-		return (ft_putstr("(null)"));
-	index = 0;
-	size = ft_strlen(c);
-	while (index < size)
+
+char	*ft_strdup(const char *str)
+{
+	char	*dst;
+	int		len;
+	int		i;
+
+	i = 0;
+	len = ft_strlen(str);
+	dst = (char *)malloc(sizeof(char) * (len + 1));
+	while (i < len)
 	{
-		if (ft_isprint(c[index]))
-			write(1, &c[index], 1);
-		index++;
+		dst[i] = str[i];
+		i++;
 	}
-	return (size);
+	dst[len] = '\0';
+	return (dst);
 }
 
-int	ft_putchar(int c)
+size_t	ft_strlen(const char *str)
 {
-	char ch;
+	int	i;
 
-	ch = (char)c;
-	write(1, &ch, 1);
-	return (1);
-}
-
-int	ft_putdec(unsigned int nbr)
-{
-	char 	*dest;
-	int		index;
-	int		size;
-
-	index = 0;
-	size = ft_count(nbr);
-	dest = ft_itoa(nbr);
-	if (!dest)
-		return (0);
-	while (index < size)
-	{
-		write(1, &dest[index], 1);
-		index++;
-	}
-	free(dest);
-	return (index);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
