@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/17 14:23:20 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/06/24 17:59:24 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/06/30 12:39:48 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/06/30 12:50:46 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include <fcntl.h>
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+
+#ifndef BUFFER_SIZE
+#define BUFFER_SIZE 10
+#endif
+
+#include <stdlib.h>
 #include <stdio.h>
 
-int	main()
+typedef struct s_list
 {
-	int	fd;
-	int	bytes_read = 1;
-	char *buffer = calloc(BUFFER_SIZE, sizeof(char));
-	char	*next;
+	char			buffer;
+	struct s_list	*next;;	
+}	t_list;
 
-	fd = open("test.txt",O_RDONLY);
-	while (bytes_read != 0)
-	{
-		bytes_read = read(fd, buffer, BUFFER_SIZE);,
-		printf("%s\n",ft_strchr(buffer, '\n'));
-	}
-	return (0);
-}
+
+
+#endif GET_NEXT_LINE_H

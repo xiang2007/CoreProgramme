@@ -12,70 +12,7 @@
 
 #include "ft_printf.h"
 
-int	ft_putnbr(long nbr)
-{
-	int		size;
-
-	size = 0;
-	if (nbr < 0)
-	{
-		write(1, "-", 1);
-		nbr = -nbr;
-		size++;
-	}
-	if (nbr >= 10)
-		size += ft_putnbr(nbr / 10);
-	size += ft_putchar((nbr % 10) + '0');
-	return (size);
-}
-
-static int	ft_c(unsigned int n);
 static char	*pcha(unsigned int n, int size, int sign);
-
-char	*ft_itoa(unsigned int n)
-{
-	int	size;
-	int	sign;
-
-	sign = 0;
-	if (n == 0)
-		return (ft_strdup("0"));
-	size = ft_c(n);
-	return (pcha(n, size, sign));
-}
-
-static char	*pcha(unsigned int n, int size, int sign)
-{
-	char	*dest;
-	int		tsize;
-
-	tsize = size + sign;
-	dest = (char *)malloc(tsize + 1);
-	if (!dest)
-		return (NULL);
-	dest[tsize] = '\0';
-	while (n > 0)
-	{
-		dest[--tsize] = (n % 10) + '0';
-		n /= 10;
-	}
-	return (dest);
-}
-
-static int	ft_c(unsigned int n)
-{
-	int	size;
-
-	size = 0;
-	if (n == 0)
-		return (1);
-	while (n > 0)
-	{
-		n /= 10;
-		size++;
-	}
-	return (size);
-}
 
 int	ft_printvoid(void *ptr)
 {
@@ -87,4 +24,30 @@ int	ft_printvoid(void *ptr)
 	count += ft_putstr("0x");
 	count += ft_puthex((unsigned long)ptr,1);
 	return (count);
+}
+
+char	*ft_itoa(unsigned int n)
+{
+	int	size;
+
+	if (n == 0)
+		return (ft_strdup("0"));
+	size = ft_count(n);
+	return (pcha(n, size));
+}
+
+static char	*pcha(unsigned int n, int size)
+{
+	char	*dest;
+
+	dest = (char *)malloc(size + 1);
+	if (!dest)
+		return (NULL);
+	dest[size] = '\0';
+	while (n > 0)
+	{
+		dest[--size] = (n % 10) + '0';
+		n /= 10;
+	}
+	return (dest);
 }
