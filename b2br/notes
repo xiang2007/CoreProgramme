@@ -1,0 +1,12 @@
+Born To Be Root
+
+Distro: Debian
+
+What is VM (Virtual machine)?
+1. VM is a compute resource that uses software instead of a physical computer to run programs or deploy apps.
+2. VM are used to run program on several diff levels of processing power or to run a application in a safe, sandboxed enviroment.
+
+Debian vs rocky
+1. Rocky is more stable compared to Debian
+2. Debian has more software or packages available
+3. Debian comes with an easy installation package

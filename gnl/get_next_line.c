@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 19:18:52 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/06/20 18:28:20 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/06/20 19:05:48 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ char	*ft_line(char *buffer)
 		return (NULL);
 	while (line[index] && line[index] != '\n')
 	{
-		
+		line[index] = buffer[index];
+		index++;
 	}
 }
