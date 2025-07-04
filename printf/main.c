@@ -23,12 +23,13 @@ int	main(int argc, char **argv)
 		ft_printf("\nft_printf null: %c\n", '\0');
 		printf("Printf null %c\n\n", '\0');
 
-		char str[11] = "Hello World";
-		int	index;
+		char str[] = "Hello World";
+		int	index = 0;
 		ft_printf("%s", "ft_printf array: ");
 		while (str[index])
 			ft_printf("%c", str[index++]);
 		index = 0;
+
 		ft_printf("\n%s", "printf array: ");
 		while (str[index])
 			printf("%c", str[index++]);

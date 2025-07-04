@@ -41,19 +41,15 @@ int	ft_putchar(int c)
 
 int	ft_putdec(unsigned int nbr)
 {
-	char 	*dest;
-	int		index;
-	int		size;
+	int size;
 
-	index = 0;
-	size = ft_count(nbr);
-	dest = ft_itoa(nbr);
-	if (!dest)
-		return (0);
-	ft_putstr(dest);
-	free(dest);
-	return (index);
+	size = 0;
+	if (nbr >= 10)
+		size += ft_putdec(nbr / 10);
+	size += ft_putchar((nbr % 10) + '0');
+	return (size);
 }
+
 
 int	ft_puthex(unsigned long nbr, int sign)
 {

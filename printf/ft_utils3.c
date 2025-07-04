@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static char	*pcha(unsigned int n, int size, int sign);
+static char	*pcha(unsigned int n, int size);
 
 int	ft_printvoid(void *ptr)
 {
