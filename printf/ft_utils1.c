@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 22:22:20 by marvin            #+#    #+#             */
-/*   Updated: 2025/06/16 22:22:20 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/06 10:35:00 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_count(unsigned int n)
+int	ft_count(unsigned long n, int base)
 {
 	int	size;
 
@@ -21,7 +21,7 @@ int	ft_count(unsigned int n)
 		return (1);
 	while (n > 0)
 	{
-		n /= 10;
+		n /= base;
 		size++;
 	}
 	return (size);

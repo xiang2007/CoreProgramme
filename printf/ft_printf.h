@@ -19,13 +19,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+# ifndef LOWHEX
+# define LOWHEX "0123456789abcdef"
+#endif
+
+# ifndef UPHEX
+# define UPHEX "0123456789ABCDEF"
+#endif
+
 int		ft_putchar(int c);
 size_t	ft_strlen(const char *str);
 int		ft_putstr(const char *c);
 int		ft_isprint(int c);
 char	*ft_itoa(unsigned int n);
 int		ft_putnbr(long nbr);
-int		ft_count(unsigned int n);
+int		ft_count(unsigned long n, int base);
 int		ft_printpercent();
 int		ft_putdec(unsigned int nbr);
 int		ft_signs(char signs, va_list args);

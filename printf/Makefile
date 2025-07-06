@@ -3,7 +3,7 @@ CFLAGS = -Wall -Werror -Wextra -I./include
 AR = ar rcs
 RM = rm -f
 
-SRC = ./ft_utils1.c ./ft_utils2.c ./ft_printf.c ./ft_signs.c ./ft_utils3.c ./main.c
+SRC = ./ft_utils1.c ./ft_utils2.c ./ft_printf.c ./ft_signs.c ./ft_utils3.c
 OBJ = $(SRC:.c=.o)
 NAME = libftprintf.a
 
@@ -13,7 +13,7 @@ $(NAME): $(OBJ)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-.PHONY: clean fclean re all c
+.PHONY: clean fclean re all
 clean:
 	$(RM) $(OBJ)
 
@@ -24,6 +24,3 @@ all: $(NAME)
 	$(AR) $(NAME) $(OBJ)
 
 re: fclean all
-
-c:
-	$(CC) $(CFLAGS) $(SRC)

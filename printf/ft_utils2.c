@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 22:24:24 by marvin            #+#    #+#             */
-/*   Updated: 2025/06/16 22:24:24 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/06 10:19:53 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,43 +42,42 @@ int	ft_putchar(int c)
 int	ft_putdec(unsigned int nbr)
 {
 	char 	*dest;
-	int		index;
 	int		size;
 
-	index = 0;
-	size = ft_count(nbr);
+	size = ft_count(nbr,10);
 	dest = ft_itoa(nbr);
 	if (!dest)
 		return (0);
 	ft_putstr(dest);
 	free(dest);
-	return (index);
+	return (size);
 }
 
 int	ft_puthex(unsigned long nbr, int sign)
 {
-	char	*uphex;
-	char	*lowhex;
-	int		index;
+	char	*base;
+	char	*buffer;
+	int		size;
+	int		temp;
 
-	index = 0;
-	lowhex = "0123456789abcdef";
-	uphex = "0123456789ABCDEF";
+	size = ft_count(nbr, 16);
+	temp = size;
+	buffer = malloc(size + 1);
+	if (!buffer)
+		return (0);
 	if (sign == 1)
+		base = LOWHEX;
+	if (sign == 2)
+		base = UPHEX;
+	buffer[size] = '\0';
+	while (size--)
 	{
-		if (nbr >= 16)
-			index += ft_puthex((nbr / 16),1);
-		else
-			write(1, &lowhex[nbr % 16], 1);
+		buffer[size] = base[nbr % 16];
+		nbr /= 16;
 	}
-	else if (sign == 2)
-	{
-		if (nbr >= 16)	
-			index += ft_puthex((nbr / 16),2);
-		else
-			write(1, &uphex[nbr % 16], 1);
-	}
-	return (index + 1);
+	ft_putstr(buffer);
+	free (buffer);
+	return (temp);
 }
 
 int	ft_putnbr(long nbr)

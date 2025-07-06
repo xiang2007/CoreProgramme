@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils3.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 22:29:10 by marvin            #+#    #+#             */
-/*   Updated: 2025/06/16 22:29:10 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/06 11:37:05 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char	*pcha(unsigned int n, int size, int sign);
+static char	*pcha(unsigned int n, int size);
 
 int	ft_printvoid(void *ptr)
 {
@@ -32,7 +32,7 @@ char	*ft_itoa(unsigned int n)
 
 	if (n == 0)
 		return (ft_strdup("0"));
-	size = ft_count(n);
+	size = ft_count(n,10);
 	return (pcha(n, size));
 }
 
