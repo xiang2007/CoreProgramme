@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 22:24:24 by marvin            #+#    #+#             */
-/*   Updated: 2025/07/06 10:19:53 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/07/06 11:55:55 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	ft_putdec(unsigned int nbr)
 	free(dest);
 	return (size);
 }
+
 
 int	ft_puthex(unsigned long nbr, int sign)
 {
