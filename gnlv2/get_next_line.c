@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 16:30:33 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/07/06 13:26:05 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/07/08 16:56:11 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,38 @@
 
 char	*get_next_line(int fd)
 {
-	static char *buffer;
+	static char	*buffer;
 	char		*line;
 	int			bytes_read;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer = readbuf();
+	buffer = readbuf(fd, buffer);
+
+}
+
+char	*readbuf(int fd, char *str)
+{
+	char	*temp;
+	int		bytes_read;
+	int		i;
+
+	i = 0;
+	bytes_read = read(fd, temp, BUFFER_SIZE);
+	if (!bytes_read)
+		return (0);
+	temp = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!str)
+		return (NULL);
+	if (!ft_strchr(str, '\n') && !ft_strchr(str, '\0'))
+		str = ft_strjoin(str, temp);
+	if (ft_strchr(str, '\n'))
+		appendline(str);
+	free (temp);
+	return (str);
+}
+
+char	*appendline(char *str)
+{
+	
 }
