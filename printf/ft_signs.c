@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_signs.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 18:32:43 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/06/16 22:07:32 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/10 12:22:17 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,5 @@ int	ft_signs(char signs, va_list args)
 		count += (ft_putchar('%'));
 	if (signs == 's')
 		count += (ft_putstr(va_arg(args, char *)));
-	
 	return (count);
 }
