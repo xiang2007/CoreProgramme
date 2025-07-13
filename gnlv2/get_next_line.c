@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 16:30:33 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/07/10 14:21:50 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/07/12 05:04:33 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,29 @@
 
 char	*readbuf(int fd, char *str, char *temp);
 char	*appendline(char *str, char *remain);
+char	*remainder(char *str, int size);
+int		nloccur(char *str);
 
 char	*get_next_line(int fd)
 {
 	static char	*buffer;
 	char		*remain;
-	int			flag;
+	int				flag;
+	int				size;
 
 	flag = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buffer = readbuf(fd, buffer, remain);
-	buffer = appendline(buffer, remain);
+	size  = ft_strlen(buffer);
+	remain = remainder(buffer);
+	if (!remainder)
+		return (NULL);
+	else if (nloccur(buffer))
+	{
+		
+	}
+		
 
 }
 
@@ -42,30 +53,41 @@ char	*readbuf(int fd, char *str, char *temp)
 	return (str);
 }
 
-char	*appendline(char *str, char *remain)
+char	*remainder(char *str, int size)
+{
+	int		i;
+	int		j;
+	char	*temp;
+
+	i = nloccur(str);
+	if (i)
+	{
+		temp = (char *)malloc((size -  i) + 1);
+		if (!temp)
+			return (NULL);
+		i++;
+		while (str[i])
+			temp[j++] = str[i++];
+	}
+	if(temp)
+	{
+		temp[j] = '\0';
+		return (temp);
+	}
+	else
+		return (NULL);
+}
+
+int	nloccur(char *str)
 {
 	int	i;
-	int	j;
-	int	size;
 
 	i = 0;
-	j = 0;
 	if (!str)
 		return (0);
-	size = ft_strlen(str);
 	while (str[i] && str[i] != '\n')
 		i++;
 	if (str[i] == '\n')
-	{
-		remain = (char *)malloc(size - i);
-		while (j < (size - i))
-		{
-			remain[j] = str[i];
-			j++;
-			i++;
-		}
-		str[j + 2] = '\0';
-		remain[j] = '\0';
-	}
-	return (str);
-}
+		return (i);
+	return (0);
+}		
