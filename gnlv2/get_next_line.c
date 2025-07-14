@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 16:30:33 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/07/14 10:18:08 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/07/14 15:07:06 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buffer = readbuf(fd, buffer);
-	remain = getlast(buffer);
+	remain = extract(buffer);
 	if (!remain)
 	{
 		free(buffer);
 		buffer = NULL;
 		return (NULL);
 	}
-	buffer = extract(buffer);
+	buffer = getlast(buffer);
 	return (remain);
 }
 
@@ -43,17 +43,18 @@ char	*readbuf(int fd, char *str)
 	temp = malloc(BUFFER_SIZE + 1);
 	if(!temp)
 		return (NULL);
-	bytes_read = read(fd, temp, BUFFER_SIZE);
-	if (bytes_read == -1)
+	bytes_read = 1;
+	while (bytes_read > 0 && !ft(ft_strchr(str, '\n')))
 	{
-		free(temp);
-		free(str);
-		return (0);
+		bytes_read = read(fd, temp, BUFFER_SIZE);
+		if (bytes_read == -1)
+		{
+			free (temp);
+			return (NULL);
+		}
+		
 	}
-	temp[bytes_read] = '\0';
-	if (!ft_strchr(str, '\n') && bytes_read > 0)
-		str = ft_strjoin(str, temp);
-	return (str);
+	return (temp);
 }
 
 char	*extract(char *buffer)
@@ -105,7 +106,7 @@ char	*getlast(char *buffer)
 	if (!temp)
 		return (NULL);
 	i++;
-	while (i < ft_strlen(buffer))
+	while (i < size)
 	{
 		temp[j] = buffer[i++];
 		j++;

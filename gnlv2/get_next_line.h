@@ -6,16 +6,14 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 16:30:36 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/07/14 10:24:00 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/07/14 11:01:59 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# define BUFFER_SIZE 10
-# define ISNEWLINE 0
-# define ISNULL 0
+# define BUFFER_SIZE 1
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -25,5 +23,6 @@ int		ft_strlen(char *str);
 char	*ft_strchr(const char *src, int c);
 char	*ft_strjoin(char *s1, char *s2);
 int		ft_strlcat(char *dest, char *src, int size);
+char	*get_next_line(int fd);
 
 #endif
