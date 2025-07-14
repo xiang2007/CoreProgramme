@@ -3,91 +3,113 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 16:30:33 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/07/12 05:04:33 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/14 10:18:08 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*readbuf(int fd, char *str, char *temp);
-char	*appendline(char *str, char *remain);
-char	*remainder(char *str, int size);
-int		nloccur(char *str);
+char	*readbuf(int fd, char *str);
+char	*extract(char *buffer);
+char	*getlast(char *buffer);
 
 char	*get_next_line(int fd)
 {
 	static char	*buffer;
 	char		*remain;
-	int				flag;
-	int				size;
 
-	flag = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer = readbuf(fd, buffer, remain);
-	size  = ft_strlen(buffer);
-	remain = remainder(buffer);
-	if (!remainder)
-		return (NULL);
-	else if (nloccur(buffer))
+	buffer = readbuf(fd, buffer);
+	remain = getlast(buffer);
+	if (!remain)
 	{
-		
+		free(buffer);
+		buffer = NULL;
+		return (NULL);
 	}
-		
-
+	buffer = extract(buffer);
+	return (remain);
 }
 
-char	*readbuf(int fd, char *str, char *temp)
+char	*readbuf(int fd, char *str)
 {
-	int	bytes_read;
+	char	*temp;
+	int		bytes_read;
 
+	temp = malloc(BUFFER_SIZE + 1);
+	if(!temp)
+		return (NULL);
 	bytes_read = read(fd, temp, BUFFER_SIZE);
-	if (!bytes_read)
+	if (bytes_read == -1)
+	{
+		free(temp);
+		free(str);
 		return (0);
+	}
 	temp[bytes_read] = '\0';
-	if (!ft_strchr(str, '\n') && !ft_strchr(str, '\0'))
+	if (!ft_strchr(str, '\n') && bytes_read > 0)
 		str = ft_strjoin(str, temp);
 	return (str);
 }
 
-char	*remainder(char *str, int size)
+char	*extract(char *buffer)
 {
+	char	*temp;
 	int		i;
 	int		j;
-	char	*temp;
-
-	i = nloccur(str);
-	if (i)
-	{
-		temp = (char *)malloc((size -  i) + 1);
-		if (!temp)
-			return (NULL);
-		i++;
-		while (str[i])
-			temp[j++] = str[i++];
-	}
-	if(temp)
-	{
-		temp[j] = '\0';
-		return (temp);
-	}
-	else
-		return (NULL);
-}
-
-int	nloccur(char *str)
-{
-	int	i;
+	int		size;
 
 	i = 0;
-	if (!str)
-		return (0);
-	while (str[i] && str[i] != '\n')
+	if (!buffer)
+		return (NULL);
+	size = ft_strlen(buffer);
+	while (buffer[i] && buffer[i] != '\n')
 		i++;
-	if (str[i] == '\n')
-		return (i);
-	return (0);
-}		
+	if (buffer[i] == '\n')
+	{
+		temp = (char *)malloc(i + 1);
+		if (!temp)
+			return (NULL);
+		j = 0;
+		while (i != j)
+		{
+			temp[j] = buffer[j];
+			j++;
+		}
+	}
+	temp[i] = '\0';
+	return (temp);
+}
+
+char	*getlast(char *buffer)
+{
+	char	*temp;
+	int		i;
+	int		j;
+	int		size;
+
+	j = 0;
+	i = 0;
+	if (!buffer)
+		return (NULL);
+	size = ft_strlen(buffer);
+	if (!ft_strchr(buffer, '\n'))
+		return (NULL);
+	while (buffer[i] && buffer[i] != '\n')
+		i++;
+	temp = (char *)malloc(size - i);
+	if (!temp)
+		return (NULL);
+	i++;
+	while (i < ft_strlen(buffer))
+	{
+		temp[j] = buffer[i++];
+		j++;
+	}
+	temp[j] = '\0';
+	return (temp);
+}

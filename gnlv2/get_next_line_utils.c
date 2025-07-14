@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 16:30:30 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/07/09 17:50:25 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/07/14 10:22:07 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ char	*ft_strchr(const char *src, int c)
 	return (NULL);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	size_t	len1;
-	size_t	len2;
-	size_t	i;
+	int	len1;
+	int	len2;
+	int	i;
 	char	*dest;
 
 	i = 0;
@@ -65,11 +65,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (dest);
 }
 
-size_t	ft_strlcat(char *dest, const char *src, size_t size)
+int	ft_strlcat(char *dest, char *src, int size)
 {
-	size_t	i;
-	size_t	ld;
-	size_t	ls;
+	int	i;
+	int	ld;
+	int	ls;
 
 	i = 0;
 	ld = ft_strlen(dest);
