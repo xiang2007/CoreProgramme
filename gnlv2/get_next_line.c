@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 16:30:33 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/07/14 15:07:06 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/07/14 15:33:35 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,19 @@ char	*readbuf(int fd, char *str)
 	if(!temp)
 		return (NULL);
 	bytes_read = 1;
-	while (bytes_read > 0 && !ft(ft_strchr(str, '\n')))
+	while (bytes_read > 0 && !ft_strchr(str, '\n'))
 	{
 		bytes_read = read(fd, temp, BUFFER_SIZE);
 		if (bytes_read == -1)
 		{
-			free (temp);
+			free (str);
+			str = NULL;
 			return (NULL);
 		}
-		
+		str = ft_strjoin(str, temp);
 	}
-	return (temp);
+	free(temp);
+	return (str);
 }
 
 char	*extract(char *buffer)
@@ -72,6 +74,7 @@ char	*extract(char *buffer)
 		i++;
 	if (buffer[i] == '\n')
 	{
+		i++;
 		temp = (char *)malloc(i + 1);
 		if (!temp)
 			return (NULL);
