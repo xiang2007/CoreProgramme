@@ -5,33 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/12 05:29:28 by marvin            #+#    #+#             */
-/*   Updated: 2025/07/12 05:36:40 by marvin           ###   ########.fr       */
+/*   Created: 2025/06/30 16:30:33 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/07/15 22:42:35 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*readbuf(int fd, char *str);
+char	*readbuf(int fd, char *str, char *temp);
+char	*appendline(char *str, char *remain);
 char	*remainder(char *str, int size);
-int		findnl(char *str);
+int		nloccur(char *str);
 
 char	*get_next_line(int fd)
 {
 	static char	*buffer;
 	char		*remain;
-	int				flag;
-	int				size;
 
-	flag = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer = readbuf(fd, buffer);
+	buffer = readbuf(fd, buffer, remain);
 	size  = ft_strlen(buffer);
-	remain = remainder(buffer, size);
-	if (!remain)
+	remain = remainder(buffer);
+	if (!remainder)
 		return (NULL);
-	else if (findnl(buffer))
+	else if (nloccur(buffer))
 	{
 		
 	}
@@ -39,36 +37,49 @@ char	*get_next_line(int fd)
 
 }
 
-char	*readbuf(int fd, char *str)
+char	*readbuf(int fd, char *str, char *temp)
 {
-	char	*temp;
 	int	bytes_read;
 
-	bytes_read = read(fd, temp, BUFFER_SIZE);
-	if (!bytes_read)
-		return (0);
-	temp[bytes_read] = '\0';
-	if (!ft_strchr(str, '\n') && !ft_strchr(str, '\0'))
+	temp = malloc(BUFFER_SIZE + 1);
+	if(!temp)
+		return (NULL);
+	bytes_read = 1;
+	while (bytes_read > 0 && !ft_strchr(str, '\n'))
+	{
+		bytes_read = read(fd, temp, BUFFER_SIZE);
+		if (bytes_read == -1)
+		{
+			free (str);
+			str = NULL;
+			return (NULL);
+		}
 		str = ft_strjoin(str, temp);
+	}
+	free(temp);
 	return (str);
 }
 
-char	*remainder(char *str, int size)
+char	*extract(char *buffer)
 {
+	char	*temp;
 	int		i;
 	int		j;
-	char	*temp;
+	int		size;
 
-	i = findnl(str);
+	i = nloccur(str);
 	if (i)
 	{
-		temp = (char *)malloc((size -  i) + 1);
+		i++;
+		temp = (char *)malloc(i + 1);
 		if (!temp)
 			return (NULL);
-		str[i] = '\0';
 		i++;
 		while (str[i])
 			temp[j++] = str[i++];
+	}
+	if(temp)
+	{
 		temp[j] = '\0';
 		return (temp);
 	}
@@ -76,16 +87,19 @@ char	*remainder(char *str, int size)
 		return (NULL);
 }
 
-int	findnl(char *str)
+int	nloccur(char *str)
 {
 	int	i;
 
 	i = 0;
-	if (!str)
-		return (0);
-	while (str[i] && str[i] != '\n')
+	if (!buffer)
+		return (NULL);
+	size = ft_strlen(buffer);
+	if (!ft_strchr(buffer, '\n'))
+		return (NULL);
+	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	if (str[i] == '\n')
 		return (i);
 	return (0);
-}	
+}		
