@@ -5,17 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/30 16:30:33 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/07/12 05:04:33 by marvin           ###   ########.fr       */
+/*   Created: 2025/07/12 05:29:28 by marvin            #+#    #+#             */
+/*   Updated: 2025/07/12 05:36:40 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*readbuf(int fd, char *str, char *temp);
-char	*appendline(char *str, char *remain);
+char	*readbuf(int fd, char *str);
 char	*remainder(char *str, int size);
-int		nloccur(char *str);
+int		findnl(char *str);
 
 char	*get_next_line(int fd)
 {
@@ -27,12 +26,12 @@ char	*get_next_line(int fd)
 	flag = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer = readbuf(fd, buffer, remain);
+	buffer = readbuf(fd, buffer);
 	size  = ft_strlen(buffer);
-	remain = remainder(buffer);
-	if (!remainder)
+	remain = remainder(buffer, size);
+	if (!remain)
 		return (NULL);
-	else if (nloccur(buffer))
+	else if (findnl(buffer))
 	{
 		
 	}
@@ -40,8 +39,9 @@ char	*get_next_line(int fd)
 
 }
 
-char	*readbuf(int fd, char *str, char *temp)
+char	*readbuf(int fd, char *str)
 {
+	char	*temp;
 	int	bytes_read;
 
 	bytes_read = read(fd, temp, BUFFER_SIZE);
@@ -59,18 +59,16 @@ char	*remainder(char *str, int size)
 	int		j;
 	char	*temp;
 
-	i = nloccur(str);
+	i = findnl(str);
 	if (i)
 	{
 		temp = (char *)malloc((size -  i) + 1);
 		if (!temp)
 			return (NULL);
+		str[i] = '\0';
 		i++;
 		while (str[i])
 			temp[j++] = str[i++];
-	}
-	if(temp)
-	{
 		temp[j] = '\0';
 		return (temp);
 	}
@@ -78,7 +76,7 @@ char	*remainder(char *str, int size)
 		return (NULL);
 }
 
-int	nloccur(char *str)
+int	findnl(char *str)
 {
 	int	i;
 
@@ -90,4 +88,4 @@ int	nloccur(char *str)
 	if (str[i] == '\n')
 		return (i);
 	return (0);
-}		
+}	
