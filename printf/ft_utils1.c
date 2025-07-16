@@ -35,8 +35,6 @@ int	ft_isprint(int c)
 		return (0);
 }
 
-
-
 char	*ft_strdup(const char *str)
 {
 	char	*dst;
