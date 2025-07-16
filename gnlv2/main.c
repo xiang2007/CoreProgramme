@@ -5,10 +5,17 @@
 int	main()
 {
 	int fd;
-	int	i = 10;
+	char	*buffer;
+	int		read_b;
+	int	i = 0;
 
 	fd = open("file.txt", O_RDONLY);
-	while (i--)
-		printf("%s",get_next_line(fd));
+	printf("%d\n",fd);
+	buffer = malloc(BUFFER_SIZE);
+	read_b = read(fd, buffer, BUFFER_SIZE);
+	printf("%d\n",read_b);
+	while ((buffer[i] != '\n') && i < read_b)
+		i++;
+	printf("%d\n",i);
 	return (0);
 }
