@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 10:57:36 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/07/16 14:59:46 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/07/20 09:20:51 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,26 @@
 char	*get_next_line(int	fd)
 {
 	
+}
+
+char	*readbuf(char *buffer, int fd)
+{
+	int	bytes_read;
+	
+	if (!buffer || buffer[0] == '\0')
+		return (NULL);
+	bytes_read = 1;
+	while (bytes_read > 0 && buffer)
+	{
+		bytes_read = read (fd, buffer, BUFFER_SIZE);
+		if (bytes_read == -1)
+		{
+			free (buffer);
+			return (NULL);
+		}
+		if (!ft_strchr(buffer, '/n') && bytes_read > 0)
+			ft_strjoin (buffer, )
+	}
 }
 
 char	*extractline(char *buffer)
