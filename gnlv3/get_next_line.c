@@ -6,37 +6,57 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 10:57:36 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/07/20 09:20:51 by marvin           ###   ########.fr       */
+/*   Updated: 2025/07/21 22:19:32 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "get_next_line.h"
 
 char	*get_next_line(int	fd)
 {
-	
+	static char	*buffer;
+	char		*remain;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (0);
+	buffer = readfile(buffer, fd);
+	if (!buffer)
+		return (NULL);
+	remain = extractline(buffer);
+	if (!remain)
+	{
+		free(remain);
+		
+		return (buffer);
+	}
+	buffer = polishline(buffer);
+	return (remain);
 }
 
-char	*readbuf(char *buffer, int fd)
+char	*readfile(char *buffer, int fd)
 {
-	int	bytes_read;
-	
-	if (!buffer || buffer[0] == '\0')
-		return (NULL);
+	int		bytes_read;
+	char	*temp;
+
 	bytes_read = 1;
+	temp = malloc (BUFFER_SIZE + 1);
+	if (!temp)
+		return (NULL);
 	while (bytes_read > 0 && buffer)
 	{
-		bytes_read = read (fd, buffer, BUFFER_SIZE);
+		bytes_read = read(fd, temp, BUFFER_SIZE);
 		if (bytes_read == -1)
 		{
-			free (buffer);
+			free (temp);
 			return (NULL);
 		}
-		if (!ft_strchr(buffer, '/n') && bytes_read > 0)
-			ft_strjoin (buffer, )
+		temp[bytes_read] = '\0';
+		buffer = ft_strjoin(buffer, temp);
 	}
+	free (temp);
+	return (buffer);
 }
-
 char	*extractline(char *buffer)
 {
 	int		i;
