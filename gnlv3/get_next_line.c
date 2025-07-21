@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 10:57:36 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/07/16 14:59:46 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/07/21 16:15:01 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,48 @@
 
 char	*get_next_line(int	fd)
 {
-	
+	static char	*buffer;
+	char		*remain;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (0);
+	buffer = readfile(buffer, fd);
+	if (!buffer)
+		return (NULL);
+	remain = extractline(buffer);
+	if (!remain)
+	{
+		free(remain);
+		
+		return (buffer);
+	}
+	buffer = polishline(buffer);
+	return (remain);
 }
 
+char	*readfile(char *buffer, int fd)
+{
+	int		bytes_read;
+	char	*temp;
+
+	bytes_read = 1;
+	temp = malloc (BUFFER_SIZE + 1);
+	if (!temp)
+		return (NULL);
+	while (bytes_read > 0 && buffer)
+	{
+		bytes_read = read(fd, temp, BUFFER_SIZE);
+		if (bytes_read == -1)
+		{
+			free (temp);
+			return (NULL);
+		}
+		temp[bytes_read] = '\0';
+		buffer = ft_strjoin(buffer, temp);
+	}
+	free (temp);
+	return (buffer);
+}
 char	*extractline(char *buffer)
 {
 	int		i;
