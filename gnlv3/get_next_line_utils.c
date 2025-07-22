@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 10:57:39 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/07/16 10:58:08 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:43:28 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,45 +42,39 @@ char	*ft_strchr(const char *src, int c)
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	int	len1;
-	int	len2;
-	int	i;
+	int		len1;
+	int		len2;
 	char	*dest;
 
-	i = 0;
-	if (!s1 || !s2)
+	if (!s2)
 		return (NULL);
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	dest = (char *)malloc(len1 + len2 + 1);
+	if (!s1)
+		return (ft_strdup(s2));
+	dest = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!dest)
-		return (NULL);
-	while (i < len1)
-	{
-		dest[i] = s1[i];
-		i++;
-	}
-	dest[i] = '\0';
-	ft_strlcat(dest, s2, len1 + len2 + 1);
+		return (NULL);	while(*s1)
+		*dest++ = *s1++;
+	while (*s2)
+		*dest++ = *s2++;
+	*dest = '\0';
 	return (dest);
 }
 
-int	ft_strlcat(char *dest, char *src, int size)
+char	*ft_strdup(const char *str)
+
 {
-	int	i;
-	int	ld;
-	int	ls;
+	char	*dst;
+	int		len;
+	int		i;
 
 	i = 0;
-	ld = ft_strlen(dest);
-	ls = ft_strlen(src);
-	if (size <= ld)
-		return (ls + size);
-	while (src[i] && ld + i + 1 < size)
+	len = ft_strlen(str);
+	dst = (char *)malloc(sizeof(char) * (len + 1));
+	while (i < len)
 	{
-		dest[ld + i] = src[i];
+		dst[i] = str[i];
 		i++;
 	}
-	dest[ld + i] = '\0';
-	return (ld + ls);
+	dst[len] = '\0';
+	return (dst);
 }

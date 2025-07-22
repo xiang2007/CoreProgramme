@@ -6,14 +6,16 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 10:57:41 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/07/16 10:58:15 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:23:34 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
+#ifndef BUFFER_SIZE
 # define BUFFER_SIZE 1
+#endif
 
 # include <stdio.h>
 # include <stdlib.h>
