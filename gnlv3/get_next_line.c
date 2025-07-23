@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 10:57:36 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/07/23 16:47:47 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/07/23 17:35:51 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,14 +98,10 @@ char	*polishline(char *buffer)
 {
 	int		i;
 	int		j;
-	int		size;
 	char	*temp;
 
-	if (!buffer)
-		return (NULL);
 	i = 0;
-	size = ft_strlen(buffer);
-	while (buffer[i] && (buffer[i] != '\n'))
+	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	if (!buffer[i])
 	{
@@ -113,20 +109,16 @@ char	*polishline(char *buffer)
 		return (NULL);
 	}
 	i++;
-	temp = malloc(size - i + 1);
+	temp = malloc(ft_strlen(buffer) - i + 1);
 	if (!temp)
 	{
-		free (buffer);
+		free(buffer);
 		return (NULL);
 	}
 	j = 0;
 	while (buffer[i])
-	{
-		temp[j] = buffer[i];
-		i++;
-		j++;
-	}
+		temp[j++] = buffer[i++];
 	temp[j] = '\0';
-	free (buffer);
+	free(buffer);
 	return (temp);
 }
