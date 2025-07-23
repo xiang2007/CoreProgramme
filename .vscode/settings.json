@@ -1,7 +1,8 @@
 {
 	"files.associations": {
 		"variant": "c",
-		"stdio.h": "c"
+		"stdio.h": "c",
+		"get_next_line.h": "c"
 	},
 	"python.testing.unittestArgs": [
 		"-v",

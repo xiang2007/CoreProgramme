@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 10:57:36 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/07/23 16:47:47 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/07/23 16:56:40 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,22 @@ char	*polishline(char *buffer);
 
 char	*get_next_line(int	fd)
 {
-	static char	*buffer;
+	static char	*buffer[1024];
 	char		*remain;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer = readfile(buffer, fd);
-	if (!buffer)
+	buffer[fd] = readfile(buffer[fd], fd);
+	if (!buffer[fd])
 		return (NULL);
-	remain = extractline(buffer);
+	remain = extractline(buffer[fd]);
 	if (!remain)
 	{
-		// free(remain);
-		free(buffer);
-		buffer = NULL;
+		free(buffer[fd]);
+		buffer[fd] = NULL;
 		return (NULL);
 	}
-	buffer = polishline(buffer);
+	buffer[fd] = polishline(buffer[fd]);
 	return (remain);
 }
 
