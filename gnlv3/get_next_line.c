@@ -6,21 +6,22 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 10:57:36 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/07/23 17:35:51 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/07/24 15:44:36 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "get_next_line.h"
 
 char	*extractline(char *buffer);
 char	*readfile(char *buffer, int fd);
-char	*polishline(char *buffer);
+char	*polishline(char *buffer, int i, int j);
 
-char	*get_next_line(int	fd)
+char	*get_next_line(int fd)
 {
 	static char	*buffer;
 	char		*remain;
+	int			i;
+	int			j;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
@@ -30,12 +31,13 @@ char	*get_next_line(int	fd)
 	remain = extractline(buffer);
 	if (!remain)
 	{
-		// free(remain);
 		free(buffer);
 		buffer = NULL;
 		return (NULL);
 	}
-	buffer = polishline(buffer);
+	i = 0;
+	j = 0;
+	buffer = polishline(buffer, i, j);
 	return (remain);
 }
 
@@ -94,10 +96,8 @@ char	*extractline(char *buffer)
 	return (temp);
 }
 
-char	*polishline(char *buffer)
+char	*polishline(char *buffer, int i, int j)
 {
-	int		i;
-	int		j;
 	char	*temp;
 
 	i = 0;
