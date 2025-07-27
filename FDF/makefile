@@ -1,0 +1,1 @@
+CC = cc fdf.c -Llibmlx -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11
