@@ -33,24 +33,7 @@ int	main(void)
 	img.img = mlx_new_image(mlx, 1920, 1080);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 								&img.endian);
-
-	while (i && j)
-	{
-		if (i < imax)
-			i++;
-		if ((i == imax) && j < jmax)
-			j++;
-		if (i == imax && j == jmax)
-		{
-			imax -= 100;
-			jmax -= 100;
-		}
-		if (i > imax && i)
-			i--;
-		if (j > jmax && i == 1)
-			j--;
 		my_mlx_pixel_put(&img, i, j, 0x00FF0000);
 		mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	}
 	mlx_loop(mlx);
 }
