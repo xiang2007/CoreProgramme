@@ -37,7 +37,7 @@ void ft_lstadd_back(t_stack **lst, t_stack *new)
 t_stack *ft_lstlast(t_stack *lst)
 {
 	if (!lst)
-		return ;
+		return (NULL);
 	while (lst->next)
 		lst = lst->next;
 	return (lst);
@@ -49,8 +49,8 @@ void	ft_lstclear(t_stack **lst)
 	t_stack *next_node;
 
 	if (!lst || !(*lst))
-		return (NULL);
-	current = lst;
+		return ;
+	current = *lst;
 	while (current != NULL)
 	{
 		next_node = current->next;
