@@ -13,12 +13,12 @@ int	onlynumbers(char *str)
 				i++;
 		}
 		if (str[i] >= '0' && str[i] <= '9')
-			return (1);
+			return (PASS);
 		break;
 	}
-	return (0);
+	return (FAIL);
 }
-#include <stdio.h>
+
 int	checkdup(char **str)
 {
 	int	i;
@@ -33,17 +33,16 @@ int	checkdup(char **str)
 	{
 		j = 1;
 		nbr1 = ft_atoi(str[i]);
-		nbr2 = ft_atoi(str[i + 1]);
 		while (str[j + i])
 		{
 			nbr2 = ft_atoi(str[j + i]);
 			if (nbr1 == nbr2)
-				return (1);
+				return (FAIL);
 			j++;
 		}
 		i++;
 	}
-	return (0);
+	return (PASS);
 }
 
 int	is_sorted(char **str)
@@ -66,8 +65,8 @@ int	is_sorted(char **str)
 		i++;
 	}
 	if (!flag)
-		return (1);
-	return (0);
+		return (PASS);
+	return (FAIL);
 }
 
 int	isvalid(char **str)
@@ -75,17 +74,15 @@ int	isvalid(char **str)
 	int	i;
 
 	i = 1;
-	printf("%d\n",checkdup(str));
-	if (!str[i])
-		return (0);
+	if (!str)
+		return (FAIL);
 	while (str[i])	
 	{
 		if (!onlynumbers(str[i]))
-			return (0);
+			return (FAIL);
 		i++;
 	}
-	if ((!checkdup(str)) && (!is_sorted(str)))
-		return (0);
-	return (1);
+	if ((!checkdup(str)) || (!is_sorted(str)))
+		return (FAIL);
+	return (PASS);
 }
-
