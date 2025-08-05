@@ -17,7 +17,7 @@ $(NAME): $(OBJ)
 .PHONY: clean fclean re all c
  
 c:
-	$(CC) $(CFLAGS) $(SRC)
+	$(CC) $(CFLAGS) $(SRC) -o push_swap
 
 clean:
 	$(RM) $(OBJ)

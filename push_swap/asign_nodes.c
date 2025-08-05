@@ -24,29 +24,3 @@ t_stack	*node_atoi(int len, char **str)
 	return (stack);
 }
 
-#include <stdio.h>
-
-int main(int ac, char **av)
-{
-	t_stack *head;
-	t_stack *current;
-	int i = 0;
-
-	head = node_atoi(ac, av);
-	if (!head)
-	{
-		printf("Failed to create stack\n");
-		return (1);
-	}
-	
-	current = head;
-	while (current)
-	{
-		printf("Value of %d is: %d\n", i, current->value);
-		current = current->next;
-		i++;
-	}
-	
-	ft_lstclear(&head);  // Clear from the head
-	return (0);
-}
