@@ -1,5 +1,22 @@
 #include "push_swap.h"
 
+int	check_stackdup(t_stack **stack)
+{
+	int	flag;
+
+	flag = 1;
+	while ((*stack)->next)
+	{
+		if ((*stack)->pos > (*stack)->next->pos)
+			flag *= 0;
+		else
+			(*stack) = (*stack)->next;
+	}
+	if (!flag)
+		return (PASS);
+	return (FAIL);
+}
+
 int	onlynumbers(char *str)
 {
 	int	i;

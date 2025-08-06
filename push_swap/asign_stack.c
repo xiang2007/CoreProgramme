@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-t_stack	*asign_node(int len, char **str)
+t_stack	*asign_stack(int len, char **str)
 {
 	int	i;
 	long int	temp;
@@ -14,8 +14,6 @@ t_stack	*asign_node(int len, char **str)
 		return (NULL);
 	while (i < len)
 	{
-		if (*str[i] == 32)
-			i++;
 		temp = ft_atoi(str[i]);
 		if (stack == NULL)
 			stack = ft_nodenew(temp, i);

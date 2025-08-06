@@ -26,8 +26,9 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new);
 void	ft_lstclear(t_stack **lst);
 int		isvalid(char **str);
 int		is_sorted(char **str);
-t_stack	*asign_node(int len, char **str);
-void	bubblesort(t_stack **stack_a, t_stack **stack_b);
+int		check_stackdup(t_stack **stack);
+int		stacksize(t_stack *stack);
+t_stack	*asign_stack(int len, char **str);
 
 void	ra(t_stack **stack_a);
 void	rb(t_stack **stack_b);

@@ -24,3 +24,28 @@ int	ft_atoi(const char *str)
 	}
 	return (result * sign);
 }
+
+int	stacksize(t_stack *stack)
+{
+	int	i;
+
+	i = 0;
+	while (stack)
+	{
+		i++;
+		stack = stack->next;
+	}
+	return (i);
+}
+
+#include <stdio.h>
+int	main(int ac, char **av)
+{
+	t_stack *stack;
+	int	i;
+
+	stack = asign_stack(ac, av);
+	i = stacksize(stack);
+	printf("Stack size is: %d\n", i);
+	return (0);
+}
