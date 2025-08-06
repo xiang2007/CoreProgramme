@@ -4,7 +4,8 @@ void	push(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack *temp;
 
-	if (!*stack_a)
+	if (!stack_a || !(*stack_a)->next || !*stack_a
+			|| !stack_b || !(*stack_b)->next || !*stack_b)
 		return ;
 	temp = (*stack_a)->next;
 	(*stack_a)->next = *stack_b;
