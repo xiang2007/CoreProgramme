@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-t_stack	*node_atoi(int len, char **str)
+t_stack	*asign_node(int len, char **str)
 {
 	int	i;
 	long int	temp;
@@ -9,6 +9,8 @@ t_stack	*node_atoi(int len, char **str)
 	i = 1;
 	stack = NULL;
 	if (!str || len <= 1)
+		return (NULL);
+	if (!isvalid(str))
 		return (NULL);
 	while (i < len)
 	{
@@ -21,6 +23,5 @@ t_stack	*node_atoi(int len, char **str)
 			ft_lstadd_back(&stack, ft_nodenew(temp, i));
 		i++;
 	}
-	return (stack);
+	return stack;
 }
-
