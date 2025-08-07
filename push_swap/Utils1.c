@@ -48,16 +48,35 @@ int	stacksize(t_stack *stack)
 	return (i);
 }
 
-t_stack	*asign_pos(t_stack *stack)
+void	asign_pos(t_stack *stack)
 {
 	int	i;
 
 	i = 0;
+	if (!stack)
+		return ;
 	while(stack)
 	{
 		stack->pos = i;
 		stack = stack->next;
 		i++;
 	}
-	return (stack);
+	return ;
+}
+
+int	find_highest_value(t_stack *stack)
+{
+	int	max;
+	
+	if (!stack)
+		return (0);
+	while (stack->next)
+	{
+		if ((stack->value) > max)
+			max = stack->value;
+		if (max < stack->next->value)
+			max = stack->next->value;
+		stack = stack->next;
+	}
+	return (max);
 }

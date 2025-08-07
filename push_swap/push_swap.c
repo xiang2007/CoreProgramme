@@ -2,9 +2,11 @@
 
 int	main(int ac, char **av)
 {
-	t_stack *stack_a;
+	t_stack **stack_a;
 
-	stack_a = asign_stack(ac, av);
-	sort_three(stack_a);
-	return (0);
+	if (ac > 2)
+	{
+		stack_a = asign_stack(ac, av);
+		sort_three(stack_a);
+	}
 }

@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int	check_stacksort(t_stack *stack)
+int	is_stacksort(t_stack *stack)
 {
 	int	flag;
 

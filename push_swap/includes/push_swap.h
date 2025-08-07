@@ -26,12 +26,13 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new);
 void	ft_lstclear(t_stack **lst);
 int		isvalid(char **str);
 int		is_sorted(char **str);
-int		check_stacksort(t_stack *stack);
+int		is_stacksort(t_stack *stack);
 int		stacksize(t_stack *stack);
-t_stack	*asign_stack(int len, char **str);
-void	tinysort(t_stack *stack);
-t_stack	*asign_pos(t_stack *stack);
+t_stack	**asign_stack(int len, char **str);
+void	sort_three(t_stack **stack);
+void	asign_pos(t_stack *stack);
 void	ft_putstr(char *str);
+int		find_highest_value(t_stack *stack);
 
 void	ra(t_stack **stack_a);
 void	rb(t_stack **stack_b);
