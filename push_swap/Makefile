@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra -I./includes
 AR = ar rcs
 RM = rm -rf
-SRC = ./Utils1.c ./Utils2.c ./push_swap.c ./checking.c ./push.c ./rotate.c ./reverse_rotate.c ./swapping.c ./asign_nodes.c ./sorting.c
+SRC = ./Utils1.c ./Utils2.c ./push_swap.c ./checking.c ./push.c ./rotate.c ./reverse_rotate.c ./swapping.c ./asign_stack.c ./sorting.c
 OBJ = $(SRC:.c=.o)
 NAME = push_swap
 

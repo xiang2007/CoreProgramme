@@ -16,12 +16,12 @@ void	push(t_stack **stack_a, t_stack **stack_b)
 void pa(t_stack **stack_a, t_stack **stack_b)
 {
 	push(stack_a, stack_b);
-	write(1, "pa", 2);
+	ft_putstr("pa\n");
 }
 
 void pb(t_stack **stack_b, t_stack **stack_a)
 {
 	push(stack_b, stack_a);
-	write(1, "pb", 2);
+	ft_putstr("pb\n");
 }
 

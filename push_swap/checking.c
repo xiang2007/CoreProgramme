@@ -1,16 +1,16 @@
 #include "push_swap.h"
 
-int	check_stackdup(t_stack **stack)
+int	check_stacksort(t_stack *stack)
 {
 	int	flag;
 
 	flag = 1;
-	while ((*stack)->next)
+	while (stack->next)
 	{
-		if ((*stack)->pos > (*stack)->next->pos)
+		if (stack->value > stack->next->value)
 			flag *= 0;
 		else
-			(*stack) = (*stack)->next;
+			stack = stack->next;
 	}
 	if (!flag)
 		return (PASS);

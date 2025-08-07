@@ -2,11 +2,9 @@
 
 int	main(int ac, char **av)
 {
-	t_stack **stack_a;
-	t_stack **stack_b;
+	t_stack *stack_a;
 
 	stack_a = asign_stack(ac, av);
-	stack_b = NULL;
-	bubblesort(stack_a, stack_b);
+	sort_three(stack_a);
 	return (0);
 }

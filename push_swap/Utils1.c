@@ -25,6 +25,16 @@ int	ft_atoi(const char *str)
 	return (result * sign);
 }
 
+void	ft_putstr(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+		write(1, &str[i++], 1);
+	return ;
+}
+
 int	stacksize(t_stack *stack)
 {
 	int	i;
@@ -38,14 +48,16 @@ int	stacksize(t_stack *stack)
 	return (i);
 }
 
-#include <stdio.h>
-int	main(int ac, char **av)
+t_stack	*asign_pos(t_stack *stack)
 {
-	t_stack *stack;
 	int	i;
 
-	stack = asign_stack(ac, av);
-	i = stacksize(stack);
-	printf("Stack size is: %d\n", i);
-	return (0);
+	i = 0;
+	while(stack)
+	{
+		stack->pos = i;
+		stack = stack->next;
+		i++;
+	}
+	return (stack);
 }

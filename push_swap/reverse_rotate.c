@@ -17,18 +17,18 @@ void	reverse_rotate(t_stack **stack)
 void	rra(t_stack **stack_a)
 {
 	reverse_rotate(stack_a);
-	write(1, "rra", 3);
+	ft_putstr("rra\n");
 }
 
 void	rrb(t_stack **stack_b)
 {
 	reverse_rotate(stack_b);
-	write(1, "rrb", 3);
+	ft_putstr("rrb\n");
 }
 
 void	rrr(t_stack **stack_a, t_stack **stack_b)
 {
 	reverse_rotate(stack_a);
 	reverse_rotate(stack_b);
-	write(1, "rrr", 3);
+	ft_putstr("rrr\n");
 }

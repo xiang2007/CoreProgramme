@@ -26,9 +26,12 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new);
 void	ft_lstclear(t_stack **lst);
 int		isvalid(char **str);
 int		is_sorted(char **str);
-int		check_stackdup(t_stack **stack);
+int		check_stacksort(t_stack *stack);
 int		stacksize(t_stack *stack);
 t_stack	*asign_stack(int len, char **str);
+void	tinysort(t_stack *stack);
+t_stack	*asign_pos(t_stack *stack);
+void	ft_putstr(char *str);
 
 void	ra(t_stack **stack_a);
 void	rb(t_stack **stack_b);
