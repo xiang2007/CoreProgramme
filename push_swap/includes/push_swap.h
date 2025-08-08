@@ -1,7 +1,7 @@
 #include <stdlib.h>
-#include <stdlib.h>
 #include <stddef.h>
 #include <unistd.h>
+#include <stdio.h>
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -28,7 +28,7 @@ int		isvalid(char **str);
 int		is_sorted(char **str);
 int		is_stacksort(t_stack *stack);
 int		stacksize(t_stack *stack);
-t_stack	**asign_stack(int len, char **str);
+t_stack	*asign_stack(int len, char **str);
 void	sort_three(t_stack **stack);
 void	asign_pos(t_stack *stack);
 void	ft_putstr(char *str);
@@ -37,9 +37,9 @@ int		find_highest_value(t_stack *stack);
 void	ra(t_stack **stack_a);
 void	rb(t_stack **stack_b);
 void	rr(t_stack **stack_a, t_stack **stack_b);
-void	sa(t_stack *stack_a);
-void	sb(t_stack *stack_b);
-void	ss(t_stack *stack_a, t_stack *stack_b);
+void	sa(t_stack **stack_a);
+void	sb(t_stack **stack_b);
+void	ss(t_stack **stack_a, t_stack **stack_b);
 void	rra(t_stack **stack_a);
 void	rrb(t_stack **stack_b);
 void	rrr(t_stack **stack_a, t_stack **stack_b);

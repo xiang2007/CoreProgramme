@@ -5,11 +5,11 @@ void	sort_three(t_stack **stack)
 	int	size;
 	int	max;
 
-	if (!(*stack) || !stack || is_stacksort((*stack)))
+	if (!(*stack))
 		return ;
 	size = stacksize(*stack);
 	max = find_highest_value((*stack));
-	while (!is_stacksort((*stack)))
+	while (is_stacksort((*stack)))
 	{
 		if ((*stack)->value == max)
 			rra(stack);

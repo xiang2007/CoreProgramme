@@ -70,12 +70,11 @@ int	find_highest_value(t_stack *stack)
 	
 	if (!stack)
 		return (0);
+	max = stack->value;
 	while (stack->next)
 	{
 		if ((stack->value) > max)
 			max = stack->value;
-		if (max < stack->next->value)
-			max = stack->next->value;
 		stack = stack->next;
 	}
 	return (max);

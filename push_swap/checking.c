@@ -9,8 +9,7 @@ int	is_stacksort(t_stack *stack)
 	{
 		if (stack->value > stack->next->value)
 			flag *= 0;
-		else
-			stack = stack->next;
+		stack = stack->next;
 	}
 	if (!flag)
 		return (PASS);
