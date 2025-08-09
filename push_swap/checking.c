@@ -5,6 +5,7 @@ int	is_stacksort(t_stack *stack)
 	int	flag;
 
 	flag = 1;
+	
 	while (stack->next)
 	{
 		if (stack->value > stack->next->value)

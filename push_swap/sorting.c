@@ -1,23 +1,27 @@
 #include "push_swap.h"
 
+void	print_stack(t_stack *stack)
+{
+	while (stack)
+	{
+		printf("Value of stack is: %d\n", stack->value);
+		stack = stack->next;
+	}
+}
+
 void	sort_three(t_stack **stack)
 {
-	int	size;
-	int	max;
-
 	if (!(*stack))
 		return ;
-	size = stacksize(*stack);
-	max = find_highest_value((*stack));
 	while (is_stacksort((*stack)))
 	{
-		if ((*stack)->value == max)
-			rra(stack);
-		if ((*stack)->next->value == max)
-			rra(stack);
-		if ((*stack)->next->next->value == max)
+		if (((*stack)->value > (*stack)->next->value) && 
+			((*stack)->value > ft_lstlast(*stack)->value))
+				ra(stack);
+		if ((*stack)->value > (*stack)->next->value)
 			sa(stack);
-	}
-	return ;
+		if ((*stack)->value > ft_lstlast(*stack)->value)
+			rra(stack);
+	}	return ;
 }
 
