@@ -3,10 +3,16 @@
 int	main(int ac, char **av)
 {
 	t_stack *stack_a;
+	t_stack *stack_b;
 
+	stack_b = (t_stack *)malloc(sizeof(t_stack));
+	stack_b = NULL;
 	if (ac > 2)
 	{
 		stack_a = asign_stack(ac, av);
-		sort_three(&stack_a);
+		//save_three(&stack_a, &stack_b);
+		//sort_three(&stack_a);
+		//sort(&stack_a, &stack_b);
+		sort_five(&stack_a, &stack_b);
 	}
 }

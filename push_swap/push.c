@@ -4,8 +4,7 @@ void	push(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack *temp;
 
-	if (!stack_a || !(*stack_a)->next || !*stack_a
-			|| !stack_b || !(*stack_b)->next || !*stack_b)
+	if (!stack_a || !*stack_a)
 		return ;
 	temp = (*stack_a)->next;
 	(*stack_a)->next = *stack_b;
@@ -13,15 +12,19 @@ void	push(t_stack **stack_a, t_stack **stack_b)
 	*stack_a = temp;
 }
 
-void pa(t_stack **stack_a, t_stack **stack_b)
+void pb(t_stack **stack_a, t_stack **stack_b)
 {
+	if (!stack_a || !*stack_a)
+		return ;
 	push(stack_a, stack_b);
-	ft_putstr("pa\n");
+	ft_putstr("pb\n");
 }
 
-void pb(t_stack **stack_b, t_stack **stack_a)
+void pa(t_stack **stack_a, t_stack **stack_b)
 {
+	if (!stack_b || !*stack_b)
+		return  ;
 	push(stack_b, stack_a);
-	ft_putstr("pb\n");
+	ft_putstr("pa\n");
 }
 

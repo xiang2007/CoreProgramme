@@ -1,14 +1,5 @@
 #include "push_swap.h"
 
-void	print_stack(t_stack *stack)
-{
-	while (stack)
-	{
-		printf("Value of stack is: %d\n", stack->value);
-		stack = stack->next;
-	}
-}
-
 void	sort_three(t_stack **stack)
 {
 	if (!(*stack))
@@ -22,6 +13,28 @@ void	sort_three(t_stack **stack)
 			sa(stack);
 		if ((*stack)->value > ft_lstlast(*stack)->value)
 			rra(stack);
-	}	return ;
+	}	
+	return ;
+}
+
+/*void	sort(t_stack **stack_a, t_stack **stack_b)
+{
+	if (is_stack_reversed((*stack_a)) || is_stack_reversed(*stack_b))
+		ss(stack_a, stack_b);
+	print_stack(stack_a);
+	printf("\n");
+	print_stack(stack_b);
+}*/
+
+void	save_three(t_stack **stack_a, t_stack **stack_b)
+{
+	int	size;
+
+	size = stacksize((*stack_a));
+	while (size - 3)
+	{
+		pb(stack_a, stack_b);
+		size--;
+	}
 }
 

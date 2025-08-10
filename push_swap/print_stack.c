@@ -2,9 +2,12 @@
 
 void	print_stack(t_stack **stack)
 {
-	while (stack)
+	t_stack *temp;
+
+	temp = (*stack);
+	while (temp)
 	{
-		printf("Value of stack is: %d\n", (*stack)->value);
-		(*stack) = (*stack)->next;
+		printf("Value of stack is: %d\n", temp->value);
+		temp = temp->next;
 	}
 }
