@@ -38,7 +38,7 @@ void	save_three(t_stack **stack_a, t_stack **stack_b);
 int		is_stack_reversed(t_stack *stack);
 void	sort(t_stack **stack_a, t_stack **stack_b);
 void	sort_five(t_stack **stack_a, t_stack **stack_b);
-int		isempty(t_stack *stack);
+void	update_pos(t_stack *stack);
 
 void	ra(t_stack **stack_a);
 void	rb(t_stack **stack_b);
