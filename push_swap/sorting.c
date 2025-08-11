@@ -26,15 +26,3 @@ void	sort_three(t_stack **stack)
 	print_stack(stack_b);
 }*/
 
-void	save_three(t_stack **stack_a, t_stack **stack_b)
-{
-	int	size;
-
-	size = stacksize((*stack_a));
-	while (size - 3)
-	{
-		pb(stack_a, stack_b);
-		size--;
-	}
-}
-
