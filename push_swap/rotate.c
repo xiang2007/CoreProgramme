@@ -5,7 +5,7 @@ void	rotate(t_stack **stack)
 	t_stack *head;
 	t_stack *tail;
 
-	if (!stack || !(*stack)->next || !*stack)
+	if (!stack || !*stack || !(*stack)->next)
 		return ;
 	head = *stack;
 	*stack = (*stack)->next;

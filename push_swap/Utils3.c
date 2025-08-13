@@ -21,44 +21,44 @@ int	is_stack_reversed(t_stack *stack)
 	return (1);
 }
 
-int	find_min_value_pos(t_stack *stack)
+int	find_min_pos(t_stack *stack)
 {
 	int	min;
 	int	pos;
 	
 	if (!stack)
 		return (0);
-	update_pos(stack);
 	min = stack->value;
 	pos = stack->pos;
-	while (stack->next)
+	while (stack)
 	{
 		if ((stack->value) < min)
 		{
 			min = stack->value;
 			pos = stack->pos;
 		}
-		pos = stack->pos;
 		stack = stack->next;
 	}
 	return (pos);
 }
 
 void	update_pos(t_stack *stack)
- {
+{
 	int	i;
+	t_stack *temp;
 
 	if (!stack)
 		return ;
-	i = 1;
-	while (stack->next)
+	temp = stack;
+	i = 0;
+	while (temp)
 	{
-		stack->pos = i;
-		stack = stack->next;
+		temp->pos = i;
+		temp = temp->next;
 		i++;
 	}
 	return ;
- }
+}
 
 void	save_three(t_stack **stack_a, t_stack **stack_b)
 {
@@ -70,4 +70,26 @@ void	save_three(t_stack **stack_a, t_stack **stack_b)
 		pb(stack_a, stack_b);
 		size--;
 	}
+}
+
+void	find_and_push(int pos, t_stack **stack_a, t_stack **stack_b)
+{
+	int	size;
+
+	if (!stack_a || !*stack_a)
+		return ;
+	size = stacksize(*stack_a);
+	if (pos < 0 || pos >= size)
+		return ;
+	if (pos <= size / 2)
+	{
+		while (pos != (*stack_a)->pos)
+			ra(stack_a);
+	}
+	else
+	{
+		while (pos != (*stack_a)->pos)
+			rra(stack_a);
+	}
+	pb(stack_a, stack_b);
 }

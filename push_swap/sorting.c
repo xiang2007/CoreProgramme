@@ -2,19 +2,17 @@
 
 void	sort_three(t_stack **stack)
 {
-	if (!(*stack))
-		return ;
-	while (is_stacksort((*stack)))
-	{
-		if (((*stack)->value > (*stack)->next->value) && 
-			((*stack)->value > ft_lstlast(*stack)->value))
-				ra(stack);
-		if ((*stack)->value > (*stack)->next->value)
-			sa(stack);
-		if ((*stack)->value > ft_lstlast(*stack)->value)
-			rra(stack);
-	}	
-	return ;
+	int	a;
+	int	b;
+	int	c;
+
+	if (!stack || !*stack || !(*stack)->next)
+		return;
+
+	a = (*stack)->value;
+	b = (*stack)->next->value;
+	c = (*stack)->next->next->value;
+	
 }
 
 /*void	sort(t_stack **stack_a, t_stack **stack_b)

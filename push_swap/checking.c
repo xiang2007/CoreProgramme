@@ -2,18 +2,13 @@
 
 int	is_stacksort(t_stack *stack)
 {
-	int	flag;
-
-	flag = 1;
-	while (stack->next)
+	while (stack && stack->next)
 	{
 		if (stack->value > stack->next->value)
-			flag *= 0;
+			return (0);
 		stack = stack->next;
 	}
-	if (!flag)
-		return (PASS);
-	return (FAIL);
+	return (1);
 }
 
 int	onlynumbers(char *str)

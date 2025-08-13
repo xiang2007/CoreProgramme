@@ -21,7 +21,7 @@ void	print_pos(t_stack *stack)
 	temp = stack;
 	while (temp)
 	{
-		printf("Stack %d pos %d value %d\n", i, temp->pos, temp->value);
+		printf("Stack nbr %d has pos %d and value %d\n", i, temp->pos, temp->value);
 		i++;
 		temp = temp->next;
 	}
