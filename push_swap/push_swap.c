@@ -11,9 +11,6 @@ int	main(int ac, char **av)
 	{
 		(void)stack_b;
 		stack_a = asign_stack(ac, av);
-		//save_three(&stack_a, &stack_b);
-		//sort_three(&stack_a);
-		//sort(&stack_a, &stack_b);
-		sort_five(&stack_a, &stack_b);
+		ft_sort(&stack_a, &stack_b);
 	}
 }
