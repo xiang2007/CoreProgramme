@@ -12,7 +12,15 @@ void	sort_three(t_stack **stack)
 	a = (*stack)->value;
 	b = (*stack)->next->value;
 	c = (*stack)->next->next->value;
-	
+
+	if (a > b && a > c)
+		ra(stack);
+	if (b > a && b > c)
+		rra(stack);
+	a = (*stack)->value;
+	b = (*stack)->next->value;
+	if (a > b)
+		sa(stack);
 }
 
 /*void	sort(t_stack **stack_a, t_stack **stack_b)
