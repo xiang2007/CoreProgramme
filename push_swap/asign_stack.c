@@ -9,7 +9,7 @@ t_stack	*asign_stack(int len, char **str)
 	i = 1;
 	stack = NULL;
 	if (!str || len <= 1)
-		return (NULL);
+		errmsg(stack, stack);
 	if (!isvalid(str))
 		return (NULL);
 	while (i < len)

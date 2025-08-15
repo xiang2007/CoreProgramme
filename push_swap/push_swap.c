@@ -6,6 +6,8 @@ int	main(int ac, char **av)
 	t_stack *stack_b;
 
 	stack_b = (t_stack *)malloc(sizeof(t_stack));
+	if (!stack_b)
+		return (errmsg);
 	stack_b = NULL;
 	if (ac > 2)
 	{
