@@ -9,8 +9,10 @@ int	main(int ac, char **av)
 	stack_b = NULL;
 	if (ac > 2)
 	{
-		(void)stack_b;
-		stack_a = asign_stack(ac, av);
-		ft_sort(&stack_a, &stack_b);
+		if (ac <= 51)
+		{
+			stack_a = asign_stack(ac, av);
+			ft_selection(&stack_a, &stack_b);
+		}
 	}
 }
