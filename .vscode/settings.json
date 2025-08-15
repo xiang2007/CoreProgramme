@@ -5,7 +5,12 @@
 		"get_next_line.h": "c",
 		"mlx.h": "c",
 		"stddef.h": "c",
-		"push_swap.h": "c"
+		"push_swap.h": "c",
+		"array": "c",
+		"string_view": "c",
+		"format": "c",
+		"initializer_list": "c",
+		"span": "c"
 	},
 	"python.testing.unittestArgs": [
 		"-v",
