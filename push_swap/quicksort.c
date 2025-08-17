@@ -1,53 +1,29 @@
 #include "push_swap.h"
 
-/*void	quick_sort(int *arr)
-{
+int	partition(int *arr, int first, int last);
 
-}*/
-
-int	*bsort(int *arr, int size)
+void	quick_sort(int *arr, int first, int last)
 {
 	int i;
-	int j;
-	int temp;
 
-	i = 0;
-	j = 0;
-	while (i < size - 1)
+	if (first < last)
 	{
-		j = 0;
-		while (j < size - 1)
-		{
-			if (arr[j] > arr[j + 1])
-			{
-				temp = arr[j];
-				arr[j] = arr[j + 1];
-				arr[j + 1] = temp;
-			}
-			j++;
-		}
-		i++;
+		i = partition(arr, first, last);
+		quick_sort(arr, first, i);
+		quick_sort(arr, i + 1, last);
 	}
-	return (arr);
 }
 
-int find_pivot(int *arr, int size)
+int	partition(int *arr, int first, int last)
 {
-	if (size % 2 != 0)
-		return (arr[size / 2]);
-	return ((arr[(size - 1) / 2] + arr[size / 2]) / 2);
-}
-
-int	*partition(int *arr, int size, int pivot)
-{
+	int pivot;
 	int	i;
 	int j;
 	int	temp;
 
-	if (!arr || size < 0)
-		return (0);
-	i = 0;
-	j = size - 1;
+	i = first;
+	j = last - 1;
+	pivot = arr[(first + last) / 2];
 	while (1)
 	{
 		while (arr[i] < pivot)
@@ -61,7 +37,7 @@ int	*partition(int *arr, int size, int pivot)
 			arr[j] = temp;
 		}
 		else
-			return (arr);
+			return (j);
 	}
 }
 
@@ -87,20 +63,17 @@ int *asign_arr(int ac, char **av)
 int	main(int ac, char **av)
 {
 	int *arr;
-	int *temp;
 	int	i;
 
 	i = 0;
 	if (ac > 2)
 	{
 		arr = asign_arr(ac, av);
-		temp = asign_arr(ac, av);
-		temp = bsort(temp, ac - 1);
-		arr = partition(arr, (ac - 1), find_pivot(temp, ac - 1));
+		quick_sort(arr, 0, ac - 1);
 		i = 0;
 		while (i < ac - 1)
 		{
-			printf("pos %d value is %d\n", i, arr[i]);
+			printf("%d\n", arr[i]);
 			i++;
 		}
 	}
