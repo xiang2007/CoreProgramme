@@ -42,6 +42,7 @@ int		find_min_pos(t_stack *stack);
 void	find_and_push(int pos, t_stack **stack_a, t_stack **stack_b);
 void	ft_selection(t_stack **stack_a, t_stack **stack_b);
 void	errmsg(t_stack **stack_a, t_stack **stack_b);
+int		quicksort(int ac, char **av);
 
 void	ra(t_stack **stack_a);
 void	rb(t_stack **stack_b);

@@ -38,12 +38,14 @@ void	ft_putstr(char *str)
 int	stacksize(t_stack *stack)
 {
 	int	i;
+	t_stack *temp;
 
 	i = 0;
-	while (stack)
+	temp = stack;
+	while (temp)
 	{
 		i++;
-		stack = stack->next;
+		temp = temp->next;
 	}
 	return (i);
 }

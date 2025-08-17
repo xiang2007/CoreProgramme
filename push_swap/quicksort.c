@@ -1,20 +1,20 @@
 #include "push_swap.h"
 
-int	partition(int *arr, int first, int last);
+int	qs_partition(int *arr, int first, int last);
 
-void	quick_sort(int *arr, int first, int last)
+void	sort(int *arr, int first, int last)
 {
 	int i;
 
 	if (first < last)
 	{
-		i = partition(arr, first, last);
-		quick_sort(arr, first, i);
-		quick_sort(arr, i + 1, last);
+		i = qs_partition(arr, first, last);
+		sort(arr, first, i);
+		sort(arr, i + 1, last);
 	}
 }
 
-int	partition(int *arr, int first, int last)
+int	qs_partition(int *arr, int first, int last)
 {
 	int pivot;
 	int	i;
@@ -60,22 +60,12 @@ int *asign_arr(int ac, char **av)
 	}
 	return (arr);
 }
-int	main(int ac, char **av)
+
+int	quicksort(int ac, char **av)
 {
 	int *arr;
-	int	i;
 
-	i = 0;
-	if (ac > 2)
-	{
-		arr = asign_arr(ac, av);
-		quick_sort(arr, 0, ac - 1);
-		i = 0;
-		while (i < ac - 1)
-		{
-			printf("%d\n", arr[i]);
-			i++;
-		}
-	}
-	return (0);
+	arr = asign_arr(ac, av);
+	sort(arr, 0, (ac - 1));
+	return (arr[0 + (ac - 1) / 2]);
 }

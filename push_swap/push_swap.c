@@ -1,13 +1,13 @@
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+/*int	main(int ac, char **av)
 {
 	t_stack *stack_a;
 	t_stack *stack_b;
 
 	stack_b = (t_stack *)malloc(sizeof(t_stack));
 	if (!stack_b)
-		return (errmsg);
+		errmsg(NULL, NULL);
 	stack_b = NULL;
 	if (ac > 2)
 	{
@@ -17,4 +17,4 @@ int	main(int ac, char **av)
 			ft_selection(&stack_a, &stack_b);
 		}
 	}
-}
+}*/
