@@ -14,7 +14,6 @@ typedef struct s_stack
 {
 	int	value;
 	int	pos;
-	int	cost;
 	struct s_stack *next;
 }				t_stack;
 
@@ -32,7 +31,7 @@ t_stack	*asign_stack(int len, char **str);
 void	sort_three(t_stack **stack);
 void	asign_pos(t_stack *stack);
 void	ft_putstr(char *str);
-int		find_highest_value(t_stack *stack);
+int		find_highest_pos(t_stack *stack);
 void	print_stack(t_stack **stack);
 void	save_three(t_stack **stack_a, t_stack **stack_b);
 int		is_stack_reversed(t_stack *stack);
@@ -43,6 +42,9 @@ void	find_and_push(int pos, t_stack **stack_a, t_stack **stack_b);
 void	ft_selection(t_stack **stack_a, t_stack **stack_b);
 void	errmsg(t_stack **stack_a, t_stack **stack_b);
 int		quicksort(int ac, char **av);
+void	sort(int *arr, int first, int last);
+void	asign_array(t_stack **stack);
+void	radix_sort(t_stack **stack_a, t_stack **stack_b);
 
 void	ra(t_stack **stack_a);
 void	rb(t_stack **stack_b);
@@ -53,6 +55,6 @@ void	ss(t_stack **stack_a, t_stack **stack_b);
 void	rra(t_stack **stack_a);
 void	rrb(t_stack **stack_b);
 void	rrr(t_stack **stack_a, t_stack **stack_b);
-void pa(t_stack **stack_a, t_stack **stack_b);
-void pb(t_stack **stack_b, t_stack **stack_a);
+void 	pa(t_stack **stack_a, t_stack **stack_b);
+void 	pb(t_stack **stack_a, t_stack **stack_b);
 #endif

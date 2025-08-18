@@ -10,6 +10,6 @@ void	ft_selection(t_stack **stack_a, t_stack **stack_b)
 		find_and_push(find_min_pos((*stack_a)), stack_a, stack_b);
 		size--;
 	}
-	while (is_stack_reversed((*stack_b)))
+	while (*stack_b)
 		pa(stack_a, stack_b);
 }

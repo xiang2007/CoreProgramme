@@ -66,18 +66,23 @@ void	asign_pos(t_stack *stack)
 	return ;
 }
 
-int	find_highest_value(t_stack *stack)
+int	find_highest_pos(t_stack *stack)
 {
 	int	max;
+	int	pos;
 	
 	if (!stack)
 		return (0);
 	max = stack->value;
-	while (stack->next)
+	pos = stack->pos;
+	while (stack)
 	{
 		if ((stack->value) > max)
+		{
 			max = stack->value;
+			pos = stack->pos;
+		}
 		stack = stack->next;
 	}
-	return (max);
+	return (pos);
 }

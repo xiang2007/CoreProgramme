@@ -92,5 +92,5 @@ void	find_and_push(int pos, t_stack **stack_a, t_stack **stack_b)
 			rra(stack_a);
 	}
 	pb(stack_a, stack_b);
-	update_pos((*stack_a));
+	update_pos(*stack_a);
 }

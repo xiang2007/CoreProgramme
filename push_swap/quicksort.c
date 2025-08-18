@@ -22,7 +22,7 @@ int	qs_partition(int *arr, int first, int last)
 	int	temp;
 
 	i = first;
-	j = last - 1;
+	j = last;
 	pivot = arr[(first + last) / 2];
 	while (1)
 	{
@@ -67,5 +67,5 @@ int	quicksort(int ac, char **av)
 
 	arr = asign_arr(ac, av);
 	sort(arr, 0, (ac - 1));
-	return (arr[0 + (ac - 1) / 2]);
+	return (arr[(ac - 1) / 2]);
 }
