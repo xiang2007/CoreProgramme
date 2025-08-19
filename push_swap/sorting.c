@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sorting.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/19 21:49:02 by marvin            #+#    #+#             */
+/*   Updated: 2025/08/19 21:49:03 by marvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	sort_three(t_stack **stack)
@@ -25,13 +37,3 @@ void	sort_three(t_stack **stack)
 	if (a > b)
 		sa(stack);
 }
-
-/*void	sort(t_stack **stack_a, t_stack **stack_b)
-{
-	if (is_stack_reversed((*stack_a)) || is_stack_reversed(*stack_b))
-		ss(stack_a, stack_b);
-	print_stack(stack_a);
-	printf("\n");
-	print_stack(stack_b);
-}*/
-
