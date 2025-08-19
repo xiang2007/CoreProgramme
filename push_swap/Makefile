@@ -17,11 +17,6 @@ $(NAME): $(OBJ)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-.PHONY: clean fclean re all c
- 
-c:
-	$(CC) $(CFLAGS) $(SRC) -o push_swap
-
 clean:
 	$(RM) $(OBJ)
 
@@ -32,3 +27,5 @@ fclean:	clean
 all: $(NAME)
 
 re: fclean all
+
+.PHONY: clean fclean re all

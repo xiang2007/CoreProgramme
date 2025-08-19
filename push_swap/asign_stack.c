@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 21:48:18 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/19 21:51:52 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/19 23:01:54 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ t_stack	*asign_stack(int len, char **str)
 	stack = NULL;
 	if (!str || len <= 1)
 		errmsg(NULL, NULL);
+	if (!is_sorted(str))
+		exit (1);
 	if (!isvalid(str))
-		errmsg(NULL, NULL);
+		return (NULL);
 	while (i < len)
 	{
 		temp = ft_atoi(str[i]);

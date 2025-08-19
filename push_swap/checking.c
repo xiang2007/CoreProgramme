@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 21:48:21 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/19 22:03:34 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/19 23:06:11 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,24 +71,16 @@ int	checkdup(char **str)
 int	is_sorted(char **str)
 {
 	int	i;
-	int	flag;
-	int	nbr1;
-	int	nbr2;
 
 	if (!str)
 		return (0);
 	i = 1;
-	flag = 1;
 	while (str[i + 1])
 	{
-		nbr1 = ft_atoi(str[i]);
-		nbr2 = ft_atoi(str[i + 1]);
-		if (nbr1 > nbr2)
-			flag *= 0;
+		if (ft_atoi(str[i]) > ft_atoi(str[i + 1]))
+			return (PASS);
 		i++;
 	}
-	if (!flag)
-		return (PASS);
 	return (FAIL);
 }
 
@@ -105,8 +97,6 @@ int	isvalid(char **str)
 			errmsg(NULL, NULL);
 		i++;
 	}
-	if (!is_sorted(str))
-		return (1);
 	if (!checkdup(str))
 		errmsg(NULL, NULL);
 	return (PASS);

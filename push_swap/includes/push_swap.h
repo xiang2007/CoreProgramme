@@ -6,30 +6,29 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 21:48:11 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/19 22:03:00 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/19 23:24:05 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stddef.h>
-#include <unistd.h>
-#include <stdio.h>
-
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+
+# include <stdlib.h>
+# include <stddef.h>
+# include <unistd.h>
 
 # define FAIL 0
 # define PASS 1
 
 typedef struct s_stack
 {
-	int	value;
-	int	pos;
-	struct s_stack *next;
-}				t_stack;
+	int				value;
+	int				pos;
+	struct s_stack	*next;
+}	t_stack;
 
 int		ft_atoi(const char *str);
-t_stack	*ft_nodenew(int	value, int pos);
+t_stack	*ft_nodenew(int value, int pos);
 t_stack	*ft_lstlast(t_stack *lst);
 void	ft_lstadd_front(t_stack **lst, t_stack *new);
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
@@ -65,6 +64,7 @@ void	ss(t_stack **stack_a, t_stack **stack_b);
 void	rra(t_stack **stack_a);
 void	rrb(t_stack **stack_b);
 void	rrr(t_stack **stack_a, t_stack **stack_b);
-void 	pa(t_stack **stack_a, t_stack **stack_b);
-void 	pb(t_stack **stack_a, t_stack **stack_b);
+void	pa(t_stack **stack_a, t_stack **stack_b);
+void	pb(t_stack **stack_a, t_stack **stack_b);
+
 #endif
