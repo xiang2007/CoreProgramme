@@ -6,7 +6,7 @@ void    reverse_rotate(t_stack **stack)
 	t_stack *last;
 
 	if (!stack || !*stack || !(*stack)->next)
-		errmsg(stack, NULL);
+		errmsg(stack, NULL, "rr");
 	prev = *stack;
 	while (prev->next && prev->next->next)
 		prev = prev->next;

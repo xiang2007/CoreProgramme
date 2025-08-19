@@ -7,7 +7,7 @@ SRC = ./Utils1.c ./Utils2.c ./push_swap.c ./checking.c ./push.c \
 		./Utils3.c ./selection_sort.c ./quicksort.c ./error.c ./rs.c \
 
 OBJ = $(SRC:.c=.o)
-NAME = push_swap
+NAME = push_swap.a
 
 $(NAME): $(OBJ)
 	$(AR) $(NAME) $(OBJ)

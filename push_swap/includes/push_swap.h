@@ -1,7 +1,7 @@
-#include <stdlib.h> // for malloc and NULL
+#include <stdlib.h>
 #include <stddef.h>
-#include <unistd.h> //for write
-#include <stdio.h> //for debugging
+#include <unistd.h>
+#include <stdio.h>
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -32,19 +32,19 @@ void	sort_three(t_stack **stack);
 void	asign_pos(t_stack *stack);
 void	ft_putstr(char *str);
 int		find_highest_pos(t_stack *stack);
-void	print_stack(t_stack **stack);
 void	save_three(t_stack **stack_a, t_stack **stack_b);
 int		is_stack_reversed(t_stack *stack);
 void	update_pos(t_stack *stack);
-void	print_pos(t_stack *stack);
 int		find_min_pos(t_stack *stack);
 void	find_and_push(int pos, t_stack **stack_a, t_stack **stack_b);
 void	ft_selection(t_stack **stack_a, t_stack **stack_b);
-void	errmsg(t_stack **stack_a, t_stack **stack_b);
+void	errmsg(t_stack **stack_a, t_stack **stack_b, char *str);
 int		quicksort(int ac, char **av);
 void	sort(int *arr, int first, int last);
 void	asign_array(t_stack **stack);
 void	radix_sort(t_stack **stack_a, t_stack **stack_b);
+int		checkdup(char **str);
+void	sort_stack_a(t_stack **stack_a, t_stack **stack_b);
 
 void	ra(t_stack **stack_a);
 void	rb(t_stack **stack_b);

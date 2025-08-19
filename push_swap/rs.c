@@ -75,29 +75,31 @@ int maxbit(t_stack *stack)
 	return (mbit);
 }
 
-void	radix_sort(t_stack **stack_a, t_stack **stack_b)
+void	radix_sort(t_stack **a, t_stack **b)
 {
-	int mbit;
-	int size;
 	int i;
 	int j;
+	int mbit;
+	int size;
 
-	size = stacksize(*stack_a);
-	mbit = maxbit(*stack_a);
+	size = stacksize(*a);
+	mbit = maxbit(*a);
 	i = 0;
 	while (i < mbit)
 	{
 		j = 0;
 		while (j < size)
 		{
-			if ((((*stack_a)->pos >> i) & 1) == 1)
-				ra(stack_a);
+			if (is_stacksort(*a))
+				pa(a, b);
+			else if ((((*a)->pos >> i) & 1) == 1)
+				ra(a);
 			else
-				pb(stack_a, stack_b);
+				pb(a, b);
 			j++;
 		}
-		while (*stack_b)
-			pa(stack_a, stack_b);
+		while (*b)
+			pa(a, b);
 		i++;
-	} 
+	}
 }

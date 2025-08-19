@@ -16,7 +16,7 @@ t_stack *ft_nodenew(int	value, int pos)
 void ft_lstadd_front(t_stack **lst, t_stack *new)
 {
 	if (!new || !lst)
-		errmsg(lst, &new);
+		errmsg(lst, &new, "lstaddfront");
 	new->next = *lst;
 	*lst = new;
 }
@@ -24,7 +24,7 @@ void ft_lstadd_front(t_stack **lst, t_stack *new)
 void ft_lstadd_back(t_stack **lst, t_stack *new)
 {
 	if (!lst || !new)
-		errmsg(lst, &new);
+		errmsg(lst, &new, "lstaddback");
 	if (!*lst)
 	{
 		*lst = new;
@@ -37,7 +37,7 @@ void ft_lstadd_back(t_stack **lst, t_stack *new)
 t_stack *ft_lstlast(t_stack *lst)
 {
 	if (!lst)
-		errmsg(&lst, NULL);
+		errmsg(&lst, NULL, "lstlast");
 	while (lst->next)
 		lst = lst->next;
 	return (lst);

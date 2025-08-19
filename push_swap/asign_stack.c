@@ -9,9 +9,9 @@ t_stack	*asign_stack(int len, char **str)
 	i = 1;
 	stack = NULL;
 	if (!str || len <= 1)
-		errmsg(NULL, NULL);
+		errmsg(NULL, NULL, "asignstack no str, len <= 1");
 	if (!isvalid(str))
-		errmsg(NULL, NULL);
+		errmsg(NULL, NULL, "not valid");
 	while (i < len)
 	{
 		temp = ft_atoi(str[i]);

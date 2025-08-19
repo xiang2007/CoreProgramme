@@ -5,7 +5,7 @@ void	swap(t_stack **stack)
 	int	temp;
 
 	if (!stack || !*stack|| !*stack)
-		errmsg (stack, NULL);
+		errmsg (stack, NULL, "swap");
 	temp = (*stack)->value;
 	(*stack)->value = (*stack)->next->value;
 	(*stack)->next->value = temp;
@@ -32,3 +32,5 @@ void	ss(t_stack **stack_a, t_stack **stack_b)
 	swap(stack_b);
 	ft_putstr("ss\n");
 }
+
+ 

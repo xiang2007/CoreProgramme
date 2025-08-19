@@ -13,7 +13,7 @@ int	main(int ac, char **av)
 			stack_a = asign_stack(ac, av);
 			sort_three(&stack_a);
 		}
-		else if(ac <= 10)
+		else if(ac <= 70)
 		{
 			stack_a = asign_stack(ac, av);
 			ft_selection(&stack_a, &stack_b);
