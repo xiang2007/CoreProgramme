@@ -7,7 +7,7 @@ int	is_stack_reversed(t_stack *stack)
 
 	sign = 1;
 	if (!stack)
-		return (0);
+		errmsg (&stack, NULL);
 	temp = stack;
 	while (temp->next)
 	{
@@ -27,7 +27,7 @@ int	find_min_pos(t_stack *stack)
 	int	pos;
 	
 	if (!stack)
-		return (0);
+		errmsg (&stack, NULL);
 	min = stack->value;
 	pos = stack->pos;
 	while (stack)
@@ -48,7 +48,7 @@ void	update_pos(t_stack *stack)
 	t_stack *temp;
 
 	if (!stack)
-		return ;
+		errmsg(&stack, NULL);
 	temp = stack;
 	i = 0;
 	while (temp)
@@ -77,10 +77,10 @@ void	find_and_push(int pos, t_stack **stack_a, t_stack **stack_b)
 	int	size;
 
 	if (!stack_a || !*stack_a)
-		return ;
+		errmsg (stack_a, stack_b);
 	size = stacksize(*stack_a);
 	if (pos < 0 || pos >= size)
-		return ;
+		errmsg (stack_a, stack_b);
 	if (pos <= size / 2)
 	{
 		while (pos != (*stack_a)->pos)

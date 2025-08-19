@@ -86,14 +86,14 @@ int	isvalid(char **str)
 
 	i = 1;
 	if (!str)
-		return (FAIL);
+		errmsg(NULL, NULL);
 	while (str[i])	
 	{
 		if (!onlynumbers(str[i]))
-			return (FAIL);
+			errmsg(NULL, NULL);
 		i++;
 	}
 	if ((!checkdup(str)) || (!is_sorted(str)))
-		return (FAIL);
+		errmsg(NULL, NULL);
 	return (PASS);
 }

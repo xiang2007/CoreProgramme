@@ -6,7 +6,7 @@ void	rotate(t_stack **stack)
 	t_stack *tail;
 
 	if (!stack || !*stack || !(*stack)->next)
-		return ;
+		errmsg(stack, NULL);
 	head = *stack;
 	*stack = (*stack)->next;
 	tail = ft_lstlast(*stack);

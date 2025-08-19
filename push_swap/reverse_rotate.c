@@ -2,18 +2,18 @@
 
 void    reverse_rotate(t_stack **stack)
 {
-    t_stack *prev;
-    t_stack *last;
+	t_stack *prev;
+	t_stack *last;
 
-    if (!stack || !*stack || !(*stack)->next)
-        return;
-    prev = *stack;
-    while (prev->next && prev->next->next)
-        prev = prev->next;
-    last = prev->next;
-    prev->next = NULL;
-    last->next = *stack;
-    *stack = last;
+	if (!stack || !*stack || !(*stack)->next)
+		errmsg(stack, NULL);
+	prev = *stack;
+	while (prev->next && prev->next->next)
+		prev = prev->next;
+	last = prev->next;
+	prev->next = NULL;
+	last->next = *stack;
+	*stack = last;
 }
 
 void	rra(t_stack **stack_a)

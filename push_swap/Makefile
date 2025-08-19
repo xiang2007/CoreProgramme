@@ -1,10 +1,10 @@
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -I./includes
+CFLAGS = -Wall -Werror -Wextra -I./includes -g
 AR = ar rcs
 RM = rm -rf
 SRC = ./Utils1.c ./Utils2.c ./push_swap.c ./checking.c ./push.c \
 		./rotate.c ./reverse_rotate.c ./swapping.c ./asign_stack.c ./sorting.c \
-		./Utils3.c ./sort.c ./quicksort.c ./error.c ./rs.c \
+		./Utils3.c ./selection_sort.c ./quicksort.c ./error.c ./rs.c \
 
 OBJ = $(SRC:.c=.o)
 NAME = push_swap

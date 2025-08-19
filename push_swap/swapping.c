@@ -5,7 +5,7 @@ void	swap(t_stack **stack)
 	int	temp;
 
 	if (!stack || !*stack|| !*stack)
-		return ;
+		errmsg (stack, NULL);
 	temp = (*stack)->value;
 	(*stack)->value = (*stack)->next->value;
 	(*stack)->next->value = temp;

@@ -41,6 +41,8 @@ int	stacksize(t_stack *stack)
 	t_stack *temp;
 
 	i = 0;
+	if (!stack)
+		errmsg(&stack, NULL);
 	temp = stack;
 	while (temp)
 	{
@@ -56,7 +58,7 @@ void	asign_pos(t_stack *stack)
 
 	i = 0;
 	if (!stack)
-		return ;
+		errmsg(&stack, NULL);
 	while(stack)
 	{
 		stack->pos = i;
