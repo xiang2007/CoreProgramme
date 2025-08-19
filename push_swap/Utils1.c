@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 21:49:07 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/19 21:49:19 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/19 22:01:07 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	sign;
+	int		i;
+	int		sign;
 	long	result;
 
 	sign = 1;
@@ -39,7 +39,7 @@ int	ft_atoi(const char *str)
 
 void	ft_putstr(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -49,12 +49,12 @@ void	ft_putstr(char *str)
 
 int	stacksize(t_stack *stack)
 {
-	int	i;
-	t_stack *temp;
+	int		i;
+	t_stack	*temp;
 
 	i = 0;
 	if (!stack)
-		errmsg(&stack, NULL, "stacksize");
+		errmsg(&stack, NULL);
 	temp = stack;
 	while (temp)
 	{
@@ -70,8 +70,8 @@ void	asign_pos(t_stack *stack)
 
 	i = 0;
 	if (!stack)
-		errmsg(&stack, NULL, "asign pos");
-	while(stack)
+		errmsg(&stack, NULL);
+	while (stack)
 	{
 		stack->pos = i;
 		stack = stack->next;
@@ -84,7 +84,7 @@ int	find_highest_pos(t_stack *stack)
 {
 	int	max;
 	int	pos;
-	
+
 	if (!stack)
 		return (0);
 	max = stack->value;

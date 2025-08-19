@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 21:48:46 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/19 21:48:47 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/19 21:54:29 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	qs_partition(int *arr, int first, int last);
 
 void	sort(int *arr, int first, int last)
 {
-	int i;
+	int	i;
 
 	if (first < last)
 	{
@@ -28,9 +28,9 @@ void	sort(int *arr, int first, int last)
 
 int	qs_partition(int *arr, int first, int last)
 {
-	int pivot;
+	int	pivot;
 	int	i;
-	int j;
+	int	j;
 	int	temp;
 
 	i = first;
@@ -53,11 +53,11 @@ int	qs_partition(int *arr, int first, int last)
 	}
 }
 
-int *asign_arr(int ac, char **av)
+int	*asign_arr(int ac, char **av)
 {
-	int *arr;
-	int i;
-	int j;
+	int	*arr;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 1;
@@ -75,7 +75,7 @@ int *asign_arr(int ac, char **av)
 
 int	quicksort(int ac, char **av)
 {
-	int *arr;
+	int	*arr;
 
 	arr = asign_arr(ac, av);
 	sort(arr, 0, (ac - 1));

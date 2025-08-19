@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 21:48:44 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/19 21:48:45 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/19 21:52:40 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	push(t_stack **src, t_stack **dest)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
 	if (!src || !*src)
 		return ;

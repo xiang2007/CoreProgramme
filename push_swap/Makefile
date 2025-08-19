@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -I./includes -g
+CFLAGS = -Wall -Werror -Wextra -I./includes
 AR = ar rcs
 RM = rm -rf
 SRC = ./Utils1.c ./Utils2.c ./push_swap.c ./checking.c ./push.c \

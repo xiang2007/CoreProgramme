@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 21:48:50 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/19 21:48:51 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/19 21:56:06 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	rotate(t_stack **stack)
 {
-	t_stack *head;
-	t_stack *tail;
+	t_stack	*head;
+	t_stack	*tail;
 
 	if (!stack || !*stack || !(*stack)->next)
-		errmsg(stack, NULL, "r");
+		errmsg(stack, NULL);
 	head = *stack;
 	*stack = (*stack)->next;
 	tail = ft_lstlast(*stack);

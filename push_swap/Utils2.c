@@ -6,13 +6,13 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 21:49:21 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/19 21:49:22 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/19 22:04:51 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack *ft_nodenew(int	value, int pos)
+t_stack	*ft_nodenew(int value, int pos)
 {
 	t_stack	*node;
 
@@ -25,31 +25,30 @@ t_stack *ft_nodenew(int	value, int pos)
 	return (node);
 }
 
-void ft_lstadd_front(t_stack **lst, t_stack *new)
+void	ft_lstadd_front(t_stack **lst, t_stack *new)
 {
 	if (!new || !lst)
-		errmsg(lst, &new, "lstaddfront");
+		errmsg(lst, &new);
 	new->next = *lst;
 	*lst = new;
 }
 
-void ft_lstadd_back(t_stack **lst, t_stack *new)
+void	ft_lstadd_back(t_stack **lst, t_stack *new)
 {
 	if (!lst || !new)
-		errmsg(lst, &new, "lstaddback");
+		errmsg(lst, &new);
 	if (!*lst)
 	{
 		*lst = new;
 		return ;
 	}
 	ft_lstlast(*lst)->next = new;
-
 }
 
-t_stack *ft_lstlast(t_stack *lst)
+t_stack	*ft_lstlast(t_stack *lst)
 {
 	if (!lst)
-		errmsg(&lst, NULL, "lstlast");
+		errmsg(&lst, NULL);
 	while (lst->next)
 		lst = lst->next;
 	return (lst);
@@ -57,8 +56,8 @@ t_stack *ft_lstlast(t_stack *lst)
 
 void	ft_lstclear(t_stack **lst)
 {
-	t_stack *current;
-	t_stack *next_node;
+	t_stack	*current;
+	t_stack	*next_node;
 
 	if (!lst || !(*lst))
 		return ;

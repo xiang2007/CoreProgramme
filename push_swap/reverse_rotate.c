@@ -6,19 +6,19 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 21:48:48 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/19 21:48:49 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/19 21:55:33 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    reverse_rotate(t_stack **stack)
+void	reverse_rotate(t_stack **stack)
 {
-	t_stack *prev;
-	t_stack *last;
+	t_stack	*prev;
+	t_stack	*last;
 
 	if (!stack || !*stack || !(*stack)->next)
-		errmsg(stack, NULL, "rr");
+		errmsg(stack, NULL);
 	prev = *stack;
 	while (prev->next && prev->next->next)
 		prev = prev->next;

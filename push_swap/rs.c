@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 21:48:52 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/19 21:48:53 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/19 22:03:48 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	give_pos(int *arr, int size, t_stack **stack);
 
 int	find_index(int *arr, int index, int size)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < size)
@@ -30,10 +30,10 @@ int	find_index(int *arr, int index, int size)
 
 void	asign_array(t_stack **stack)
 {
-	int i;
-	int size;
-	int *arr;
-	t_stack *temp;
+	int		i;
+	int		size;
+	int		*arr;
+	t_stack	*temp;
 
 	i = 0;
 	size = stacksize((*stack));
@@ -51,9 +51,9 @@ void	asign_array(t_stack **stack)
 
 void	give_pos(int *arr, int size, t_stack **stack)
 {
-	int i;
-	int index;
-	t_stack *temp;
+	int		i;
+	int		index;
+	t_stack	*temp;
 
 	i = 0;
 	sort(arr, 0, size - 1);
@@ -68,11 +68,10 @@ void	give_pos(int *arr, int size, t_stack **stack)
 	free(arr);
 }
 
-int maxbit(t_stack *stack)
+int	maxbit(t_stack *stack)
 {
-
-	int mbit;
-	int max;
+	int	mbit;
+	int	max;
 
 	mbit = 0;
 	max = 0;
@@ -89,10 +88,10 @@ int maxbit(t_stack *stack)
 
 void	radix_sort(t_stack **a, t_stack **b)
 {
-	int i;
-	int j;
-	int mbit;
-	int size;
+	int	i;
+	int	j;
+	int	mbit;
+	int	size;
 
 	size = stacksize(*a);
 	mbit = maxbit(*a);

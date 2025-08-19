@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 21:49:04 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/19 21:49:06 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/19 22:04:29 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	swap(t_stack **stack)
 {
 	int	temp;
 
-	if (!stack || !*stack|| !*stack)
-		errmsg (stack, NULL, "swap");
+	if (!stack || !*stack || !*stack)
+		errmsg (stack, NULL);
 	temp = (*stack)->value;
 	(*stack)->value = (*stack)->next->value;
 	(*stack)->next->value = temp;
@@ -44,5 +44,3 @@ void	ss(t_stack **stack_a, t_stack **stack_b)
 	swap(stack_b);
 	ft_putstr("ss\n");
 }
-
- 

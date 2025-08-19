@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 21:48:11 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/19 21:48:12 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/19 22:03:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 
 # define FAIL 0
 # define PASS 1
-# define WHITESPACE	" \t\n\v\f\r"
 
 typedef struct s_stack
 {
@@ -50,13 +49,12 @@ void	update_pos(t_stack *stack);
 int		find_min_pos(t_stack *stack);
 void	find_and_push(int pos, t_stack **stack_a, t_stack **stack_b);
 void	ft_selection(t_stack **stack_a, t_stack **stack_b);
-void	errmsg(t_stack **stack_a, t_stack **stack_b, char *str);
+void	errmsg(t_stack **stack_a, t_stack **stack_b);
 int		quicksort(int ac, char **av);
 void	sort(int *arr, int first, int last);
 void	asign_array(t_stack **stack);
 void	radix_sort(t_stack **stack_a, t_stack **stack_b);
 int		checkdup(char **str);
-void	sort_stack_a(t_stack **stack_a, t_stack **stack_b);
 
 void	ra(t_stack **stack_a);
 void	rb(t_stack **stack_b);

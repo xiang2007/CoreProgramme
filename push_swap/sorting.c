@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 21:49:02 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/19 21:49:03 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/19 21:59:24 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void	sort_three(t_stack **stack)
 	int	a;
 	int	b;
 	int	c;
-	int size;
+	int	size;
 
 	if (!stack || !*stack || !(*stack)->next)
-		return;
+		return ;
 	size = stacksize((*stack));
 	a = (*stack)->value;
 	b = (*stack)->next->value;

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 21:48:42 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/19 21:48:43 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/19 21:52:59 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	main(int ac, char **av)
 {
-	t_stack *stack_a;
-	t_stack *stack_b;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 
 	stack_b = NULL;
 	if (ac > 2)
@@ -25,7 +25,7 @@ int	main(int ac, char **av)
 			stack_a = asign_stack(ac, av);
 			sort_three(&stack_a);
 		}
-		else if(ac <= 70)
+		else if (ac <= 70)
 		{
 			stack_a = asign_stack(ac, av);
 			ft_selection(&stack_a, &stack_b);

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 21:48:21 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/19 21:48:22 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/19 22:03:34 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	onlynumbers(char *str)
 
 	i = 0;
 	while (str[i])
-	{	
+	{
 		if (str[i] == '-' || str[i] == '+')
 		{
 			if (str[i + 1] >= '0' && str[i + 1] <= '9')
@@ -37,15 +37,15 @@ int	onlynumbers(char *str)
 		}
 		if (str[i] >= '0' && str[i] <= '9')
 			return (PASS);
-		break;
+		break ;
 	}
 	return (FAIL);
 }
 
 int	checkdup(char **str)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	long	nbr1;
 	long	nbr2;
 
@@ -71,7 +71,7 @@ int	checkdup(char **str)
 int	is_sorted(char **str)
 {
 	int	i;
-	int flag;
+	int	flag;
 	int	nbr1;
 	int	nbr2;
 
@@ -98,16 +98,16 @@ int	isvalid(char **str)
 
 	i = 1;
 	if (!str)
-		errmsg(NULL, NULL, "isvalid no string");
-	while (str[i])	
+		errmsg(NULL, NULL);
+	while (str[i])
 	{
 		if (!onlynumbers(str[i]))
-			errmsg(NULL, NULL, "isvalid only numbers");
+			errmsg(NULL, NULL);
 		i++;
 	}
 	if (!is_sorted(str))
 		return (1);
 	if (!checkdup(str))
-		errmsg(NULL, NULL, "isvalid checkdup");
+		errmsg(NULL, NULL);
 	return (PASS);
 }

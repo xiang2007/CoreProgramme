@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 21:49:23 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/19 21:49:24 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/19 22:05:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int	is_stack_reversed(t_stack *stack)
 {
-	int	sign;
-	t_stack *temp;
+	int		sign;
+	t_stack	*temp;
 
 	sign = 1;
 	if (!stack)
-		errmsg (&stack, NULL, "stack reversed");
+		errmsg (&stack, NULL);
 	temp = stack;
 	while (temp->next)
 	{
@@ -37,9 +37,9 @@ int	find_min_pos(t_stack *stack)
 {
 	int	min;
 	int	pos;
-	
+
 	if (!stack)
-		errmsg (&stack, NULL, "find min pos");
+		errmsg (&stack, NULL);
 	min = stack->value;
 	pos = stack->pos;
 	while (stack)
@@ -56,11 +56,11 @@ int	find_min_pos(t_stack *stack)
 
 void	update_pos(t_stack *stack)
 {
-	int	i;
-	t_stack *temp;
+	int		i;
+	t_stack	*temp;
 
 	if (!stack)
-		errmsg(&stack, NULL, "update pos");
+		errmsg(&stack, NULL);
 	temp = stack;
 	i = 0;
 	while (temp)
@@ -89,10 +89,10 @@ void	find_and_push(int pos, t_stack **stack_a, t_stack **stack_b)
 	int	size;
 
 	if (!stack_a || !*stack_a)
-		errmsg (stack_a, stack_b, "fap");
+		errmsg (stack_a, stack_b);
 	size = stacksize(*stack_a);
 	if (pos < 0 || pos >= size)
-		errmsg (stack_a, stack_b, "pos in fap");
+		errmsg (stack_a, stack_b);
 	if (pos <= size / 2)
 	{
 		while (pos != (*stack_a)->pos)
