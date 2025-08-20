@@ -2,34 +2,22 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra -I./includes
 AR = ar rcs
 RM = rm -rf
-SRC = ./Utils1.c ./Utils2.c ./push_swap.c ./checking.c ./push.c \
+SRC =	./Utils1.c ./Utils2.c ./push_swap.c ./checking.c ./push.c ./Utils3.c\
 		./rotate.c ./reverse_rotate.c ./swapping.c ./asign_stack.c ./sorting.c \
-		./Utils3.c ./selection_sort.c ./quicksort.c ./error.c ./rs.c \
-		./checkone.c ./ft_isdigit.c \
+		./selection_sort.c ./quicksort.c ./error.c ./rs.c \
+		./checkone.c ./ft_isdigit.c
 
-OBJ = $(SRC:.c=.o)
-NAME = push_swap.a
+NAME = push_swap
 
-$(NAME): $(OBJ)
-	$(AR) $(NAME) $(OBJ)
-	$(MO)
-	$(MVO)
+all:
+	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
-c:
-	$(CC) $(CFLAGS) $(SRC) -o push_swap
- 
 clean:
-	$(RM) $(OBJ)
-
-fclean:	clean
 	$(RM) $(NAME)
-	$(RM) OBJS
 
-all: $(NAME)
+fclean:
+	$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY: clean fclean re all c
+.PHONY: clean fclean re all
