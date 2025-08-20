@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asign_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 21:48:18 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/19 23:01:54 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/20 12:40:32 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,14 @@ t_stack	*asign_stack(int len, char **str)
 
 	i = 1;
 	stack = NULL;
-	if (!str || len <= 1)
+	if (len == 1)
+		checkone(str[1]);
+	if (!str || len < 1)
 		errmsg(NULL, NULL);
-	if (!is_sorted(str))
-		exit (1);
 	if (!isvalid(str))
 		return (NULL);
+	if (!is_sorted(str))
+		exit (0);
 	while (i < len)
 	{
 		temp = ft_atoi(str[i]);

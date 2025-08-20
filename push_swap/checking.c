@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checking.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 21:48:21 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/19 23:06:11 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/20 13:17:52 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,20 @@ int	is_stacksort(t_stack *stack)
 	return (1);
 }
 
-int	onlynumbers(char *str)
+int	onlynumbers(char *av)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '-' || str[i] == '+')
-		{
-			if (str[i + 1] >= '0' && str[i + 1] <= '9')
-				i++;
-		}
-		if (str[i] >= '0' && str[i] <= '9')
-			return (PASS);
-		break ;
-	}
-	return (FAIL);
+	if (!*av)
+		return (FAIL);
+	if ((av[i] == '+' || av[i] == '-') && av[i + 1] != '\0')
+		i++;
+	while (av[i] && ft_isdigit(av[i]))
+		i++;
+	if (av[i] != '\0' && !ft_isdigit(av[i]))
+		return (FAIL);
+	return (PASS);
 }
 
 int	checkdup(char **str)
@@ -89,8 +86,6 @@ int	isvalid(char **str)
 	int	i;
 
 	i = 1;
-	if (!str)
-		errmsg(NULL, NULL);
 	while (str[i])
 	{
 		if (!onlynumbers(str[i]))

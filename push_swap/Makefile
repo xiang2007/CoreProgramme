@@ -5,6 +5,7 @@ RM = rm -rf
 SRC = ./Utils1.c ./Utils2.c ./push_swap.c ./checking.c ./push.c \
 		./rotate.c ./reverse_rotate.c ./swapping.c ./asign_stack.c ./sorting.c \
 		./Utils3.c ./selection_sort.c ./quicksort.c ./error.c ./rs.c \
+		./checkone.c ./ft_isdigit.c \
 
 OBJ = $(SRC:.c=.o)
 NAME = push_swap.a
@@ -17,6 +18,9 @@ $(NAME): $(OBJ)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+c:
+	$(CC) $(CFLAGS) $(SRC) -o push_swap
+ 
 clean:
 	$(RM) $(OBJ)
 
@@ -28,4 +32,4 @@ all: $(NAME)
 
 re: fclean all
 
-.PHONY: clean fclean re all
+.PHONY: clean fclean re all c

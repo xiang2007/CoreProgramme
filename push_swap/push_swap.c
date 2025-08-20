@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 21:48:42 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/19 21:52:59 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/20 12:23:40 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 	t_stack	*stack_b;
 
 	stack_b = NULL;
-	if (ac > 2)
+	if (ac >= 2)
 	{
 		if (ac <= 4)
 		{

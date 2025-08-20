@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 21:49:07 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/19 22:01:07 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/20 12:52:48 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ int	ft_atoi(const char *str)
 	sign = 1;
 	result = 0;
 	i = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-		i++;
 	if (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
 			sign = -1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	while (ft_isdigit(str[i]))
 	{
-		result = result * 10 + str[i] - '0';
+		if (result > INT_MAX || (result * sign) < INT_MIN)
+			errmsg(NULL, NULL);
+		result = (result * 10) + (str[i] - '0');
 		i++;
 	}
 	return (result * sign);

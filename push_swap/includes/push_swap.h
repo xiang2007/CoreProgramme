@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 21:48:11 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/19 23:24:05 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/20 12:53:14 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <stddef.h>
 # include <unistd.h>
+# include <limits.h>
 
 # define FAIL 0
 # define PASS 1
@@ -54,6 +55,9 @@ void	sort(int *arr, int first, int last);
 void	asign_array(t_stack **stack);
 void	radix_sort(t_stack **stack_a, t_stack **stack_b);
 int		checkdup(char **str);
+int		onlynumbers(char *str);
+void	checkone(char *str);
+int		ft_isdigit(int c);
 
 void	ra(t_stack **stack_a);
 void	rb(t_stack **stack_b);
