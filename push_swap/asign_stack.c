@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 21:48:18 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/20 12:40:32 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/08/20 18:13:36 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,3 +40,4 @@ t_stack	*asign_stack(int len, char **str)
 	asign_pos(stack);
 	return (stack);
 }
+
