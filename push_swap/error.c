@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 21:48:26 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/19 22:21:55 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/21 12:11:42 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ void	errmsg(t_stack **stack_a, t_stack **stack_b)
 		ft_lstclear(stack_a);
 	if (!stack_b || !*stack_b)
 		ft_lstclear(stack_b);
-	ft_putstr("ERROR\n");
+	write(2, "Error\n", 6);
 	exit (1);
 }

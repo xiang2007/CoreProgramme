@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 21:49:07 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/20 12:52:48 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/08/21 12:37:54 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_atoi(const char *str)
 {
 	int		i;
-	int		sign;
+	long	sign;
 	long	result;
 
 	sign = 1;
@@ -29,11 +29,11 @@ int	ft_atoi(const char *str)
 	}
 	while (ft_isdigit(str[i]))
 	{
-		if (result > INT_MAX || (result * sign) < INT_MIN)
-			errmsg(NULL, NULL);
 		result = (result * 10) + (str[i] - '0');
 		i++;
 	}
+	if ((result * sign) < INT_MIN || (result * sign) > INT_MAX)
+		errmsg(NULL, NULL);
 	return (result * sign);
 }
 
