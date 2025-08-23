@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 22:29:10 by marvin            #+#    #+#             */
-/*   Updated: 2025/07/13 12:04:41 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/08/23 15:46:04 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ int	ft_printvoid(void *ptr)
 	return (count);
 }
 
-char	*ft_itoa(unsigned int n)
+char	*pf_itoa(unsigned int n)
 {
 	int	size;
 
 	if (n == 0)
-		return (ft_strdup("0"));
+		return (pf_strdup("0"));
 	size = ft_count(n, 10);
 	return (pcha(n, size));
 }

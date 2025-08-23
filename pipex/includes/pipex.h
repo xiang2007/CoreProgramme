@@ -6,7 +6,11 @@
 # include <stdlib.h>
 # include <string.h>
 # include <sys/wait.h>
+# include "ft_printf.h"
+# include "libft.h"
 
-int	check_file(char *filename);
+int		check_file(char *filename);
+char	*getpath(char *cmd, char **env);
+void	error(void);
 
 #endif

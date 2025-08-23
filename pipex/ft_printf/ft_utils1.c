@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 22:24:24 by marvin            #+#    #+#             */
-/*   Updated: 2025/07/14 15:15:30 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/08/23 15:44:48 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	ft_putui(unsigned int nbr)
 	int		size;
 
 	size = ft_count(nbr, 10);
-	dest = ft_itoa(nbr);
+	dest = pf_itoa(nbr);
 	if (!dest)
 		return (0);
 	ft_putstr(dest);

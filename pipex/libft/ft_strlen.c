@@ -1,51 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils2.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/16 22:22:20 by marvin            #+#    #+#             */
-/*   Updated: 2025/08/23 15:46:26 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/06/04 16:34:23 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/06/06 15:23:14 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_count(unsigned long n, int base)
-{
-	int	size;
-
-	size = 0;
-	if (n == 0)
-		return (1);
-	while (n > 0)
-	{
-		n /= base;
-		size++;
-	}
-	return (size);
-}
-
-char	*pf_strdup(const char *str)
-{
-	char	*dst;
-	int		len;
-	int		i;
-
-	i = 0;
-	len = pf_strlen(str);
-	dst = (char *)malloc(sizeof(char) * (len + 1));
-	while (i < len)
-	{
-		dst[i] = str[i];
-		i++;
-	}
-	dst[len] = '\0';
-	return (dst);
-}
-
-size_t	pf_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
 	int	i;
 
