@@ -6,6 +6,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <sys/wait.h>
+# include <fcntl.h>
 # include "ft_printf.h"
 # include "libft.h"
 
