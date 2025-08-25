@@ -13,7 +13,6 @@ int main(int ac, char **av, char **env)
 			path = getpath("ls", &env[65]);
 		}
 	}
-	
 	ft_printf("%s\n", path);
 	return (0);
 }

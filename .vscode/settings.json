@@ -10,7 +10,8 @@
 		"string_view": "c",
 		"format": "c",
 		"initializer_list": "c",
-		"span": "c"
+		"span": "c",
+		"libft.h": "c"
 	},
 	"python.testing.unittestArgs": [
 		"-v",
