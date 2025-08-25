@@ -2,6 +2,6 @@
 
 void	error(void)
 {
-	perror(error);
+	perror("Error");
 		exit(EXIT_FAILURE);
 }
