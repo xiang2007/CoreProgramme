@@ -1,6 +1,5 @@
 #include "pipex.h"
 
-/*Child proccess takes in pipe read and pipe it to command 2 output (which is stdout)*/
 void	child_ps(int *fd, char **av, char **env)
 {
 	int	file;

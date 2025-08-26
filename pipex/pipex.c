@@ -3,16 +3,22 @@
 
 int main(int ac, char **av, char **env)
 {
-	(void)av;
-	char *path;
+	pid_t	pid;
+	int		fd[2];
 
 	if (ac == 5)
 	{
-		if (check_file(av[1]), 1)
-		{
-			path = getpath("ls", &env[65]);
-		}
+		if (pipe(fd) == -1)
+			error ();
+		pid = fork();
+		if (pid == -1)
+			error ();
+		if (pid == 1)
+			child_ps(fd, av, env);
+		waitpid(pid, NULL, 0);
+		parent_ps(fd, av, env);	
 	}
-	ft_printf("%s\n", path);
+	else
+		ft_putstr_fd("Error: Bad arguments", 2);
 	return (0);
 }

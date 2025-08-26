@@ -3,8 +3,8 @@
 int	check_file(char *filename)
 {
 	if (access(filename, R_OK) != 0)
-		error ;
+		error ();
 	else if (access(filename, W_OK) != 0)
-		error ;
+		error ();
 	return (0);
 }

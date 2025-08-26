@@ -2,7 +2,8 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra -I./includes
 AR = ar rcs
 RM = rm -rf
-PP_SRC =	./pipex.c ./Utils1.c ./getpath.c ./check_permission.c
+PP_SRC =	./pipex.c ./Utils1.c ./getpath.c ./check_permission.c ./proccesses.c \
+		./execute.c
 
 PRINTF_SRC = ./ft_printf/ft_printf.c ./ft_printf/ft_signs.c \
 			./ft_printf/ft_utils2.c ./ft_printf/ft_utils1.c \

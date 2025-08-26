@@ -13,5 +13,8 @@
 int		check_file(char *filename);
 char	*getpath(char *cmd, char **env);
 void	error(void);
+void	child_ps(int *fd, char **av, char **env);
+void	parent_ps(int *fd, char **av, char **env);
+void	execute(char **av, char **env);
 
 #endif
