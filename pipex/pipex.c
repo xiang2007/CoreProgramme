@@ -1,7 +1,7 @@
 #include "pipex.h"
 #include <stdio.h>
 
-int main(int ac, char **av, char **env)
+/*int main(int ac, char **av, char **env)
 {
 	pid_t	pid;
 	int		fd[2];
@@ -19,6 +19,6 @@ int main(int ac, char **av, char **env)
 		parent_ps(fd, av, env);	
 	}
 	else
-		ft_putstr_fd("Error: Bad arguments", 2);
+		ft_putstr_fd("Error: Bad arguments\n", 2);
 	return (0);
-}
+}*/

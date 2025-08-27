@@ -8,7 +8,6 @@ char	*getpath(char *cmd, char **env)
 	int		i;
 
 	i = 0;
-	(void)cmd;
 	paths = ft_split(env[i] + 5, ':');
 	while (paths[i])
 	{
@@ -16,12 +15,15 @@ char	*getpath(char *cmd, char **env)
 		path = ft_strjoin(half_path, cmd);
 		free(half_path);
 		if (access(path, F_OK) == 0)
+		{
+			printf("Valid path is %s\n", path);
 			return (path);
+		}
 		free(path);
 		i++;
 	}
 	i = -1;
-	while (paths[i++])
+	while (paths[++i])
 		free(paths[i]);
 	free (paths);
 	return (0);

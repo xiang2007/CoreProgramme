@@ -2,12 +2,7 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra -I./includes
 AR = ar rcs
 RM = rm -rf
-PP_SRC =	./pipex.c ./Utils1.c ./getpath.c ./check_permission.c ./proccesses.c \
-		./execute.c
-
-PRINTF_SRC = ./ft_printf/ft_printf.c ./ft_printf/ft_signs.c \
-			./ft_printf/ft_utils2.c ./ft_printf/ft_utils1.c \
-			./ft_printf/ft_utils3.c \
+PP_SRC =	./pipex.c ./error.c ./getpath.c ./parent_n_child.c ./execute.c ./text.c \
 
 LIBFT_SRC = ./libft/ft_memcpy.c ./libft/ft_memmove.c ./libft/ft_memset.c ./libft/ft_putchar_fd.c ./libft/ft_strlen.c \
 		./libft/ft_strnstr.c ./libft/ft_strrchr.c ./libft/ft_substr.c ./libft/ft_tolower.c ./libft/ft_toupper.c \
@@ -17,7 +12,7 @@ LIBFT_SRC = ./libft/ft_memcpy.c ./libft/ft_memmove.c ./libft/ft_memset.c ./libft
 	./libft/ft_atoi.c ./libft/ft_bzero.c ./libft/ft_calloc.c ./libft/ft_isalnum.c ./libft/ft_isalpha.c \
 	./libft/ft_isascii.c ./libft/ft_isdigit.c ./libft/ft_isprint.c ./libft/ft_itoa.c ./libft/ft_memchr.c \
 
-SRC = $(LIBFT_SRC) $(PRINTF_SRC) $(PP_SRC)
+SRC = $(LIBFT_SRC) $(PP_SRC)
 OBJS = $(SRC:.c=.o)
 NAME = pipex
 
