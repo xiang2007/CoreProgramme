@@ -15,5 +15,6 @@ void	error(void);
 void	child_ps(int *fd, char **av, char **env);
 void	parent_ps(int *fd, char **av, char **env);
 void	execute(char *av, char **env);
+void	free_all(char **dptr);
 
 #endif
