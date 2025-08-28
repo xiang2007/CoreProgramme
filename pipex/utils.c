@@ -7,7 +7,7 @@ void	free_all(char **dptr)
 	i = 0;
 	while (dptr[i])
 	{
-		free (dptr[i])
+		free (dptr[i]);
 		i++;
 	}
 	free (dptr);

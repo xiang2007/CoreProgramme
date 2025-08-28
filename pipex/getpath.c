@@ -3,8 +3,8 @@
 char	*getpath(char *cmd, char **env)
 {
 	char	**paths;
-	char	*path;
 	char	*half_path;
+	char	*path;
 	int		i;
 
 	i = 0;
@@ -14,14 +14,12 @@ char	*getpath(char *cmd, char **env)
 		half_path = ft_strjoin(paths[i], "/");
 		path = ft_strjoin(half_path, cmd);
 		free(half_path);
-		if (access(path, F_OK) == 0)
+		if (access(path, F_OK | X_OK) == 0)
 			return (path);
 		free(path);
 		i++;
 	}
-	i = -1;
-	while (paths[++i])
-		free(paths[i]);
-	free (paths);
+	free_all(paths);
 	return (0);
 }
+

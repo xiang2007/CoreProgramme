@@ -1,0 +1,15 @@
+Makefile
+error.c
+execute.c
+getpath.c
+includes
+libft
+outfile
+parent_n_child.c
+pipex
+pipex.c
+test.txt
+text.c
+utils.c
+w
+wc

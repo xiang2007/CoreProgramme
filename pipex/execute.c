@@ -4,21 +4,15 @@ void	execute(char *av, char **env)
 {
 	char	**cmd;
 	char	*path;
-	int		i;
 
-	i = 0;
 	cmd = ft_split(av, ' ');
 	path = getpath(cmd[0], env);
-	if (!path)
-	{
-		while (cmd[i])
-		{
-			free(cmd[i]);
-			i++;
-		}
-		free(cmd);
-		error ();
-	}
+	printf("path is %s\n :" ,path);
 	if (execve(path, cmd, env) == -1)
-		error ();
+	{
+		ft_putstr_fd("pipex: command not found: ", 2);
+		ft_putendl_fd(cmd[0], 2);
+		free_all(cmd);
+		exit(0);
+	}
 }

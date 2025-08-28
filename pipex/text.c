@@ -1,4 +1,4 @@
-#include "pipex.h"
+/*#include "pipex.h"
 
 int	main(int ac, char **av, char **ev)
 {
@@ -19,4 +19,4 @@ int	main(int ac, char **av, char **ev)
 		return (0);
 	}
 	return (0);
-}
+}*/
