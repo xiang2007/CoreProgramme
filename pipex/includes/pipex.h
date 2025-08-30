@@ -9,12 +9,12 @@
 # include <fcntl.h>
 # include "libft.h"
 
-int		check_file(char *filename);
 char	*getpath(char *cmd, char **env);
-void	error(void);
+void	error(int value);
 void	child_ps(int *fd, char **av, char **env);
 void	parent_ps(int *fd, char **av, char **env);
 void	execute(char *av, char **env);
 void	free_all(char **dptr);
+int		check_path(char *path);
 
 #endif

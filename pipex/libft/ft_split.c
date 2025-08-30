@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42kl.edu.m      +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 16:32:35 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/06/06 14:23:19 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/08/30 12:14:11 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	**ft_split(char const *s, char c)
 	int		size;
 	char	**dest;
 
+	if (!s)
+		return (NULL);
 	size = count(s, c);
 	dest = (char **)malloc(sizeof(char *) * (size + 1));
 	if (!dest)

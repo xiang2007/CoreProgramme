@@ -8,7 +8,12 @@ char	*getpath(char *cmd, char **env)
 	int		i;
 
 	i = 0;
+	if (!cmd)
+		return (0);
+	while (ft_strnstr(env[i], "PATH", 4) == 0)
+		i++;
 	paths = ft_split(env[i] + 5, ':');
+	i = 0;
 	while (paths[i])
 	{
 		half_path = ft_strjoin(paths[i], "/");

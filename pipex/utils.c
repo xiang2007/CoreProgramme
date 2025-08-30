@@ -11,4 +11,12 @@ void	free_all(char **dptr)
 		i++;
 	}
 	free (dptr);
+	return ;
+}
+
+int	check_path(char *path)
+{
+	if (ft_strnstr(path, "/usr/bin/", 9) != 0)
+		return (1);
+	return (0);
 }
