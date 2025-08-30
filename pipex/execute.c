@@ -22,4 +22,5 @@ void	execute(char *av, char **env)
 		free_all(cmd);
 		exit(0);
 	}
+	return ;
 }
