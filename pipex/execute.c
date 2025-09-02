@@ -15,7 +15,8 @@ void	execute(char *av, char **env)
 		free_all(cmd);
 		error (2);
 	}
-	if (execve(path, cmd, env) == -1)
+	
+	if (ft_strnstr(path, "/", 3) != 0 || execve(path, cmd, env) == -1)
 	{
 		ft_putstr_fd("pipex: command not found: ", 2);
 		ft_putendl_fd(cmd[0], 2);

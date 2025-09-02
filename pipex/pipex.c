@@ -10,15 +10,13 @@ int main(int ac, char **av, char **env)
 	{
 		if (pipe(fd) == -1)
 			error (0);
-		if (ft_strnstr(av[1], "/dev/urandom", 12) != 0)
-			parent_ps(fd, av, env);
 		pid = fork();
 		if (pid == -1)
 			error (0);
 		if (pid == 0)
 			child_ps(fd, av, env);
-		waitpid(pid, NULL, 0);
 		parent_ps(fd, av, env);	
+		wait(NULL);
 	}
 	else
 	{

@@ -1,0 +1,12 @@
+error.c
+execute.c
+getpath.c
+includes
+libft
+Makefile
+outfile
+parent_n_child.c
+pipex
+pipex.c
+test.sh
+utils.c
