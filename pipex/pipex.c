@@ -1,7 +1,18 @@
-#include "pipex.h"
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/03 17:24:38 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/09/03 17:24:39 by wshou-xi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int main(int ac, char **av, char **env)
+#include "pipex.h"
+
+int	main(int ac, char **av, char **env)
 {
 	pid_t	pid;
 	int		fd[2];
@@ -17,7 +28,7 @@ int main(int ac, char **av, char **env)
 		check_cmd(av[3]);
 		if (pid == 0)
 			child_ps(fd, av, env);
-		parent_ps(fd, av, env);	
+		parent_ps(fd, av, env);
 		wait(NULL);
 	}
 	else

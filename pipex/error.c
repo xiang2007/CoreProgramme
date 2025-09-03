@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/03 17:22:14 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/09/03 17:22:15 by wshou-xi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex.h"
 
 void	error(int val)
@@ -8,7 +20,7 @@ void	error(int val)
 		exit(127);
 	}
 	perror("Error");
-		exit(EXIT_FAILURE);
+	exit(EXIT_FAILURE);
 }
 
 void	check_cmd(char *cmd)
