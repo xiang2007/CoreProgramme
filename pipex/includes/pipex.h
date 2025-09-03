@@ -16,5 +16,6 @@ void	parent_ps(int *fd, char **av, char **env);
 void	execute(char *av, char **env);
 void	free_all(char **dptr);
 int		check_path(char *path);
+void	check_cmd(char *cmd);
 
 #endif

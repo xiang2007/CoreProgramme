@@ -13,6 +13,8 @@ int main(int ac, char **av, char **env)
 		pid = fork();
 		if (pid == -1)
 			error (0);
+		check_cmd(av[2]);
+		check_cmd(av[3]);
 		if (pid == 0)
 			child_ps(fd, av, env);
 		parent_ps(fd, av, env);	
