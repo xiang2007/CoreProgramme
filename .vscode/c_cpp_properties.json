@@ -4,7 +4,8 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/push_swap/includes"
+                "${workspaceFolder}/push_swap/includes",
+                "${workspaceFolder}/fract-ol/includes"
             ],
             "defines": [
                 "_DEBUG",

@@ -12,7 +12,8 @@
 		"initializer_list": "c",
 		"span": "c",
 		"libft.h": "c",
-		"crtdefs.h": "c"
+		"crtdefs.h": "c",
+		"fol.h": "c"
 	},
 	"python.testing.unittestArgs": [
 		"-v",

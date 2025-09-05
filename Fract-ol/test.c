@@ -2,5 +2,22 @@
 
 int	main(int ac, char **av)
 {
+	int	limit;
+	d	z;
+	d res;
+	d	c;
 
+	if (ac == 2)
+	{
+		limit = 1000;
+		z = 0;
+		c = -1.1;
+		while ((limit--) && (z < INT_MAX))
+		{
+			res = (z * z) + c;
+			printf("number is: %f\n", res);
+			z = res;
+		}
+	}
+	return (0);
 }
