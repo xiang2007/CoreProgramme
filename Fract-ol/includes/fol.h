@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 16:18:16 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/09/08 16:41:15 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/09/08 16:59:45 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ typedef struct	s_cords
 # include "../mlx_Linux/mlx.h"
 # include <stdio.h>
 # include <math.h>
-# include <limits.h>
-
-t_d	d_square(t_d num);
+# include <unistd.h>
 
 #endif
