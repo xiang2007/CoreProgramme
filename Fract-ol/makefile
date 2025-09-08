@@ -1,10 +1,11 @@
 CC = cc
-CLAFG = -Wall -Werror -Wextra -I./includes -Llibmlx -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11
+CFLAGS = -Wall -Werror -Wextra -I./includes 
+LIB = -Lmlx_Linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 RM = rm -rf
 
-SRC = ./test.c
+SRC = ./fol.c
 LIBFT_SRC = ./libft/ft_memcpy.c ./libft/ft_memmove.c ./libft/ft_memset.c ./libft/ft_putchar_fd.c ./libft/ft_strlen.c \
-		./libft/ft_strnstr.c ./libft/ft_strrchr.c ./libft/ft_substr.c ./libft/ft_tolower.c ./libft/ft_toupper.c \
+	./libft/ft_strnstr.c ./libft/ft_strrchr.c ./libft/ft_substr.c ./libft/ft_tolower.c ./libft/ft_toupper.c \
 	./libft/ft_putendl_fd.c ./libft/ft_putnbr_fd.c ./libft/ft_putstr_fd.c ./libft/ft_split.c ./libft/ft_strchr.c \
 	./libft/ft_strdup.c ./libft/ft_striteri.c ./libft/ft_strjoin.c ./libft/ft_strlcat.c ./libft/ft_strlcpy.c \
 	./libft/ft_strmapi.c ./libft/ft_strncmp.c ./libft/ft_strtrim.c ./libft/ft_lstlast.c ./libft/ft_memcmp.c \
@@ -16,7 +17,7 @@ NAME = fol
 .PHONY: c clean fclean re
 
 c:
-	$(CC) $(CFLAGS) $(LIBFT_SRC) $(SRC) -o $(NAME)
+	$(CC) $(CFLAGS) $(LIBFT_SRC) $(SRC) $(LIB) -o $(NAME)
 
 clean:
 	$(RM) $(NAME)

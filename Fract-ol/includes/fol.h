@@ -2,6 +2,7 @@
 # define FOL_H
 
 # include "../libft/libft.h"
+# include "../mlx_Linux/mlx.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <math.h>

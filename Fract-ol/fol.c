@@ -1,4 +1,4 @@
-#include "libmlx/mlx.h"
+#include "includes/fol.h"
 #define	WINDOW_WIDTH 1920
 #define WINDOW_HEIGHT 1080
 
@@ -25,8 +25,6 @@ int	main(void)
 	t_data	img;
 	int		i = 1;
 	int		j = 1;
-	int		imax = 1000;
-	int		jmax = 1000;
 
 	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
