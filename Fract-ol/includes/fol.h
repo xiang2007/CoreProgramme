@@ -3,19 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   fol.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 16:18:16 by wshou-xi          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2025/09/08 16:59:45 by wshou-xi         ###   ########.fr       */
-=======
-/*   Updated: 2025/09/08 16:41:15 by wshou-xi         ###   ########.fr       */
->>>>>>> b5b1f56 (added compute for mandelbrot)
+/*   Updated: 2025/09/08 20:28:18 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FOL_H
 # define FOL_H
+
+# define HEIGTH 600
+# define WIDTH 800
+# define WHITE 0xFFFFFFFF
+# define BLACK 0x00FF0000
+# define MAX_ITER 1000
+
+typedef double t_d;
+
+typedef struct	s_data
+{
+	void	*img;
+	void	*addr;
+	int		bpp;
+	int		line_length;
+	int		endian;
+}				t_data;
+
+typedef struct	s_cords
+{
+	t_d	real_x;
+	t_d	img_y;
+	t_d	res_c;
+	int	iter;
+}				t_cords;
+
 
 # define HEIGTH 600
 # define WIDTH 800
