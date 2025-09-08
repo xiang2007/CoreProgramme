@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/08 20:15:43 by marvin            #+#    #+#             */
-/*   Updated: 2025/09/08 20:15:43 by marvin           ###   ########.fr       */
+/*   Created: 2025/09/08 16:18:25 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/09/08 16:49:18 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,21 @@ int	get_iter(t_d x, t_d y)
 		iter++;
 	}
 	return (iter);
+
+}
+
+int	main(void)
+{
+	//void	*mlx;
+	//void	*mlx_win;
+	//t_data		img;
+
+	/*mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, WIDTH, HEIGTH, "hello");
+	img.img = mlx_new_image(mlx, WIDTH, HEIGTH);
+	img.addr = mlx_get_data_addr(img.img, &img.bpp,
+								&img.line_length, &img.endian);*/
+	printf("max iter is: %d\n",get_iter(100, 100));
+	//mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
+	//mlx_loop(mlx);
 }
