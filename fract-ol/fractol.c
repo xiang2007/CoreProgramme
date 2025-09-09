@@ -16,42 +16,113 @@ void	ftput_pixel(t_data *img_data, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = img_data->addr + (y * img_data->line_length + x * (img_data->bpp / 8));
+	dst = img_data->addr + (int)(y * img_data->line_length + x * (img_data->bpp / 8));
 	*(unsigned int *)dst = color;
 }
-int	get_iter(t_d x, t_d y)
+
+int	interpolate_color(int c1, int c2, t_d t)
 {
-	t_cords	cords;
-	t_d		z;
+	t_color	color;
+	int		r;
+	int		g;
+	int		b;
+
+	color.r1 = (c1 >> 16) & 0xFF;
+	color.g1	 = (c1 >> 8) & 0xFF;
+	color.b1 = c1 & 0xFF;
+	color.r2 = (c2 >> 16) & 0xFF;
+	color.g2 = (c2 >> 8) & 0xFF;
+	color.b2 = c2 & 0xFF;
+	r = (int)((1 - t) * color.r1 + t * color.r2);
+	g = (int)((1 - t) * color.g1 + t * color.g2);
+	b = (int)((1 - t) * color.b1 + t * color.b2);
+	return ((r << 16) | (g << 8) | b);
+}
+
+int	get_color(t_d n, int iter)
+{
 	t_d		res;
+	t_d		f;
+	t_color	color;
+	int		i;
+	int		palette[7] = {RED, ORANGE, YELLOW, GREEN, BLUE,
+				DBLUE, PURPLE};
+
+	res = 0;
+	if (iter == MAX_ITER)
+		return (BLACK);
+	res = ((iter + 1) - (log(log(fabs(n)))) / log(2));
+	f = res - floor(res);
+	color.color_number = 7;
+	i = ((int)floor(res)) % color.color_number;
+	color.c1 = palette[i];
+	color.c2 = palette[(i + 1) % color.color_number];
+	return (interpolate_color(color.c1, color.c2, f));
+}
+
+int	get_iter(int x, int y, t_d *z_last)
+{
+	t_calc	calc;
+	t_xy	xy;
 	int		iter;
 
-	cords.res_c = 0;
-	z = 1;
 	iter = 0;
-	while (z < 4 && iter < MAX_ITER)
+	xy.x0 = get_x_scaled(x);
+	xy.y0 = get_y_scaled(y);
+	xy.x = 0;
+	xy.y = 0;
+	xy.x2 = 0;
+	xy.y2 = 0;
+	calc.temp = 0;
+	while ((xy.x2 + xy.y2 <= 4) && iter < MAX_ITER)
 	{
-		cords.res_c = (x * 0.005) + (y * 0.0033);
-		res = d_square(z) + cords.res_c;
-		z = res;
+		xy.y = 2 * xy.x * xy.y + xy.y0;
+		xy.x = xy.x2 - xy.y2 + xy.x0;
+		xy.x2 = d_sq(xy.x);
+		xy.y2 = d_sq(xy.y);
 		iter++;
 	}
+	*z_last = sqrt(xy.x2 + xy.y2);
 	return (iter);
+}
 
+void	put_mandel(void *img)
+{
+	int	i;
+	int	j;
+	int	iter;
+	int	color;
+	t_d	z_last;
+
+	j = 0;
+	z_last = 0;
+	color = 0;
+	while (j <= HEIGTH)
+	{
+		i = 0;
+		while (i <= WIDTH)
+		{
+			iter = get_iter(i, j, &z_last);
+			color = get_color(z_last, iter);
+			ftput_pixel(img, i, j, color);
+			i++;
+		}
+		j++;
+	}
 }
 
 int	main(void)
 {
-	//void	*mlx;
-	//void	*mlx_win;
-	//t_data		img;
+	void	*mlx;
+	void	*mlx_win;
+	t_data		img;
 
-	/*mlx = mlx_init();
+	mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, WIDTH, HEIGTH, "hello");
 	img.img = mlx_new_image(mlx, WIDTH, HEIGTH);
 	img.addr = mlx_get_data_addr(img.img, &img.bpp,
-								&img.line_length, &img.endian);*/
-	printf("max iter is: %d\n",get_iter(100, 100));
-	//mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	//mlx_loop(mlx);
+								&img.line_length, &img.endian);
+	put_mandel(&img.img);
+	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
+	mlx_loop(mlx);
 }
