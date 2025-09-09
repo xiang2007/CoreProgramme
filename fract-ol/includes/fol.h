@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fol.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/08 16:18:16 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/09/09 17:17:42 by wshou-xi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FOL_H
 # define FOL_H
 
@@ -66,10 +78,9 @@ t_d	get_x_scaled(t_d x);
 t_d	get_y_scaled(t_d y);
 
 # include "../libft/libft.h"
+# include "../mlx_Linux/mlx.h"
 # include <stdio.h>
-# include <stdlib.h>
 # include <math.h>
 # include <unistd.h>
-# include <limits.h>
 
 #endif
