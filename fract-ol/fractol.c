@@ -62,7 +62,6 @@ int	get_color(t_d n, int iter)
 
 int	get_iter(int x, int y, t_d *z_last)
 {
-	t_calc	calc;
 	t_xy	xy;
 	int		iter;
 
@@ -73,7 +72,6 @@ int	get_iter(int x, int y, t_d *z_last)
 	xy.y = 0;
 	xy.x2 = 0;
 	xy.y2 = 0;
-	calc.temp = 0;
 	while ((xy.x2 + xy.y2 <= 4) && iter < MAX_ITER)
 	{
 		xy.y = 2 * xy.x * xy.y + xy.y0;
