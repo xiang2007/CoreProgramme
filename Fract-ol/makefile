@@ -6,17 +6,10 @@
 #    By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 16:18:33 by wshou-xi          #+#    #+#              #
-<<<<<<< HEAD
-<<<<<<< HEAD
-#    Updated: 2025/09/08 16:59:28 by wshou-xi         ###   ########.fr        #
-=======
-#    Updated: 2025/09/08 16:26:58 by wshou-xi         ###   ########.fr        #
->>>>>>> b5b1f56 (added compute for mandelbrot)
-=======
-#    Updated: 2025/09/08 16:26:58 by wshou-xi         ###   ########.fr        #
->>>>>>> b5b1f56 (added compute for mandelbrot)
+#    Updated: 2025/09/09 17:15:55 by wshou-xi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -I./includes 
