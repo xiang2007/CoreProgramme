@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 16:18:22 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/09/09 14:37:45 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/09/09 17:10:11 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ t_d	d_sq(t_d num)
 
 t_d	get_x_scaled(t_d x)
 {
-	return (-2.0 + (x / (WIDTH - 1)) * (2.47)); //ori is 2.47
+	return (XMIN + (x / (WIDTH - 1)) * (XMAX - XMIN));
 }
 
 t_d	get_y_scaled(t_d y)
 {
-	return (-1.12 + (y / (HEIGTH - 1)) * (2.47)); //ori is 2.47
+	return (YMIN + (y / (HEIGTH - 1)) * (YMAX - YMIN));
 }
