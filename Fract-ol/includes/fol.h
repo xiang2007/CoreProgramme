@@ -6,19 +6,19 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 16:18:16 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/09/09 17:17:42 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/09/10 11:27:40 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FOL_H
 # define FOL_H
 
-# define WIDTH 2560
-# define HEIGTH 1440
-# define XMIN -2.5
+# define WIDTH 1980
+# define HEIGTH 1080
+# define XMIN -2.25
 # define XMAX 1
-# define YMIN -1
-# define YMAX 1
+# define YMIN -1.125
+# define YMAX 1.125
 # define WHITE 0xFFFFFF
 # define BLACK 0x000000
 # define RED 0xFF0000
@@ -32,10 +32,18 @@
 
 typedef double t_d;
 
+# include "../libft/libft.h"
+# include "../mlx_Linux/mlx.h"
+# include <stdio.h>
+# include <math.h>
+# include <unistd.h>
+
 typedef struct	s_data
 {
 	void	*img;
 	void	*addr;
+	void	*mlx;
+	void	*window;
 	int		bpp;
 	int		line_length;
 	int		endian;
@@ -73,14 +81,10 @@ typedef struct s_color
 }				t_color;
 
 
-t_d	d_sq(t_d num);
-t_d	get_x_scaled(t_d x);
-t_d	get_y_scaled(t_d y);
-
-# include "../libft/libft.h"
-# include "../mlx_Linux/mlx.h"
-# include <stdio.h>
-# include <math.h>
-# include <unistd.h>
+t_d		d_sq(t_d num);
+t_d		get_x_scaled(t_d x);
+t_d		get_y_scaled(t_d y);
+void	ftput_pixel(t_data *img_data, int x, int y, int color);
+int	close(int keycode, t_data *vars);
 
 #endif

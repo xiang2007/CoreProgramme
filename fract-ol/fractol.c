@@ -6,19 +6,11 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 16:18:25 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/09/08 16:49:18 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/09/10 11:23:26 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fol.h"
-
-void	ftput_pixel(t_data *img_data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = img_data->addr + (int)(y * img_data->line_length + x * (img_data->bpp / 8));
-	*(unsigned int *)dst = color;
-}
 
 int	interpolate_color(int c1, int c2, t_d t)
 {
@@ -62,6 +54,7 @@ int	get_color(t_d n, int iter)
 
 int	get_iter(int x, int y, t_d *z_last)
 {
+	t_calc	calc;
 	t_xy	xy;
 	int		iter;
 
@@ -72,6 +65,7 @@ int	get_iter(int x, int y, t_d *z_last)
 	xy.y = 0;
 	xy.x2 = 0;
 	xy.y2 = 0;
+	calc.temp = 0;
 	while ((xy.x2 + xy.y2 <= 4) && iter < MAX_ITER)
 	{
 		xy.y = 2 * xy.x * xy.y + xy.y0;
