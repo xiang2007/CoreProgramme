@@ -18,10 +18,10 @@ void	execute(char *av, char **env)
 	char	*path;
 
 	cmd = ft_split(av, ' ');
-	if (check_path(av))
-		path = av;
+	if (check_path(cmd[0]))
+		path = cmd[0];
 	else
-		path = getpath(cmd[0], env);
+		path = ft_getpath(cmd[0], env);
 	if (!path)
 	{
 		free_all(cmd);
@@ -32,7 +32,7 @@ void	execute(char *av, char **env)
 		ft_putstr_fd("pipex: command not found: ", 2);
 		ft_putendl_fd(cmd[0], 2);
 		free_all(cmd);
-		exit (0);
+		exit (1);
 	}
 	return ;
 }

@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils1.c                                           :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/10 11:23:27 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/09/10 14:40:02 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/06/04 16:37:27 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/07/14 10:14:03 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/fol.h"
+#include "libft.h"
 
-void	ftput_pixel(t_data *img_data, int x, int y, int color)
+int	ft_count(const char *c);
+
+char	*ft_strrchr(const char *s, int c)
 {
-	char	*dst;
+	int	size;
 
-	dst = img_data->addr + (int)(y * img_data->line_length + x * (img_data->bpp / 8));
-	*(unsigned int *)dst = color;
+	size = ft_strlen((char *)s);
+	while (size >= 0)
+	{
+		if (s[size] == (char)c)
+			return ((char *)&s[size]);
+		size--;
+	}
+	return (NULL);
 }

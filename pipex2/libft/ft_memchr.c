@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42kl.edu.m      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/03 17:24:46 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/09/10 15:33:16 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/06/04 16:27:51 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/06/04 16:27:53 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-void	free_all(char **dptr)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	int	i;
+	size_t				i;
+	const unsigned char	*cptr;
 
-	if (!dptr)
-		return ;
+	cptr = (const unsigned char *)s;
 	i = 0;
-	while (dptr[i])
+	while (i < n)
 	{
-		free(dptr[i]);
+		if ((char)cptr[i] == (char)c)
+			return ((void *)(cptr + i));
 		i++;
 	}
-	free(dptr);
-}
-
-int	check_path(char *path)
-{
-	if (!path)
-		return (0);
-	return (ft_strchr(path, '/') != NULL);
+	return (NULL);
 }

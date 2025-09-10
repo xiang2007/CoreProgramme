@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils1.c                                           :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/10 11:23:27 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/09/10 14:40:02 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/06/04 16:34:23 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/06/06 15:23:14 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/fol.h"
+#include "libft.h"
 
-void	ftput_pixel(t_data *img_data, int x, int y, int color)
+size_t	ft_strlen(const char *str)
 {
-	char	*dst;
+	int	i;
 
-	dst = img_data->addr + (int)(y * img_data->line_length + x * (img_data->bpp / 8));
-	*(unsigned int *)dst = color;
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils1.c                                           :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/10 11:23:27 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/09/10 14:40:02 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/06/04 16:30:53 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/06/06 15:20:06 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/fol.h"
+#include "libft.h"
 
-void	ftput_pixel(t_data *img_data, int x, int y, int color)
+void	*ft_memset(void *str, int c, size_t n)
 {
-	char	*dst;
+	size_t			i;
+	unsigned char	*s;
 
-	dst = img_data->addr + (int)(y * img_data->line_length + x * (img_data->bpp / 8));
-	*(unsigned int *)dst = color;
+	s = (unsigned char *)str;
+	i = 0;
+	while (i < n)
+	{
+		s[i] = (unsigned char)c;
+		i++;
+	}
+	return (str);
 }

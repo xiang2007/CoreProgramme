@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42kl.edu.m      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/03 17:24:46 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/09/10 15:33:16 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/06/04 16:34:07 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/06/04 16:34:10 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-void	free_all(char **dptr)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	int	i;
+	size_t	i;
+	size_t	s;
 
-	if (!dptr)
-		return ;
 	i = 0;
-	while (dptr[i])
+	s = ft_strlen(src);
+	if (size == 0)
+		return (s);
+	while (src[i] && i < size - 1)
 	{
-		free(dptr[i]);
+		dest[i] = src[i];
 		i++;
 	}
-	free(dptr);
-}
-
-int	check_path(char *path)
-{
-	if (!path)
-		return (0);
-	return (ft_strchr(path, '/') != NULL);
+	dest[i] = '\0';
+	return (s);
 }

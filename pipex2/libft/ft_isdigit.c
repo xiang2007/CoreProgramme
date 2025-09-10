@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils1.c                                           :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42kl.edu.m      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/10 11:23:27 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/09/10 14:40:02 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/06/04 16:24:29 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/06/04 16:24:31 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/fol.h"
-
-void	ftput_pixel(t_data *img_data, int x, int y, int color)
+int	ft_isdigit(int digit)
 {
-	char	*dst;
-
-	dst = img_data->addr + (int)(y * img_data->line_length + x * (img_data->bpp / 8));
-	*(unsigned int *)dst = color;
+	if (digit >= '0' && digit <= '9')
+		return (1);
+	else
+		return (0);
 }

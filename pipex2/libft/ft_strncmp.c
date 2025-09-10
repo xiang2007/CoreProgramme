@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils1.c                                           :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42kl.edu.m      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/10 11:23:27 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/09/10 14:40:02 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/06/04 16:36:17 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/06/04 16:36:42 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/fol.h"
+#include "libft.h"
 
-void	ftput_pixel(t_data *img_data, int x, int y, int color)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	char	*dst;
+	size_t	i;
 
-	dst = img_data->addr + (int)(y * img_data->line_length + x * (img_data->bpp / 8));
-	*(unsigned int *)dst = color;
+	if (n == 0)
+		return (0);
+	i = 0;
+	while (i < n - 1 && s1[i] && s2[i] && (s1[i] == s2[i]))
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

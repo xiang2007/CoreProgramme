@@ -1,16 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   getpath.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/03 17:25:19 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/09/10 20:01:06 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/09/10 19:39:35 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/09/10 20:07:28 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "Pipex.h"
+
+int	i_open_file(char *av, int flag)
+{
+	int	fd;
+
+	if (!av)
+		exit (1);
+	if (flag == 0)
+		fd = open(av, O_RDONLY, 0777);
+	if (flag == 1)
+		fd = open(av, O_RDWR | O_CREAT | O_TRUNC, 0777);
+	if (fd == -1)
+		exit (0);
+	return (fd);
+}
+
+void	free_all(char **dptr)
+{
+	int	i;
+
+	if (!dptr)
+		return ;
+	i = 0;
+	while (dptr[i])
+	{
+		free(dptr[i]);
+		i++;
+	}
+	free(dptr);
+}
 
 char	*ft_getpath(char *cmd, char **env)
 {
@@ -52,4 +82,17 @@ char	*check_slash(char *cmd)
 		return (NULL);
 	}
 	return (NULL);
+}
+
+void	exec(char *cmd, char **env)
+{
+	char	*path;
+	char	**paths;
+
+	paths = ft_split(cmd, ' ');
+	path = ft_getpath(paths[0], env);
+	if (execve(path, paths, env) == -1)
+	{
+		
+	}
 }

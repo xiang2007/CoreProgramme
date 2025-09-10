@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 16:18:16 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/09/10 11:27:40 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/09/10 14:40:12 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,5 @@ t_d		d_sq(t_d num);
 t_d		get_x_scaled(t_d x);
 t_d		get_y_scaled(t_d y);
 void	ftput_pixel(t_data *img_data, int x, int y, int color);
-int	close(int keycode, t_data *vars);
 
 #endif

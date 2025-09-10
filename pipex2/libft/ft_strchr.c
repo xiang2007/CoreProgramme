@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42kl.edu.m      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/03 17:24:46 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/09/10 15:33:16 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/06/04 16:33:10 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/06/04 16:33:12 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-void	free_all(char **dptr)
+char	*ft_strchr(const char *src, int c)
 {
 	int	i;
 
-	if (!dptr)
-		return ;
 	i = 0;
-	while (dptr[i])
+	if (src == NULL)
+		return (NULL);
+	while (src[i])
 	{
-		free(dptr[i]);
+		if (src[i] == (char)c)
+			return ((char *)&src[i]);
 		i++;
 	}
-	free(dptr);
-}
-
-int	check_path(char *path)
-{
-	if (!path)
-		return (0);
-	return (ft_strchr(path, '/') != NULL);
+	if ((char)c == '\0')
+		return ((char *)&src[i]);
+	return (NULL);
 }
