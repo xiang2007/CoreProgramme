@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Pipex.h"
+#include "./includes/Pipex.h"
 
 int	i_open_file(char *av, int flag)
 {
