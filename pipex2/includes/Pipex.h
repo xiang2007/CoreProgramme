@@ -24,5 +24,10 @@
 int		i_open_file(char *av, int flag);
 char	*check_slash(char *cmd);
 char	*ft_getpath(char *cmd, char **env);
+void	exec(char *cmd, char **env);
+void	child(char **av, char **env, int *fd);
+void	parent(char **av, char **env, int *fd);
+void	close_pipe(int *fd);
+void	wait_and_exit(pid_t pid1, pid_t pid2);
 
 #endif

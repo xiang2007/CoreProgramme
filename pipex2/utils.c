@@ -21,9 +21,9 @@ int	i_open_file(char *av, int flag)
 	if (flag == 0)
 		fd = open(av, O_RDONLY, 0777);
 	if (flag == 1)
-		fd = open(av, O_RDWR | O_CREAT | O_TRUNC, 0777);
+		fd = open(av, O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	if (fd == -1)
-		exit (0);
+		exit (1);
 	return (fd);
 }
 
@@ -90,9 +90,24 @@ void	exec(char *cmd, char **env)
 	char	**paths;
 
 	paths = ft_split(cmd, ' ');
+	if (!paths || !*paths)
+	{
+		free_all(paths);
+		exit(127);
+	}
 	path = ft_getpath(paths[0], env);
+	if (!path)
+	{
+		ft_putstr_fd("Error: Command not found: ", 2);
+        ft_putendl_fd(paths[0], 2);
+        free_all(paths);
+        exit(127);
+	}
 	if (execve(path, paths, env) == -1)
 	{
-		
+		perror("execve");
+		free_all(paths);
+		free(path);
+		exit (127);
 	}
 }
