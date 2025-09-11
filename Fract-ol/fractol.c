@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils1.c                                           :+:      :+:    :+:   */
+/*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/10 11:23:27 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/09/11 07:13:31 by marvin           ###   ########.fr       */
+/*   Created: 2025/09/11 07:08:27 by marvin            #+#    #+#             */
+/*   Updated: 2025/09/11 07:08:27 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fol.h"
 
-void	ftput_pixel(t_data *img_data, int x, int y, int color)
+int	main(void)
 {
-	char	*dst;
+	void	*mlx;
+	void	*mlx_win;
+	t_data		img;
 
-	dst = img_data->addr + (int)(y * img_data->line_length + x * (img_data->bpp / 8));
-	*(unsigned int *)dst = color;
-}
-
-void	close_all(int key, t_win *win)
-{
-	if (key == XK_Escape)
-	mlx_destroy_window(win->mlx, win->win);
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, WIDTH, HEIGTH, "hello");
+	img.img = mlx_new_image(mlx, WIDTH, HEIGTH);
+	img.addr = mlx_get_data_addr(img.img, &img.bpp,
+								&img.line_length, &img.endian);
+	put_mandel(&img.img);
+	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
+	mlx_loop(mlx);
+	
 }

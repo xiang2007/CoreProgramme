@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 16:18:25 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/09/10 14:36:32 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/09/11 07:09:11 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,18 +103,3 @@ void	put_mandel(void *img)
 	}
 }
 
-int	main(void)
-{
-	void	*mlx;
-	void	*mlx_win;
-	t_data		img;
-
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, WIDTH, HEIGTH, "hello");
-	img.img = mlx_new_image(mlx, WIDTH, HEIGTH);
-	img.addr = mlx_get_data_addr(img.img, &img.bpp,
-								&img.line_length, &img.endian);
-	put_mandel(&img.img);
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_loop(mlx);
-}

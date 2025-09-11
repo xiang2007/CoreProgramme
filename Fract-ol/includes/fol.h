@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fol.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 16:18:16 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/09/10 14:40:12 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/09/11 09:25:02 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,25 @@ typedef double t_d;
 # include <stdio.h>
 # include <math.h>
 # include <unistd.h>
+# include <X11/keysym.h>
 
 typedef struct	s_data
 {
 	void	*img;
 	void	*addr;
-	void	*mlx;
+	void	*mlx; 
 	void	*window;
 	int		bpp;
 	int		line_length;
 	int		endian;
 }				t_data;
+
+typedef struct s_win
+{
+	void	*mlx;
+	void	*win;
+}				t_win;
+
 
 typedef struct	s_xy
 {
@@ -85,5 +93,6 @@ t_d		d_sq(t_d num);
 t_d		get_x_scaled(t_d x);
 t_d		get_y_scaled(t_d y);
 void	ftput_pixel(t_data *img_data, int x, int y, int color);
+void	put_mandel(void *img);
 
 #endif
