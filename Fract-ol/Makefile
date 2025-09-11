@@ -6,13 +6,13 @@
 #    By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 16:18:33 by wshou-xi          #+#    #+#              #
-#    Updated: 2025/09/11 15:06:35 by wshou-xi         ###   ########.fr        #
+#    Updated: 2025/09/11 16:56:53 by wshou-xi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g -I./includes 
+CFLAGS = -Wall -Werror -Wextra -g -I./includes
 LIB = -Lmlx_Linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 RM = rm -rf
 
