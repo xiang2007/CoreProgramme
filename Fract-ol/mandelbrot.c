@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 16:18:25 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/09/11 07:09:11 by marvin           ###   ########.fr       */
+/*   Updated: 2025/09/11 16:43:50 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,15 @@ int	get_color(t_d n, int iter)
 	return (interpolate_color(color.c1, color.c2, f));
 }
 
-int	get_iter(int x, int y, t_d *z_last)
+int	get_iter(int x, int y, t_d *z_last, t_data *ct)
 {
 	t_calc	calc;
 	t_xy	xy;
 	int		iter;
 
 	iter = 0;
-	xy.x0 = get_x_scaled(x);
-	xy.y0 = get_y_scaled(y);
+	xy.x0 = get_x_scaled(x, ct->zoom, ct->x, ct-> y);
+	xy.y0 = get_y_scaled(y, ct->zoom, ct->x, ct-> y);
 	xy.x = 0;
 	xy.y = 0;
 	xy.x2 = 0;
@@ -78,28 +78,25 @@ int	get_iter(int x, int y, t_d *z_last)
 	return (iter);
 }
 
-void	put_mandel(void *img)
+void	put_mandel(void *img, t_data *control)
 {
-	int	i;
-	int	j;
-	int	iter;
-	int	color;
+	t_iter iter;
 	t_d	z_last;
 
-	j = 0;
+	iter.j = 0;
 	z_last = 0;
-	color = 0;
-	while (j <= HEIGTH)
+	iter.color = 0;
+	while (iter.j <= HEIGTH)
 	{
-		i = 0;
-		while (i <= WIDTH)
+		iter.i = 0;
+		while (iter.i <= WIDTH)
 		{
-			iter = get_iter(i, j, &z_last);
-			color = get_color(z_last, iter);
-			ftput_pixel(img, i, j, color);
-			i++;
+			iter.iter = get_iter(iter.i, iter.j, &z_last, control);
+			iter.color = get_color(z_last, iter.iter);
+			ftput_pixel(img, iter.i, iter.j, iter.color);
+			iter.i++;
 		}
-		j++;
+		iter.j++;
 	}
 }
 
