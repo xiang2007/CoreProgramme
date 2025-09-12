@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fol.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 16:18:16 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/09/11 17:29:46 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/09/13 00:48:38 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ typedef struct	s_data
 	t_d		zoom;
 	t_d		x;
 	t_d		y;
+	t_d		cx;
+	t_d		cy;
 }				t_data;
 
 typedef struct	s_xy
@@ -100,10 +102,11 @@ typedef struct s_control
 }				t_control;
 
 t_d		d_sq(t_d num);
-t_d		get_x_scaled(t_d x, t_d zoom, t_d sx, t_d sy);
-t_d		get_y_scaled(t_d y, t_d zoom, t_d sx, t_d sy);
+t_d		get_x_scaled(t_d x, t_d zoom, t_d sx);
+t_d		get_y_scaled(t_d y, t_d zoom, t_d sy);
 void	ftput_pixel(t_data *img_data, int x, int y, int color);
 int		handle_press(int key, t_data *win);
 void	put_mandel(void *img, t_data *control);
+void	put_julia(void *img, t_data *control);
 
 #endif

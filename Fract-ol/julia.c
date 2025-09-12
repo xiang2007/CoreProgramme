@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/08 16:18:25 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/09/13 00:34:32 by marvin           ###   ########.fr       */
+/*   Created: 2025/09/13 00:30:59 by marvin            #+#    #+#             */
+/*   Updated: 2025/09/13 00:30:59 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fol.h"
 
-int	interpolate_color(int c1, int c2, t_d t)
+static int	interpolate_color(int c1, int c2, t_d t)
 {
 	t_color	color;
 	int		r;
@@ -31,7 +31,7 @@ int	interpolate_color(int c1, int c2, t_d t)
 	return ((r << 16) | (g << 8) | b);
 }
 
-int	get_color(t_d n, int iter)
+static int	get_color(t_d n, int iter)
 {
 	t_d		res;
 	t_d		f;
@@ -52,31 +52,27 @@ int	get_color(t_d n, int iter)
 	return (interpolate_color(color.c1, color.c2, f));
 }
 
-int	get_iter(int x, int y, t_d *z_last, t_data *ct)
+int	julia_iter(int x, int y, t_d *z_last, t_data *ct)
 {
-	t_xy	xy;
+	t_xy	z;
+	t_d		xtemp;
 	int		iter;
 
+	z.x = get_x_scaled(x, ct->zoom, ct->x);
+	z.y = get_x_scaled(y, ct->zoom, ct->y);
 	iter = 0;
-	xy.x0 = get_x_scaled(x, ct->zoom, ct->x);
-	xy.y0 = get_y_scaled(y, ct->zoom, ct-> y);
-	xy.x = 0;
-	xy.y = 0;
-	xy.x2 = 0;
-	xy.y2 = 0;
-	while ((xy.x2 + xy.y2 <= 4) && iter < MAX_ITER)
+	while (d_sq(z.x) + d_sq(z.y) < 4 && iter < MAX_ITER)
 	{
-		xy.y = 2 * xy.x * xy.y + xy.y0;
-		xy.x = xy.x2 - xy.y2 + xy.x0;
-		xy.x2 = d_sq(xy.x);
-		xy.y2 = d_sq(xy.y);
+		xtemp = d_sq(z.x) - d_sq(z.y);
+		z.y = 2 * z.x * z.y + ct->cy;
+		z.x = xtemp + ct->cx;
 		iter++;
 	}
-	*z_last = sqrt(xy.x2 + xy.y2);
+	*z_last = sqrt((z.x * z.x) + (z.y * z.y));
 	return (iter);
 }
 
-void	put_mandel(void *img, t_data *control)
+void	put_julia(void *img, t_data *control)
 {
 	t_iter iter;
 	t_d	z_last;
@@ -84,12 +80,12 @@ void	put_mandel(void *img, t_data *control)
 	iter.j = 0;
 	z_last = 0;
 	iter.color = 0;
-	while (iter.j <= HEIGTH)
+	while (iter.j < HEIGTH)
 	{
 		iter.i = 0;
-		while (iter.i <= WIDTH)
+		while (iter.i < WIDTH)
 		{
-			iter.iter = get_iter(iter.i, iter.j, &z_last, control);
+			iter.iter = julia_iter(iter.i, iter.j, &z_last, control);
 			iter.color = get_color(z_last, iter.iter);
 			ftput_pixel(img, iter.i, iter.j, iter.color);
 			iter.i++;
@@ -97,4 +93,3 @@ void	put_mandel(void *img, t_data *control)
 		iter.j++;
 	}
 }
-
