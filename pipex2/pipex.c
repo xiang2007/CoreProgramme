@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 19:28:04 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/09/10 20:03:44 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/09/11 22:46:02 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	child(char **av, char **env, int *fd)
 	ffd = i_open_file(av[1], 0);
 	dup2(ffd, 0);
 	dup2(fd[1], 1);
-	close (fd[0]);
+	close(fd[0]);
 	exec(av[2], env);
 }
 
