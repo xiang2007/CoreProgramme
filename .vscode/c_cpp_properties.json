@@ -5,7 +5,7 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/push_swap/includes",
-                "${workspaceFolder}/fract-ol/includes"
+                "${workspaceFolder}/Fract-ol/includes"
             ],
             "defines": [
                 "_DEBUG",

@@ -72,7 +72,7 @@ int	julia_iter(int x, int y, t_d *z_last, t_data *ct)
 	return (iter);
 }
 
-void	put_julia(void *img, t_data *control)
+void	put_julia(void *img, t_data *data)
 {
 	t_iter iter;
 	t_d	z_last;
@@ -85,7 +85,7 @@ void	put_julia(void *img, t_data *control)
 		iter.i = 0;
 		while (iter.i < WIDTH)
 		{
-			iter.iter = julia_iter(iter.i, iter.j, &z_last, control);
+			iter.iter = julia_iter(iter.i, iter.j, &z_last, data);
 			iter.color = get_color(z_last, iter.iter);
 			ftput_pixel(img, iter.i, iter.j, iter.color);
 			iter.i++;

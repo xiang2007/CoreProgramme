@@ -28,7 +28,7 @@
 # define BLUE 0x003366
 # define DBLUE 0x00007F
 # define PURPLE 0x772FB1
-# define MAX_ITER 100
+# define MAX_ITER 50
 
 typedef double t_d;
 
@@ -48,6 +48,8 @@ typedef struct	s_data
 	int		bpp;
 	int		line_length;
 	int		endian;
+	int		mandel;
+	int		julia;
 	t_d		zoom;
 	t_d		x;
 	t_d		y;
@@ -105,7 +107,7 @@ t_d		d_sq(t_d num);
 t_d		get_x_scaled(t_d x, t_d zoom, t_d sx);
 t_d		get_y_scaled(t_d y, t_d zoom, t_d sy);
 void	ftput_pixel(t_data *img_data, int x, int y, int color);
-int		handle_press(int key, t_data *win);
+int		handle_key(int key, t_data *win);
 void	put_mandel(void *img, t_data *control);
 void	put_julia(void *img, t_data *control);
 

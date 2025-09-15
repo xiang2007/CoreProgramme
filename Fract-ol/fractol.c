@@ -17,15 +17,17 @@ int	main(void)
 	t_data		img;
 
 	img.mlx = mlx_init();
-	img.mlx_win = mlx_new_window(img.mlx, WIDTH, HEIGTH, "im gay");
+	img.mlx_win = mlx_new_window(img.mlx, WIDTH, HEIGTH, "Fract-ol");
 	img.img = mlx_new_image(img.mlx, WIDTH, HEIGTH);
 	img.addr = mlx_get_data_addr(img.img, &img.bpp,
 								&img.line_length, &img.endian);
 	img.zoom = 1;
 	img.x = 0;
 	img.y = 0;
+	img.cx = 0.5;
+	img.cy = -0.5;
 	put_julia(&img.img, &img);
 	mlx_put_image_to_window(img.mlx, img.mlx_win, img.img, 0, 0);
-	mlx_hook(img.mlx_win, 2, 1L<<0, handle_press, &img);
+	mlx_hook(img.mlx_win, 2, 1L<<0, handle_key, &img);
 	mlx_loop(img.mlx);
 }
