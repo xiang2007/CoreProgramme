@@ -2,13 +2,13 @@
 
 static void move(int key, t_data *win)
 {
-	if (key == XK_a)
+	if (key == XK_Left || key == XK_a)
 		win->x -= (0.1) / win->zoom;
-	if (key == XK_d)
+	if (key == XK_Right || key == XK_d)
 		win->x += (0.1) / win->zoom;
-	if (key == XK_w)
+	if (key == XK_Up || key == XK_w)
 		win->y -= (0.1) / win->zoom;
-	if (key == XK_s)
+	if (key == XK_Down || key == XK_s)
 		win->y += (0.1) / win->zoom;
 	if (win->mandel)
 		put_mandel(&win->img, win);
@@ -29,6 +29,8 @@ static void zoom(int key, t_data *data)
 			put_mandel(&data->img, data);
 		else
 			put_julia(&data->img, data);
+		mlx_put_image_to_window(data->mlx, data->mlx_win,
+								data->img, 0, 0);
 }
 
 int	handle_mouse(int key, int x, int y, t_data *win)
@@ -91,14 +93,14 @@ int	handle_key(int key, t_data *win)
 	}
 	if (key == XK_f || key == XK_g)
 		zoom(key, win);
-	if (key == XK_w || key == XK_s || 
-		key == XK_a || key == XK_d)
+	if (key == XK_w || key == XK_s
+		|| key == XK_a || key == XK_d
+		|| key == XK_Up || key == XK_Down
+		|| key == XK_Left || key == XK_Right)
 		move (key, win);
 	if (key == K1 || key == K2 || key == K3 || key == K4)
 		change_value(key, win);
 	if (key == XK_z || key == XK_x)
 		change_color(key, win);
-	mlx_put_image_to_window(win->mlx, win->mlx_win,
-							win->img, win->x, win->y);
 	return (0);
 }
