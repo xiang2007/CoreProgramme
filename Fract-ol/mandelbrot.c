@@ -31,7 +31,7 @@ int	interpolate_color(int c1, int c2, t_d t)
 	return ((r << 16) | (g << 8) | b);
 }
 
-int	get_color(t_d n, int iter)
+int	get_color(t_d n, int iter, t_data *data)
 {
 	t_d		res;
 	t_d		f;
@@ -45,21 +45,21 @@ int	get_color(t_d n, int iter)
 		return (BLACK);
 	res = ((iter + 1) - (log(log(fabs(n)))) / log(2));
 	f = res - floor(res);
-	color.color_number = 7;
+	color.color_number = data->color_num;
 	i = ((int)floor(res)) % color.color_number;
 	color.c1 = palette[i];
 	color.c2 = palette[(i + 1) % color.color_number];
 	return (interpolate_color(color.c1, color.c2, f));
 }
 
-int	get_iter(int x, int y, t_d *z_last, t_data *ct)
+int	get_iter(int x, int y, t_d *z_last, t_data *data)
 {
 	t_xy	xy;
 	int		iter;
 
 	iter = 0;
-	xy.x0 = get_x_scaled(x, ct->zoom, ct->x);
-	xy.y0 = get_y_scaled(y, ct->zoom, ct-> y);
+	xy.x0 = get_x_scaled(x, data->zoom, data->x, data);
+	xy.y0 = get_y_scaled(y, data->zoom, data->y, data);
 	xy.x = 0;
 	xy.y = 0;
 	xy.x2 = 0;
@@ -76,7 +76,7 @@ int	get_iter(int x, int y, t_d *z_last, t_data *ct)
 	return (iter);
 }
 
-void	put_mandel(void *img, t_data *control)
+void	put_mandel(void *img, t_data *data)
 {
 	t_iter iter;
 	t_d	z_last;
@@ -84,13 +84,14 @@ void	put_mandel(void *img, t_data *control)
 	iter.j = 0;
 	z_last = 0;
 	iter.color = 0;
-	while (iter.j <= HEIGTH)
+	data->mandel = 1;
+	while (iter.j <= HEIGHT)
 	{
 		iter.i = 0;
 		while (iter.i <= WIDTH)
 		{
-			iter.iter = get_iter(iter.i, iter.j, &z_last, control);
-			iter.color = get_color(z_last, iter.iter);
+			iter.iter = get_iter(iter.i, iter.j, &z_last, data);
+			iter.color = get_color(z_last, iter.iter, data);
 			ftput_pixel(img, iter.i, iter.j, iter.color);
 			iter.i++;
 		}

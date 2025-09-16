@@ -10,7 +10,7 @@ int	**asign_block(char **av, int **arr)
 	while (av[iter])
 	{
 		var.j = 0;
-		arr[var.i] = (int *)malloc(sizeof(int *) * 10);
+		arr[var.i] = (int *)malloc(sizeof(int) * 9);
 		while(var.j < 9)
 		{
 			arr[var.i][var.j] = atoi(av[iter]);

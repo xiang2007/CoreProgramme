@@ -15,6 +15,6 @@ typedef struct s_var
 char	**ft_split(char const *s, char c);
 void	*fall(char **src);
 int		**asign_block(char **av, int **arr);
-void	*fint(int **arr);
+void	fint(int **arr, int iter);
 
 #endif

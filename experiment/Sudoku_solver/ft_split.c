@@ -92,13 +92,17 @@ void	*fall(char **src)
 	return (NULL);
 }
 
-void	*fint(int **arr)
+void	fint(int **arr, int iter)
 {
 	int	i;
+	int	j;
 
 	i = 0;
-	while (arr[i])
-		free(arr[i++]);
+	while (i < iter)
+	{
+		free(arr[i]);
+		i++;
+	}
 	free(arr);
-	return (NULL);
+	return ;
 }

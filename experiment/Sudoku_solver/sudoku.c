@@ -3,24 +3,39 @@
 int main(int ac, char **av)
 {
 	t_var 	var;
-	int		**block;
+	int		iter;
+	int		**arr;
 
 	if (ac == 2)
 	{
 		var.i = 0;
-		block = (int **)malloc(sizeof(int **) * 9 * 9);
-		block = asign_block(av, block);
-		while (var.i < 9)
+		arr = (int **)malloc(sizeof(int *) * (ac - 1) * 9);
+		iter = 1;
+		while (av[iter])
 		{
 			var.j = 0;
-			while (var.j < 9)
+			arr[var.i] = (int *)malloc(sizeof(int) * 9);
+			while(var.j < 9)
 			{
-				printf("block %d = %d\n", var.i, block[var.i][var.j]);
-				var.j++;
+				arr[var.i][var.j] = atoi(av[iter]);
+				printf("Number is %d\n", arr[var.i][var.j]);
+				iter++;
+			var.j++;
 			}
-			var.i++;
+		var.i++;
+	}
+	var.i = 0;
+	while (var.i < 9)
+	{
+		var.j = 0;
+		while (var.j < 9)
+		{
+			printf("arr %d = %d\n", var.i, arr[var.i][var.j]);
+			var.j++;
 		}
-		fint(block);
-		return (0);
+		var.i++;
+	}
+	fint(arr, ac - 1);
+	return (0);
 	}
 }

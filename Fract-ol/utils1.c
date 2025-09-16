@@ -20,49 +20,75 @@ void	ftput_pixel(t_data *img_data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-static void move(int key, t_data *win)
-{
-	if (key == XK_a)
-		win->x -= 0.1 / win->zoom;
-	if (key == XK_d)
-		win->x += 0.1 / win->zoom;
-	if (key == XK_w)
-		win->y -= 0.1 / win->zoom;
-	if (key == XK_s)
-		win->y += 0.1 / win->zoom;
-	put_mandel(&win->img, win);
-	mlx_put_image_to_window(win->mlx, win->mlx_win,
-								win->img, 0, 0);
+#include <stdio.h>
 
-}
-
-static void	move(int key, t_data *data)
+static double n_times(double nbr, int n)
 {
-	
-}
-
-int	handle_key(int key, t_data *win)
-{
-	if (key == XK_Escape || key == XK_q)
+	while (n)
 	{
-		mlx_destroy_image(win->mlx, win->img);
-		mlx_destroy_window(win->mlx, win->mlx_win);
-		mlx_destroy_display(win->mlx);
-		free(win->mlx);
-		exit(0);
+		nbr /= 10;
+		n--;
 	}
-	if (key == XK_f || XK_g)
-	{
-		if (key == XK_f)
-			win->zoom += 1;
-		if (key == XK_g && win->zoom > 0)
-			win->zoom -= 1;
-		put_mandel(&win->img, win);
-		mlx_put_image_to_window(win->mlx, win->mlx_win,
-								win->img, win->x, win->y);
-	}
-	if (key == XK_w || key == XK_s || key == XK_a || key == XK_d)
-		move (key, win);
-	return (0);
+	return (nbr);
 }
 
+double	ft_atof(char *av)
+{
+	double	res;
+	double	temp;
+	int		i;
+	int		n;
+	int		negative;
+
+	res = 0;
+	temp = 0;
+	i = 2;
+	n = 1;
+	negative = 1;
+	while(av[i])
+	{
+		if (av[0] == '-')
+			negative = -1;
+		if (av[i] >= '0' && av[i] <= '9')
+		{
+			temp = av[i] - '0';
+			temp = n_times(temp, n);
+			res += temp;
+			n++;
+		}
+		i++;
+	}
+	return (res * negative);
+}
+
+void	change_color(int key, t_data *data)
+{
+	int	i;
+
+	i = data->color_num;
+	if (i < 3 ||i > 6)
+	{
+		if (i < 3)
+			i = 6;
+		if (i > 7)
+			i = 3;
+	}
+	if (key == XK_z)
+		data->color_num = i++;
+	if (key == XK_x)
+		data->color_num = i--;
+	data->color_num = i;
+	if (data->mandel)
+		put_mandel(&data->img, data);
+	else
+		put_julia(&data->img, data);
+}
+
+void	close_all(t_data *data)
+{
+	mlx_destroy_image(data->mlx, data->img);
+	mlx_destroy_window(data->mlx, data->mlx_win);
+	mlx_destroy_display(data->mlx);
+	free(data->mlx);
+	exit(0);
+}

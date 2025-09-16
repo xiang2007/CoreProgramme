@@ -16,7 +16,7 @@ CFLAGS = -Wall -Werror -Wextra -g -I./includes
 LIB = -Lmlx_Linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 RM = rm -rf
 
-SRC = ./mandelbrot.c ./arithmetic.c ./utils1.c ./fractol.c ./julia.c
+SRC = ./mandelbrot.c ./arithmetic.c ./utils1.c ./fractol.c ./julia.c ./event.c
 LIBFT_SRC = ./libft/ft_memcpy.c ./libft/ft_memmove.c ./libft/ft_memset.c ./libft/ft_putchar_fd.c ./libft/ft_strlen.c \
 		./libft/ft_strnstr.c ./libft/ft_strrchr.c ./libft/ft_substr.c ./libft/ft_tolower.c ./libft/ft_toupper.c \
 	./libft/ft_putendl_fd.c ./libft/ft_putnbr_fd.c ./libft/ft_putstr_fd.c ./libft/ft_split.c ./libft/ft_strchr.c \

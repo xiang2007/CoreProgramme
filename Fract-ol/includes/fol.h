@@ -14,7 +14,7 @@
 # define FOL_H
 
 # define WIDTH 800
-# define HEIGTH 800
+# define HEIGHT 800
 # define XMIN -2
 # define XMAX 1
 # define YMIN -1.135
@@ -29,6 +29,10 @@
 # define DBLUE 0x00007F
 # define PURPLE 0x772FB1
 # define MAX_ITER 50
+# define K1 XK_1
+# define K2 XK_2
+# define K3 XK_3
+# define K4 XK_4
 
 typedef double t_d;
 
@@ -49,12 +53,17 @@ typedef struct	s_data
 	int		line_length;
 	int		endian;
 	int		mandel;
-	int		julia;
+	int		jl;
+	int		color_num;
 	t_d		zoom;
 	t_d		x;
 	t_d		y;
 	t_d		cx;
 	t_d		cy;
+	t_d		mx;
+	t_d		my;
+	t_d		jcx;
+	t_d		jcy;
 }				t_data;
 
 typedef struct	s_xy
@@ -104,11 +113,15 @@ typedef struct s_control
 }				t_control;
 
 t_d		d_sq(t_d num);
-t_d		get_x_scaled(t_d x, t_d zoom, t_d sx);
-t_d		get_y_scaled(t_d y, t_d zoom, t_d sy);
+t_d		get_x_scaled(t_d x, t_d zoom, t_d sx, t_data *data);
+t_d		get_y_scaled(t_d y, t_d zoom, t_d sy, t_data *data);
 void	ftput_pixel(t_data *img_data, int x, int y, int color);
 int		handle_key(int key, t_data *win);
 void	put_mandel(void *img, t_data *control);
 void	put_julia(void *img, t_data *control);
+int		handle_mouse(int key, int x, int y, t_data *win);
+double	ft_atof(char *av);
+void	change_color(int key, t_data *data);
+void	close_all(t_data *data);
 
 #endif
