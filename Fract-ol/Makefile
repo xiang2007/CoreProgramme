@@ -16,7 +16,7 @@ CFLAGS = -Wall -Werror -Wextra -g -I./includes
 LIB = -Lmlx_Linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 RM = rm -rf
 
-SRC = ./mandelbrot.c ./arithmetic.c ./utils1.c ./fractol.c ./julia.c ./event.c
+FTSRC = ./mandelbrot.c ./arithmetic.c ./utils1.c ./fractol.c ./julia.c ./event.c
 LIBFT_SRC = ./libft/ft_memcpy.c ./libft/ft_memmove.c ./libft/ft_memset.c ./libft/ft_putchar_fd.c ./libft/ft_strlen.c \
 		./libft/ft_strnstr.c ./libft/ft_strrchr.c ./libft/ft_substr.c ./libft/ft_tolower.c ./libft/ft_toupper.c \
 	./libft/ft_putendl_fd.c ./libft/ft_putnbr_fd.c ./libft/ft_putstr_fd.c ./libft/ft_split.c ./libft/ft_strchr.c \
@@ -25,16 +25,23 @@ LIBFT_SRC = ./libft/ft_memcpy.c ./libft/ft_memmove.c ./libft/ft_memset.c ./libft
 	./libft/ft_atoi.c ./libft/ft_bzero.c ./libft/ft_calloc.c ./libft/ft_isalnum.c ./libft/ft_isalpha.c \
 	./libft/ft_isascii.c ./libft/ft_isdigit.c ./libft/ft_isprint.c ./libft/ft_itoa.c ./libft/ft_memchr.c \
 
+SRC = $(FTSRC) $(LIBFT_SRC)
+OBJS = $(SRC:.c=.o)
 NAME = fractol
 
-.PHONY: c clean fclean re
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-c:
-	$(CC) $(CFLAGS) $(LIBFT_SRC) $(SRC) $(LIB) -o $(NAME)
+$(NAME):
+	$(CC) $(CFLAGS) $(SRC) $(LIB) -o $(NAME)
+
+all: $(NAME)
 
 clean:
 	$(RM) $(NAME)
 
 fclean: clean
 
-re: fclean c
+re: fclean all
+
+.PHONY: all clean fclean re

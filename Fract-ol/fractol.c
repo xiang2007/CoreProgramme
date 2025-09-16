@@ -58,7 +58,7 @@ int	main(int ac, char **av)
 		img.addr = mlx_get_data_addr(img.img, &img.bpp,
 									&img.line_length, &img.endian);
 		asign_value(&img, ac, av);
-		if (ft_strnstr(av[1], "mandelbrot", 11))
+		if (ft_strnstr(av[1], "mandelbrot", 11) && ac == 2)
 			put_mandel(&img.img, &img);
 		else if (ft_strnstr(av[1], "julia", 6))
 			put_julia(&img.img, &img);

@@ -20,8 +20,6 @@ void	ftput_pixel(t_data *img_data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-#include <stdio.h>
-
 static double n_times(double nbr, int n)
 {
 	while (n)
