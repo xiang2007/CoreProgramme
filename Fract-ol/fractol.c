@@ -26,7 +26,7 @@ void	asign_value(t_data *img, int ac, char **av)
 	img->color_num = 7;
 	if (ac == 3)
 	{
-		close_all(img);
+		close_all(1, img);
 		ft_putendl_fd("Set available: 1.Mandlbrot 2.Julia", 1);
 	}
 	if (ac > 1 && av[2] && av[3])
@@ -42,7 +42,7 @@ void	asign_value(t_data *img, int ac, char **av)
 void	err_ext(t_data *data)
 {
 	ft_putendl_fd("Set available: \n\t1.Mandlbrot\n\t2.Julia", 1);
-	close_all(data);
+	close_all(1, data);
 	exit(1);
 }
 
@@ -66,6 +66,7 @@ int	main(int ac, char **av)
 			err_ext(&img);
 		mlx_put_image_to_window(img.mlx, img.mlx_win, img.img, 0, 0);
 		mlx_hook(img.mlx_win, 2, 1L<<0, handle_key, &img);
+		mlx_hook(img.mlx_win, 17, 1L<<17, close_all, &img);
 		mlx_mouse_hook(img.mlx_win, handle_mouse, &img);
 		mlx_loop(img.mlx);
 	}

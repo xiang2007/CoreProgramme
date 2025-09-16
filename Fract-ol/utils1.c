@@ -82,13 +82,19 @@ void	change_color(int key, t_data *data)
 		put_mandel(&data->img, data);
 	else
 		put_julia(&data->img, data);
+	mlx_put_image_to_window(data->mlx, data->mlx_win,
+							data->img, 0, 0);
 }
 
-void	close_all(t_data *data)
+int	close_all(int key, t_data *data)
 {
-	mlx_destroy_image(data->mlx, data->img);
-	mlx_destroy_window(data->mlx, data->mlx_win);
-	mlx_destroy_display(data->mlx);
-	free(data->mlx);
-	exit(0);
+	if (key > 0)
+	{
+		mlx_destroy_image(data->mlx, data->img);
+		mlx_destroy_window(data->mlx, data->mlx_win);
+		mlx_destroy_display(data->mlx);
+		free(data->mlx);
+		exit(0);
+	}
+	exit (0);
 }

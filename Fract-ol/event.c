@@ -83,7 +83,8 @@ void	change_value(int key, t_data *data)
 
 int	handle_key(int key, t_data *win)
 {
-	if (key == XK_Escape || key == XK_q || key == 17)
+	printf("Key is %d\n", key);
+	if (key == XK_Escape || key == XK_q || key == 17 || key == CLOSE)
 	{
 		mlx_destroy_image(win->mlx, win->img);
 		mlx_destroy_window(win->mlx, win->mlx_win);

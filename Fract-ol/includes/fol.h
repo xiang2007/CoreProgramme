@@ -33,6 +33,7 @@
 # define K2 XK_2
 # define K3 XK_3
 # define K4 XK_4
+# define CLOSE 0xCE0E4D0
 
 typedef double t_d;
 
@@ -122,6 +123,6 @@ void	put_julia(void *img, t_data *control);
 int		handle_mouse(int key, int x, int y, t_data *win);
 double	ft_atof(char *av);
 void	change_color(int key, t_data *data);
-void	close_all(t_data *data);
+int		close_all(int key, t_data *data);
 
 #endif
