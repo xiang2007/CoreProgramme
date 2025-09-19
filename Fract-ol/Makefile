@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 16:18:33 by wshou-xi          #+#    #+#              #
-#    Updated: 2025/09/13 00:49:12 by marvin           ###   ########.fr        #
+#    Updated: 2025/09/19 11:15:46 by wshou-xi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ LIBFT_SRC = ./libft/ft_memcpy.c ./libft/ft_memmove.c ./libft/ft_memset.c ./libft
 	./libft/ft_atoi.c ./libft/ft_bzero.c ./libft/ft_calloc.c ./libft/ft_isalnum.c ./libft/ft_isalpha.c \
 	./libft/ft_isascii.c ./libft/ft_isdigit.c ./libft/ft_isprint.c ./libft/ft_itoa.c ./libft/ft_memchr.c \
 
-NAME = fractol
+NAME = fract-ol
 
 .PHONY: c clean fclean re
 
