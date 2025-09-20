@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 11:23:27 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/09/11 17:02:29 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/09/20 01:43:29 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 void	ftput_pixel(t_data *img_data, int x, int y, int color)
 {
 	char	*dst;
+	int		temp;
 
-	dst = img_data->addr + (int)(y * img_data->line_length + x * (img_data->bpp / 8));
+	temp = (int)(y * img_data->line_length + x * (img_data->bpp / 8));
+	dst = img_data->addr + temp;
 	*(unsigned int *)dst = color;
 }
 
-#include <stdio.h>
-
-static double n_times(double nbr, int n)
+static double	n_times(double nbr, int n)
 {
 	while (n)
 	{
@@ -45,7 +45,7 @@ double	ft_atof(char *av)
 	i = 2;
 	n = 1;
 	negative = 1;
-	while(av[i])
+	while (av[i])
 	{
 		if (av[0] == '-')
 			negative = -1;
@@ -66,7 +66,7 @@ void	change_color(int key, t_data *data)
 	int	i;
 
 	i = data->color_num;
-	if (i < 3 ||i > 6)
+	if (i < 3 || i > 6)
 	{
 		if (i < 3)
 			i = 6;
@@ -83,18 +83,14 @@ void	change_color(int key, t_data *data)
 	else
 		put_julia(&data->img, data);
 	mlx_put_image_to_window(data->mlx, data->mlx_win,
-							data->img, 0, 0);
+		data->img, 0, 0);
 }
 
-int	close_all(int key, t_data *data)
+int	close_all(t_data *data)
 {
-	if (key > 0)
-	{
-		mlx_destroy_image(data->mlx, data->img);
-		mlx_destroy_window(data->mlx, data->mlx_win);
-		mlx_destroy_display(data->mlx);
-		free(data->mlx);
-		exit(0);
-	}
-	exit (0);
+	mlx_destroy_image(data->mlx, data->img);
+	mlx_destroy_window(data->mlx, data->mlx_win);
+	mlx_destroy_display(data->mlx);
+	free(data->mlx);
+	exit(0);
 }

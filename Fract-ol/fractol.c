@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 07:08:27 by marvin            #+#    #+#             */
-/*   Updated: 2025/09/13 00:48:13 by marvin           ###   ########.fr       */
+/*   Updated: 2025/09/20 01:44:51 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	asign_value(t_data *img, int ac, char **av)
 void	err_ext(t_data *data)
 {
 	ft_putendl_fd("Set available: \n\t1.Mandlbrot\n\t2.Julia", 1);
-	close_all(1, data);
+	close_all(data);
 	exit(1);
 }
 
@@ -56,7 +56,7 @@ int	main(int ac, char **av)
 		img.mlx_win = mlx_new_window(img.mlx, WIDTH, HEIGHT, "Fract-ol");
 		img.img = mlx_new_image(img.mlx, WIDTH, HEIGHT);
 		img.addr = mlx_get_data_addr(img.img, &img.bpp,
-									&img.line_length, &img.endian);
+				&img.line_length, &img.endian);
 		asign_value(&img, ac, av);
 		if (ft_strnstr(av[1], "mandelbrot", 11))
 			put_mandel(&img.img, &img);
@@ -65,8 +65,8 @@ int	main(int ac, char **av)
 		else
 			err_ext(&img);
 		mlx_put_image_to_window(img.mlx, img.mlx_win, img.img, 0, 0);
-		mlx_hook(img.mlx_win, 2, 1L<<0, handle_key, &img);
-		mlx_hook(img.mlx_win, 17, 1L<<17, close_all, &img);
+		mlx_hook(img.mlx_win, 2, 1L << 0, handle_key, &img);
+		mlx_hook(img.mlx_win, 17, 1L << 17, close_all, &img);
 		mlx_mouse_hook(img.mlx_win, handle_mouse, &img);
 		mlx_loop(img.mlx);
 	}

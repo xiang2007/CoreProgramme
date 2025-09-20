@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 16:18:16 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/09/13 00:48:38 by marvin           ###   ########.fr       */
+/*   Updated: 2025/09/20 01:43:53 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,6 @@ void	put_julia(void *img, t_data *control);
 int		handle_mouse(int key, int x, int y, t_data *win);
 double	ft_atof(char *av);
 void	change_color(int key, t_data *data);
-int		close_all(int key, t_data *data);
+int		close_all(t_data *data);
 
 #endif
