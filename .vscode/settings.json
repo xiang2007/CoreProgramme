@@ -24,5 +24,6 @@
 	],
 	"python.testing.pytestEnabled": false,
 	"python.testing.unittestEnabled": true,
-	"C_Cpp.errorSquiggles": "enabled"
+	"C_Cpp.errorSquiggles": "enabled",
+	"cmake.sourceDirectory": "/home/wee/Desktop/core/experiment/opengl/glfw-3.4"
 }
