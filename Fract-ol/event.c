@@ -114,6 +114,6 @@ int	handle_key(int key, t_data *win)
 	if (key == K1 || key == K2 || key == K3 || key == K4)
 		change_value(key, win);
 	if (key == XK_z || key == XK_x)
-		change_color(win);
+		change_color(key, win);
 	return (0);
 }

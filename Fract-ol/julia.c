@@ -12,16 +12,15 @@
 
 #include "includes/fol.h"
 
-int	*asign_color(int *temp)
+static int	*asign_color(int *temp)
 {
 	temp[0] = RED;
 	temp[1] = ORANGE;
 	temp[2] = YELLOW;
-	temp[4] = GREEN;
-	temp[5] = BLUE;
-	temp[6] = DBLUE;
-	temp[7] = PURPLE;
-	temp[8] = '\0';
+	temp[3] = GREEN;
+	temp[4] = BLUE;
+	temp[5] = DBLUE;
+	temp[6] = PURPLE;
 	return (temp);
 }
 
@@ -53,10 +52,13 @@ static int	get_color(t_d n, int iter, t_data *data)
 	int		*palette;
 
 	res = 0;
-	palette = (int *)malloc(sizeof(int) * 9);
+	palette = (int *)malloc(sizeof(int) * 7);
 	palette = asign_color(palette);
 	if (iter == MAX_ITER)
+	{
+		free(palette);
 		return (BLACK);
+	}
 	res = ((iter + 1) - (log(log(fabs(n)))) / log(2));
 	f = res - floor(res);
 	color.color_number = data->color_num;

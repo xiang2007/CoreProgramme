@@ -12,6 +12,19 @@
 
 #include "includes/fol.h"
 
+static int	*asign_color(int *temp)
+{
+	temp[0] = RED;
+	temp[1] = ORANGE;
+	temp[2] = YELLOW;
+	temp[3] = GREEN;
+	temp[4] = BLUE;
+	temp[5] = DBLUE;
+	temp[6] = PURPLE;
+	temp[7] = '\0';
+	return (temp);
+}
+
 int	interpolate_color(int c1, int c2, t_d t)
 {
 	t_color	color;
@@ -37,18 +50,23 @@ int	get_color(t_d n, int iter, t_data *data)
 	t_d		f;
 	t_color	color;
 	int		i;
-	int		palette[7] = {RED, ORANGE, YELLOW, GREEN, BLUE,
-		DBLUE, PURPLE};
+	int		*palette;
 
+	palette = (int *)malloc(sizeof(int) * 8);
+	palette = asign_color(palette);
 	res = 0;
 	if (iter == MAX_ITER)
+	{
+		free(palette);
 		return (BLACK);
+	}
 	res = ((iter + 1) - (log(log(fabs(n)))) / log(2));
 	f = res - floor(res);
 	color.color_number = data->color_num;
 	i = ((int)floor(res)) % color.color_number;
 	color.c1 = palette[i];
 	color.c2 = palette[(i + 1) % color.color_number];
+	free (palette);
 	return (interpolate_color(color.c1, color.c2, f));
 }
 

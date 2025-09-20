@@ -26,7 +26,7 @@ void	asign_value(t_data *img, int ac, char **av)
 	img->color_num = 7;
 	if (ac == 3)
 	{
-		close_all(1, img);
+		close_all(img);
 		ft_putendl_fd("Set available: 1.Mandlbrot 2.Julia", 1);
 	}
 	if (ac > 1 && av[2] && av[3])
@@ -53,7 +53,7 @@ int	main(int ac, char **av)
 	if (ac > 1)
 	{
 		img.mlx = mlx_init();
-		img.mlx_win = mlx_new_window(img.mlx, WIDTH, HEIGHT, "Fract-ol");
+		img.mlx_win = mlx_new_window(img.mlx, WIDTH, HEIGHT, "Fractol");
 		img.img = mlx_new_image(img.mlx, WIDTH, HEIGHT);
 		img.addr = mlx_get_data_addr(img.img, &img.bpp,
 				&img.line_length, &img.endian);
