@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 16:18:25 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/09/13 00:34:32 by marvin           ###   ########.fr       */
+/*   Updated: 2025/09/20 01:28:32 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	get_color(t_d n, int iter, t_data *data)
 	t_color	color;
 	int		i;
 	int		palette[7] = {RED, ORANGE, YELLOW, GREEN, BLUE,
-				DBLUE, PURPLE};
+		DBLUE, PURPLE};
 
 	res = 0;
 	if (iter == MAX_ITER)
@@ -78,8 +78,8 @@ int	get_iter(int x, int y, t_d *z_last, t_data *data)
 
 void	put_mandel(void *img, t_data *data)
 {
-	t_iter iter;
-	t_d	z_last;
+	t_iter	iter;
+	t_d		z_last;
 
 	iter.j = 0;
 	z_last = 0;
@@ -98,4 +98,3 @@ void	put_mandel(void *img, t_data *data)
 		iter.j++;
 	}
 }
-

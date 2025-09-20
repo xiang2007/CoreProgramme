@@ -6,11 +6,24 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 00:30:59 by marvin            #+#    #+#             */
-/*   Updated: 2025/09/13 00:30:59 by marvin           ###   ########.fr       */
+/*   Updated: 2025/09/20 01:40:47 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fol.h"
+
+int	*asign_color(int *temp)
+{
+	temp[0] = RED;
+	temp[1] = ORANGE;
+	temp[2] = YELLOW;
+	temp[4] = GREEN;
+	temp[5] = BLUE;
+	temp[6] = DBLUE;
+	temp[7] = PURPLE;
+	temp[8] = '\0';
+	return (temp);
+}
 
 static int	interpolate_color(int c1, int c2, t_d t)
 {
@@ -37,10 +50,11 @@ static int	get_color(t_d n, int iter, t_data *data)
 	t_d		f;
 	t_color	color;
 	int		i;
-	int		palette[7] = {RED, ORANGE, YELLOW, GREEN, BLUE,
-				DBLUE, PURPLE};
+	int		*palette;
 
 	res = 0;
+	palette = (int *)malloc(sizeof(int) * 9);
+	palette = asign_color(palette);
 	if (iter == MAX_ITER)
 		return (BLACK);
 	res = ((iter + 1) - (log(log(fabs(n)))) / log(2));
@@ -49,6 +63,7 @@ static int	get_color(t_d n, int iter, t_data *data)
 	i = ((int)floor(res)) % color.color_number;
 	color.c1 = palette[i];
 	color.c2 = palette[(i + 1) % color.color_number];
+	free(palette);
 	return (interpolate_color(color.c1, color.c2, f));
 }
 
@@ -76,8 +91,8 @@ int	julia_iter(int x, int y, t_d *z_last, t_data *data)
 
 void	put_julia(void *img, t_data *data)
 {
-	t_iter iter;
-	t_d	z_last;
+	t_iter	iter;
+	t_d		z_last;
 
 	iter.j = 0;
 	z_last = 0;

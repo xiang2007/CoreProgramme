@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   event.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/20 01:21:41 by marvin            #+#    #+#             */
+/*   Updated: 2025/09/20 01:44:06 by marvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fol.h"
 
-static void move(int key, t_data *win)
+static void	move(int key, t_data *win)
 {
 	if (key == XK_Left || key == XK_a)
 		win->x -= (0.1) / win->zoom;
@@ -15,22 +27,23 @@ static void move(int key, t_data *win)
 	else
 		put_julia(&win->img, win);
 	mlx_put_image_to_window(win->mlx, win->mlx_win,
-								win->img, 0, 0);
-
+		win->img, 0, 0);
 }
 
-static void zoom(int key, t_data *data)
+static void	zoom(int key, t_data *data)
 {
-		if (key == XK_f || key == 4)
-			data->zoom *= 1.1;
-		if ((key == XK_g || key == 5) && data->zoom > 0)
-			data->zoom /= 1.1;
-		if (data->mandel)
-			put_mandel(&data->img, data);
-		else
-			put_julia(&data->img, data);
+	if (key == XK_f || key == 4)
+		data->zoom *= 1.1;
+	if ((key == XK_g || key == 5) && data->zoom > 0)
+		data->zoom /= 1.1;
+	if (data->mandel)
+		put_mandel(&data->img, data);
+	else
+	{
+		put_julia(&data->img, data);
 		mlx_put_image_to_window(data->mlx, data->mlx_win,
-								data->img, 0, 0);
+			data->img, 0, 0);
+	}
 }
 
 int	handle_mouse(int key, int x, int y, t_data *win)
@@ -47,7 +60,7 @@ int	handle_mouse(int key, int x, int y, t_data *win)
 		else
 			put_julia(&win->img, win);
 		mlx_put_image_to_window(win->mlx, win->mlx_win,
-									win->img, 0, 0);
+			win->img, 0, 0);
 	}
 	return (0);
 }
@@ -78,7 +91,7 @@ void	change_value(int key, t_data *data)
 	}
 	put_julia(&data->img, data);
 	mlx_put_image_to_window(data->mlx, data->mlx_win,
-								data->img, 0, 0);
+		data->img, 0, 0);
 }
 
 int	handle_key(int key, t_data *win)
@@ -101,6 +114,6 @@ int	handle_key(int key, t_data *win)
 	if (key == K1 || key == K2 || key == K3 || key == K4)
 		change_value(key, win);
 	if (key == XK_z || key == XK_x)
-		change_color(key, win);
+		change_color(win);
 	return (0);
 }
