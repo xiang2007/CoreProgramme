@@ -1,8 +1,6 @@
 #include "philo.h"
 
-int main(int ac, char **av)
+int	main()
 {
-	pthread_t thread;
-
-	if (pthread_create())
+	printf("size of hi is %d\n", ft_strlen("hi"));
 }

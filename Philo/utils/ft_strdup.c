@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils2.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/16 22:22:20 by marvin            #+#    #+#             */
-/*   Updated: 2025/07/14 11:45:30 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/06/04 16:33:23 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/09/22 22:41:22 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-int	ft_count(unsigned long n, int base)
-{
-	int	size;
-
-	size = 0;
-	if (n == 0)
-		return (1);
-	while (n > 0)
-	{
-		n /= base;
-		size++;
-	}
-	return (size);
-}
+#include "utils.h"
 
 char	*ft_strdup(const char *str)
+
 {
 	char	*dst;
 	int		len;
@@ -43,14 +29,4 @@ char	*ft_strdup(const char *str)
 	}
 	dst[len] = '\0';
 	return (dst);
-}
-
-size_t	ft_strlen(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
 }

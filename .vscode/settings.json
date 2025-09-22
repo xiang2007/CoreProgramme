@@ -13,7 +13,9 @@
 		"span": "c",
 		"libft.h": "c",
 		"crtdefs.h": "c",
-		"fol.h": "c"
+		"fol.h": "c",
+		"utils.h": "c",
+		"limits.h": "c"
 	},
 	"python.testing.unittestArgs": [
 		"-v",

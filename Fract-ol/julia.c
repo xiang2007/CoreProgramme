@@ -52,13 +52,10 @@ static int	get_color(t_d n, int iter, t_data *data)
 	int		*palette;
 
 	res = 0;
+	if (iter == MAX_ITER)
+		return (BLACK);
 	palette = (int *)malloc(sizeof(int) * 7);
 	palette = asign_color(palette);
-	if (iter == MAX_ITER)
-	{
-		free(palette);
-		return (BLACK);
-	}
 	res = ((iter + 1) - (log(log(fabs(n)))) / log(2));
 	f = res - floor(res);
 	color.color_number = data->color_num;
