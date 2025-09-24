@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 01:21:41 by marvin            #+#    #+#             */
-/*   Updated: 2025/09/20 01:44:06 by marvin           ###   ########.fr       */
+/*   Updated: 2025/09/23 18:01:52 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,9 @@ static void	zoom(int key, t_data *data)
 	if (data->mandel)
 		put_mandel(&data->img, data);
 	else
-	{
 		put_julia(&data->img, data);
-		mlx_put_image_to_window(data->mlx, data->mlx_win,
-			data->img, 0, 0);
-	}
+	mlx_put_image_to_window(data->mlx, data->mlx_win,
+		data->img, 0, 0);
 }
 
 int	handle_mouse(int key, int x, int y, t_data *win)

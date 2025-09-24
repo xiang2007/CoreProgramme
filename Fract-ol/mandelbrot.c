@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 16:18:25 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/09/20 01:28:32 by marvin           ###   ########.fr       */
+/*   Updated: 2025/09/23 18:52:18 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static int	*asign_color(int *temp)
 	temp[4] = BLUE;
 	temp[5] = DBLUE;
 	temp[6] = PURPLE;
-	temp[7] = '\0';
 	return (temp);
 }
 
@@ -54,7 +53,7 @@ int	get_color(t_d n, int iter, t_data *data)
 
 	if (iter == MAX_ITER)
 		return (BLACK);
-	palette = (int *)malloc(sizeof(int) * 8);
+	palette = (int *)malloc(sizeof(int) * 7);
 	palette = asign_color(palette);
 	res = 0;
 	res = ((iter + 1) - (log(log(fabs(n)))) / log(2));

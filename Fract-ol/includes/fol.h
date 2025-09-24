@@ -3,15 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   fol.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 16:18:16 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/09/20 01:43:53 by marvin           ###   ########.fr       */
+/*   Updated: 2025/09/23 17:56:44 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FOL_H
 # define FOL_H
+
+# include "../libft/libft.h"
+# include "../mlx_Linux/mlx.h"
+# include <stdio.h>
+# include <math.h>
+# include <unistd.h>
+# include <X11/keysym.h>
 
 # define WIDTH 800
 # define HEIGHT 800
@@ -28,27 +35,20 @@
 # define BLUE 0x003366
 # define DBLUE 0x00007F
 # define PURPLE 0x772FB1
-# define MAX_ITER 10
+# define MAX_ITER 50
 # define K1 XK_1
 # define K2 XK_2
 # define K3 XK_3
 # define K4 XK_4
 # define CLOSE 0xCE0E4D0
 
-typedef double t_d;
+typedef double	t_d;
 
-# include "../libft/libft.h"
-# include "../mlx_Linux/mlx.h"
-# include <stdio.h>
-# include <math.h>
-# include <unistd.h>
-# include <X11/keysym.h>
-
-typedef struct	s_data
+typedef struct s_data
 {
 	void	*img;
 	void	*addr;
-	void	*mlx; 
+	void	*mlx;
 	void	*mlx_win;
 	int		bpp;
 	int		line_length;
@@ -67,7 +67,7 @@ typedef struct	s_data
 	t_d		jcy;
 }				t_data;
 
-typedef struct	s_xy
+typedef struct s_xy
 {
 	t_d	x;
 	t_d	x0;
