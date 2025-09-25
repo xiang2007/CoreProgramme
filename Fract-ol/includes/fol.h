@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 16:18:16 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/09/23 17:56:44 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/09/24 11:10:55 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 
 # include "../libft/libft.h"
 # include "../mlx_Linux/mlx.h"
-# include <stdio.h>
 # include <math.h>
-# include <unistd.h>
 # include <X11/keysym.h>
 
 # define WIDTH 800
