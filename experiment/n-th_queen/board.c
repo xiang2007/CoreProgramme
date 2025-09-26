@@ -3,19 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   board.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 23:30:08 by marvin            #+#    #+#             */
-/*   Updated: 2025/06/26 23:30:08 by marvin           ###   ########.fr       */
+/*   Updated: 2025/09/25 17:04:36 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-char	**board(int	n)
+int	main()
 {
-	char **board[n][n];
 
-	if (n <= 0)
-		return ;
 }

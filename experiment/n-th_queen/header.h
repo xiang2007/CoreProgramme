@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 23:17:19 by marvin            #+#    #+#             */
-/*   Updated: 2025/06/26 23:17:19 by marvin           ###   ########.fr       */
+/*   Updated: 2025/09/25 17:04:06 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HEADER_H
-#define HEADER_H
+# define HEADER_H
 
-#include <stdio.h>
+# include <stdio.h>
+# include <unistd.h>
 
 #endif
