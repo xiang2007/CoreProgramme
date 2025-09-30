@@ -21,8 +21,8 @@ typedef struct	s_philo
 {
 	int	died;
 	int	eaten;
+	int	thinking;
+	int	sleeping;
 }				t_philo;
-
-
 
 #endif

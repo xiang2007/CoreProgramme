@@ -11,7 +11,7 @@ char	*ft_strdup(char *str)
 	int	i;
 	char	*temp;
 
-	i = 0
+	i = 0;
 	if (!str)
 		return (NULL);
 	temp = (char *)malloc(sizeof(char) * strlen(str));
@@ -26,10 +26,8 @@ char	*ft_strdup(char *str)
 	return (temp);
 }
 
-char	*gnl()
+char	*gnl(int fd)
 {
-		char	temp[1];
-		read(STDIN, temp, 1);
 
 }
 
@@ -41,7 +39,7 @@ void	errmsg(void)
 }
 
 
-int	main()
+int	main(int ac, char **av)
 {
 	char	s1[] = "abcdefaaaabcdeabcabcdabc";
 	char	s2[] = "abc";
