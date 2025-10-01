@@ -12,7 +12,7 @@
 void	errmsg(void)
 {
 	perror ("Error");
-	return ;
+	return (1);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
@@ -45,7 +45,10 @@ int	check_nl(char *str)
 	while (str[i])
 	{
 		if (str[i] == '\n')
+		{
+			printf("buffer found on %d\n", i);
 			return (1);
+		}
 		i++;
 	}
 	return (0);
@@ -56,10 +59,9 @@ int	main(int ac, char **av)
 	char	buffer[100];
 	char	*out = NULL;
 	char	*tofind;
-	char		*ptr;
 	int		rs;
 	int		fd;
-	size_t		i = 0;
+	int		i = 0;
 
 	fd = 0;
 	if (ac != 2)
@@ -75,7 +77,6 @@ int	main(int ac, char **av)
 		if (check_nl(out))
 			break;
 	}
-	ptr = out;
 	while ((out = memmem(out, strlen(out), tofind, strlen(tofind))))
 	{
 		i = 0;
@@ -86,6 +87,5 @@ int	main(int ac, char **av)
 		}
 		out += strlen(tofind);
 	}
-	printf("%s\n", ptr);
 	return (0);
 }
