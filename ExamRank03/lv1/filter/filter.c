@@ -28,6 +28,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	if (!temp)
 	{
 		errmsg();
+		free(s1);
 		return (NULL);
 	}
 	if (s1)
@@ -35,8 +36,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	if (s2)
 		memcpy(temp + size1, s2, size2);
 	temp[size1 + size2] = '\0';
-	if (s1)
-		free (s1);
+	free (s1);
 	return (temp);
 
 }
@@ -57,10 +57,10 @@ int	check_nl(char *str)
 
 int	main(int ac, char **av)
 {
-	char	buffer[100];
+	char	buffer[1000000];
 	char	*out = NULL;
 	char	*tofind;
-	char		*ptr;
+	char	*ptr;
 	int		rs;
 	int		fd;
 	size_t		i = 0;
@@ -76,10 +76,14 @@ int	main(int ac, char **av)
 	{
 		buffer[rs] = '\0';
 		out = ft_strjoin(out, buffer);
-		if (check_nl(out))
-			break;
 	}
 	ptr = out;
+	if (rs < 0 || !out)
+	{
+		free (out);
+		errmsg();
+		return (1);
+	}
 	while ((out = memmem(out, strlen(out), tofind, strlen(tofind))))
 	{
 		i = 0;
@@ -90,6 +94,8 @@ int	main(int ac, char **av)
 		}
 		out += strlen(tofind);
 	}
-	printf("%s\n", ptr);
+	printf("%s", ptr);
+	// free (out);
+	free (ptr);
 	return (0);
 }
