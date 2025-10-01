@@ -1,5 +1,5 @@
 #ifndef BUF_SIZE
-# define BUF_SIZE 1
+# define BUF_SIZE 10
 #endif
 
 #define _GNU_SOURCE
@@ -12,6 +12,7 @@
 void	errmsg(void)
 {
 	perror ("Error");
+	printf("\n");
 	return ;
 }
 
@@ -25,7 +26,10 @@ char	*ft_strjoin(char *s1, char *s2)
 	size2 = (s2) ? strlen(s2) : 0;
 	temp = (char *)malloc(sizeof(char) * (size1 + size2 + 1));
 	if (!temp)
+	{
+		errmsg();
 		return (NULL);
+	}
 	if (s1)
 		memcpy(temp, s1, size1);
 	if (s2)
