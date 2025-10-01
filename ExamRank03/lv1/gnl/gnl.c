@@ -72,18 +72,34 @@ char	*get_file(int fd)
 		}
 		j += ft_strlen(buffer);
 	}
-	return (ft_strdup(res));
+	res[j] = '\0';
+	return res;
 }
 
-char	*get_next_line(char *str)
+char	*get_next_line(int	fd)
 {
 	int			i;
+	int			flag = 1;
 	static int	j;
+	int			rs;
+	static char *str;
+	char		buffer[BUFFER_SIZE + 1];
 	char		res[100000];
 
-	if (!str || str[j] == '\0')
-		return (NULL);
+	while ((rs = read(fd, buffer, BUFFER_SIZE)) && flag)
+	{
+		i = 0;
+		buffer[rs] = '\0';
+		while (buffer[i])
+		{
+			res[i + j] = buffer[i];
+			i++;
+		}
+		j += ft_strlen(buffer);
+	}
+	flag = 0;
 	i = 0;
+	j = 0;
 	while(str[j] && str[j] != '\n')
 	{
 		res[i] = str[j];
@@ -99,22 +115,18 @@ char	*get_next_line(char *str)
 int	main(void)
 {
 	int		fd;
-	char	*temp;
 	char	*res;
 
 	fd = open("test.txt", O_RDONLY);
 	if (fd < 0)
 		return (1);
-	temp = get_file(fd);
 	while (1)
 	{
-		res = get_next_line(temp);
+		res = get_next_line(fd);
+		printf("res is: %s\n", res);
 		if (!res)
 			break ;
-		printf("res is: %s\n", res);
-		free (res);
-		
+		free (res);		
 	}
-	free (temp);
 	return (0);
 }
