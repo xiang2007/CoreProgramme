@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -I./includes 
+CFLAGS = -Wall -Werror -Wextra -g -I./includes 
 LIB = -L./utils -lutils
 RM = rm -rf
 
