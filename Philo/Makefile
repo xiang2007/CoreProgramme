@@ -3,7 +3,7 @@ CFLAGS = -Wall -Werror -Wextra -g -I./includes
 LIB = -L./utils -lutils
 RM = rm -rf
 
-SRC = ./parsing.c ./philo.c
+SRC = ./parsing.c ./main.c ./Utils.c
 
 NAME = philo
 
