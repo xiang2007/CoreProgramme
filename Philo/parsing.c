@@ -64,5 +64,6 @@ int	asign(int ac, char **av, t_args *ag)
 	if (parse(ac, av, ag) < 0)
 		return (-1);
 	ag->start_time = gettime();
+	ag->fork = ag->num_o_phi - 1;
 	return (0);
 }

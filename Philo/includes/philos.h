@@ -28,13 +28,16 @@ typedef struct	s_philo
 {
 	int	id;
 	int	left_fork;
+	pthread_mutex_t	*left_fork;
 	int	right_fork;
+	pthread_mutex_t	*right_fork;
 	int	last_eaten;
 	int	last_sleep;
 	int	died;
 	int	eaten;
 	int	thinking;
 	int	sleeping;
+	t_ll	last_sleep;
 }				t_philo;
 
 t_ll gettime(void);
