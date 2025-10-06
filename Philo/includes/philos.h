@@ -22,7 +22,8 @@ typedef struct	s_args
 	int	stop;
 	t_ll	start_time;
 	pthread_mutex_t	execute;
-	pthread_mutex_t printing;
+	pthread_mutex_t	printing;
+	pthread_mutex_t	die;
 }				t_args;
 
 typedef struct	s_philo

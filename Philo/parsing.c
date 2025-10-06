@@ -1,22 +1,5 @@
 #include "philos.h"
 
-int	is_num(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (!str)
-		return (-1);
-	while (str[i])
-	{
-		if (str[i] >= '0' && str[i] <= '9')
-			i++;
-		else
-			return (-1);
-	}
-	return (0);
-}
-
 int	parse(int ac, char **av, t_args *ag)
 {
 	int	i;
@@ -66,4 +49,26 @@ int	asign(int ac, char **av, t_args *ag)
 	ag->start_time = gettime();
 	ag->fork = ag->num_o_phi - 1;
 	return (0);
+}
+
+t_philo	*create_philo(t_args *arg, t_philo *phi)
+{
+	int		i;
+	t_philo *philo;
+
+	i = 0;
+	philo = malloc(sizeof(t_philo) * arg->num_o_phi);
+	if (!philo)
+		return (NULL);
+	while (i < arg->num_o_phi)
+	{
+		philo[i].id = i = 1;
+		philo[i].last_eaten = arg->start_time;
+		philo[i].died = 0;
+		philo[i].eaten = 0;
+		philo[i].sleeping = 0;
+		philo[i].thinking = 0;
+	}
+	return (philo);
+
 }
