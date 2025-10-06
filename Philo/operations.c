@@ -13,12 +13,24 @@ void	philo_die(t_ll c_time, int id, t_args *arg, t_philo *phi)
 
 }
 
-void	philo_eat(t_args *arg, t_philo *phi)
+void	philo_eat(int id, t_args *arg, t_philo *phi)
 {
-	lock_mutex(phi->m_left_fork);
-	lock_mutex(phi->m_right_fork);
-	lock_mutex(&arg->printing);
+	t_ll	current_time;
+
+	current_time = gettime();
+	lock_mutex(&phi->m_left_fork[id - 1]);
+	lock_mutex(&phi->m_right_fork[id + 1]);
 	lock_mutex(&arg->execute);
-	if ((phi->last_eaten - arg->start_time) > arg->die_time);
+	if ((phi->last_eaten - arg->start_time) > arg->die_time)
+	{
+		philo_die(current_time, id, arg, phi);
+		return ;
+	}
+	else
+	{
+		arg->fork[id - 1] = 0;
+		arg->fork[id + 1] = 0;
+	}
 
 }
+

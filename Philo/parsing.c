@@ -68,6 +68,7 @@ t_philo	*create_philo(t_args *arg, t_philo *phi)
 		philo[i].eaten = 0;
 		philo[i].sleeping = 0;
 		philo[i].thinking = 0;
+		arg->fork[i] = 1;
 	}
 	return (philo);
 

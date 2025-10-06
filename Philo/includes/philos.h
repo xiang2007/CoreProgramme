@@ -18,7 +18,7 @@ typedef struct	s_args
 	int	sleep_time;
 	int	must_eat;
 	int	all_satisfied;
-	int	fork;
+	int	*fork;
 	int	stop;
 	t_ll	start_time;
 	pthread_mutex_t	execute;
