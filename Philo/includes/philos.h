@@ -19,18 +19,19 @@ typedef struct	s_args
 	int	must_eat;
 	int	all_satisfied;
 	int	fork;
+	int	stop;
 	t_ll	start_time;
 	pthread_mutex_t	execute;
-	pthread_mutex_t printing	
+	pthread_mutex_t printing;
 }				t_args;
 
 typedef struct	s_philo
 {
 	int	id;
 	int	left_fork;
-	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*m_left_fork;
 	int	right_fork;
-	pthread_mutex_t	*right_fork;
+	pthread_mutex_t	*m_right_fork;
 	int	last_eaten;
 	int	last_sleep;
 	int	died;
@@ -43,5 +44,9 @@ typedef struct	s_philo
 t_ll gettime(void);
 int	check_args(t_args *ag, int ac);
 int	asign(int ac, char **av, t_args *ag);
+void	lock_mutex(pthread_mutex_t	*mutex);
+void	unlock_mutex(pthread_mutex_t *mutex);
+void	destroy_all_mutex(t_philo *phi);
+
 
 #endif
