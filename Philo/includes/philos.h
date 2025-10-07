@@ -48,6 +48,6 @@ int	asign(int ac, char **av, t_args *ag);
 void	lock_mutex(pthread_mutex_t	*mutex);
 void	unlock_mutex(pthread_mutex_t *mutex);
 void	destroy_all_mutex(t_philo *phi);
-
+int		ms_to_us(int ms);
 
 #endif

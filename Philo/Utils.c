@@ -24,3 +24,8 @@ int	is_num(char *str)
 	}
 	return (0);
 }
+
+int	ms_to_us(int ms)
+{
+	return (ms * 1000);
+}

@@ -17,7 +17,7 @@ void	philo_eat(int id, t_args *arg, t_philo *phi)
 {
 	t_ll	current_time;
 
-	current_time = gettime();
+	current_time = gettime() - arg->start_time;
 	lock_mutex(&phi->m_left_fork[id - 1]);
 	lock_mutex(&phi->m_right_fork[id + 1]);
 	lock_mutex(&arg->execute);
@@ -28,9 +28,20 @@ void	philo_eat(int id, t_args *arg, t_philo *phi)
 	}
 	else
 	{
+		if (!arg->fork[id - 1])
+			usleep (1000);
 		arg->fork[id - 1] = 0;
+		printf("[%lld]\tPhilo %d takes left fork", current_time, id);
+		if (!arg->fork[id + 1])
+			usleep(1000);
 		arg->fork[id + 1] = 0;
+		printf("[%lld]\tPhilo %d takes right fork", current_time, id);
 	}
-
+	usleep (ms_to_us(arg->eat_time));
+	arg->fork[id - 1] = 0;
+	arg->fork[id + 1] = 0;
+	unlock_mutex(&phi->m_left_fork[id - 1]);
+	unlock_mutex(&phi->m_right_fork[id + 1]);
+	unlock_mutex(&arg->execute);
 }
 

@@ -51,18 +51,23 @@ int	asign(int ac, char **av, t_args *ag)
 	return (0);
 }
 
+void	asign_philo(int id, t_args *arg, t_philo *phi)
+{
+	if (!id)
+		return ;
+}
+
 t_philo	*create_philo(t_args *arg, t_philo *phi)
 {
 	int		i;
 	t_philo *philo;
 
-	i = 0;
+	i = 1;
 	philo = malloc(sizeof(t_philo) * arg->num_o_phi);
-	if (!philo)
-		return (NULL);
+	arg->fork = malloc(sizeof(int) * arg->num_o_phi);
 	while (i < arg->num_o_phi)
 	{
-		philo[i].id = i = 1;
+		philo[i].id = i;
 		philo[i].last_eaten = arg->start_time;
 		philo[i].died = 0;
 		philo[i].eaten = 0;
@@ -70,6 +75,11 @@ t_philo	*create_philo(t_args *arg, t_philo *phi)
 		philo[i].thinking = 0;
 		arg->fork[i] = 1;
 	}
+	if (i == 1)
+		philo[i].left_fork = arg->num_o_phi;
+	philo[i].left_fork = i - 1;
+	if (i == arg->num_o_phi)
+		philo[i].left_fork = 1;
 	return (philo);
 
 }
