@@ -6,6 +6,7 @@
 # include <stdlib.h>
 # include <sys/time.h>
 # include <limits.h>
+# include <unistd.h>
 # include "../utils/utils.h"
 
 typedef long long	t_ll;
@@ -39,12 +40,13 @@ typedef struct	s_philo
 	int	eaten;
 	int	thinking;
 	int	sleeping;
+	int	meals_eaten;
 	t_ll	last_sleep;
 }				t_philo;
 
-t_ll gettime(void);
-int	check_args(t_args *ag, int ac);
-int	asign(int ac, char **av, t_args *ag);
+t_ll	gettime(void);
+int		check_args(t_args *ag, int ac);
+int		asign(int ac, char **av, t_args *ag);
 void	lock_mutex(pthread_mutex_t	*mutex);
 void	unlock_mutex(pthread_mutex_t *mutex);
 void	destroy_all_mutex(t_philo *phi);

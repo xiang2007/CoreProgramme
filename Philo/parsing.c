@@ -46,18 +46,36 @@ int	asign(int ac, char **av, t_args *ag)
 		return (printf("Invalid input 🥀\n"));
 	if (parse(ac, av, ag) < 0)
 		return (-1);
-	ag->start_time = gettime();
+	ag->start_time = 0;
 	ag->fork = ag->num_o_phi - 1;
 	return (0);
 }
 
-void	asign_philo(int id, t_args *arg, t_philo *phi)
+void	asign_philo(int id, t_args *arg, t_philo *philo)
 {
+	int	i;
+
 	if (!id)
 		return ;
+	i = id - 1;
+	philo[i].id = i;
+	philo[i].last_eaten = arg->start_time;
+	philo[i].died = 0;
+	philo[i].eaten = 0;
+	philo[i].sleeping = 0;
+	philo[i].thinking = 0;
+	if (id == arg->num_o_phi - 1)
+		philo[i].right_fork = 0;
+	else
+		philo[i].right_fork = i;
+	if (id == 1)
+		philo[i].left_fork = arg->num_o_phi;
+	else
+		philo[i].left_fork = i + 1;
+	arg->fork[i] = 1;
 }
 
-t_philo	*create_philo(t_args *arg, t_philo *phi)
+t_philo	*create_philo(t_args *arg)
 {
 	int		i;
 	t_philo *philo;
@@ -67,19 +85,8 @@ t_philo	*create_philo(t_args *arg, t_philo *phi)
 	arg->fork = malloc(sizeof(int) * arg->num_o_phi);
 	while (i < arg->num_o_phi)
 	{
-		philo[i].id = i;
-		philo[i].last_eaten = arg->start_time;
-		philo[i].died = 0;
-		philo[i].eaten = 0;
-		philo[i].sleeping = 0;
-		philo[i].thinking = 0;
-		arg->fork[i] = 1;
+		asign_philo(i, arg, philo);
+		i++;
 	}
-	if (i == 1)
-		philo[i].left_fork = arg->num_o_phi;
-	philo[i].left_fork = i - 1;
-	if (i == arg->num_o_phi)
-		philo[i].left_fork = 1;
 	return (philo);
-
 }

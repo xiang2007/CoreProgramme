@@ -13,35 +13,35 @@ void	philo_die(t_ll c_time, int id, t_args *arg, t_philo *phi)
 
 }
 
-void	philo_eat(int id, t_args *arg, t_philo *phi)
+void	philo_eat(int id, t_args *arg, t_philo *philo)
 {
-	t_ll	current_time;
-
-	current_time = gettime() - arg->start_time;
-	lock_mutex(&phi->m_left_fork[id - 1]);
-	lock_mutex(&phi->m_right_fork[id + 1]);
-	lock_mutex(&arg->execute);
-	if ((phi->last_eaten - arg->start_time) > arg->die_time)
+	if (id % 2 == 0)
 	{
-		philo_die(current_time, id, arg, phi);
-		return ;
+		lock_mutex(philo[id].m_left_fork);
+		printf("Philo %d takes fork", id);
+		lock_mutex(philo[id].m_right_fork);
+		printf("Philo %d takes fork", id);
 	}
 	else
 	{
-		if (!arg->fork[id - 1])
-			usleep (1000);
-		arg->fork[id - 1] = 0;
-		printf("[%lld]\tPhilo %d takes left fork", current_time, id);
-		if (!arg->fork[id + 1])
-			usleep(1000);
-		arg->fork[id + 1] = 0;
-		printf("[%lld]\tPhilo %d takes right fork", current_time, id);
+		lock_mutex(philo[id].m_right_fork);
+		printf("Philo %d takes fork", id);
+		lock_mutex(philo[id].m_left_fork);
+		printf("Philo %d takes fork", id);
 	}
-	usleep (ms_to_us(arg->eat_time));
-	arg->fork[id - 1] = 0;
-	arg->fork[id + 1] = 0;
-	unlock_mutex(&phi->m_left_fork[id - 1]);
-	unlock_mutex(&phi->m_right_fork[id + 1]);
-	unlock_mutex(&arg->execute);
+	philo->last_eaten = gettime();
+	philo->meals_eaten++;
+	printf("Philo %d eating", id);
+	unlock_mutex(philo[id].m_left_fork);
+	unlock_mutex(philo[id].right_fork);
 }
 
+void	philo_sleep_think(int id, t_args *arg, t_philo philo)
+{
+	lock_mutex(&arg->execute);
+	printf("Philo %d is sleeping ZZZ", id);
+	usleep(ms_to_us(arg->sleep_time));
+	printf("Philo %d is thinking", id);
+	usleep(ms_to_us(arg.))
+}
+ 
