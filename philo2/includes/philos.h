@@ -33,17 +33,15 @@ typedef struct	s_philo
 	pthread_mutex_t	*m_left_fork;
 	int	right_fork;
 	pthread_mutex_t	*m_right_fork;
-	int	last_eaten;
-	int	last_sleep;
 	int	died;
-	int	eaten;
-	int	thinking;
-	int	sleeping;
 	int	meals_eaten;
+	t_2l	last_eaten;
 	t_2l	last_sleep;
 }				t_philo;
 
 int	ft_atoi(const char *str);
 int	ft_isalnum(int num);
+t_2l gettime(void);
+int	checknums(char **av);
 
 #endif
