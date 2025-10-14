@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   Parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/04 16:33:23 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/09/22 22:41:22 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/10/14 14:48:33 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/10/14 14:56:02 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "philos.h"
 
-char	*ft_strdup(const char *str)
-
+int	checknums(char **av)
 {
-	char	*dst;
-	int		len;
-	int		i;
+	int	i;
 
 	i = 0;
-	len = ft_strlen(str);
-	dst = (char *)malloc(sizeof(char) * (len + 1));
-	while (i < len)
+	while (av[i])
 	{
-		dst[i] = str[i];
-		i++;
+		if (ft_isalnum(av[i]))
+			i++;
+		return (-1);
 	}
-	dst[len] = '\0';
-	return (dst);
+	return (0);
+}
+
+int	checkarg(int ac, char **av)
+{
+	
 }

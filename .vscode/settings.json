@@ -16,7 +16,8 @@
 		"fol.h": "c",
 		"utils.h": "c",
 		"limits.h": "c",
-		"philo.h": "c"
+		"philo.h": "c",
+		"unistd.h": "c"
 	},
 	"python.testing.unittestArgs": [
 		"-v",

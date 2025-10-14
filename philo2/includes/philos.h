@@ -7,9 +7,8 @@
 # include <sys/time.h>
 # include <limits.h>
 # include <unistd.h>
-# include "../utils/utils.h"
 
-typedef long long	t_ll;
+typedef long long t_2l;
 
 typedef struct	s_args
 {
@@ -21,7 +20,7 @@ typedef struct	s_args
 	int	all_satisfied;
 	int	*fork;
 	int	stop;
-	t_ll	start_time;
+	long long	start_time;
 	pthread_mutex_t	execute;
 	pthread_mutex_t	printing;
 	pthread_mutex_t	die;
@@ -41,15 +40,10 @@ typedef struct	s_philo
 	int	thinking;
 	int	sleeping;
 	int	meals_eaten;
-	t_ll	last_sleep;
+	t_2l	last_sleep;
 }				t_philo;
 
-t_ll	gettime(void);
-int		check_args(t_args *ag, int ac);
-int		asign(int ac, char **av, t_args *ag);
-void	lock_mutex(pthread_mutex_t	*mutex);
-void	unlock_mutex(pthread_mutex_t *mutex);
-void	destroy_all_mutex(t_philo *phi);
-int		ms_to_us(int ms);
+int	ft_atoi(const char *str);
+int	ft_isalnum(int num);
 
 #endif

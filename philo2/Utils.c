@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   Utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/04 16:22:53 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/05 16:41:34 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/10/14 14:46:23 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/10/14 14:54:53 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "philos.h"
 
 int	ft_atoi(const char *str)
 {
@@ -37,4 +37,12 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return (result * sign);
+}
+
+int	ft_isalnum(int num)
+{
+	if (num >= '0' && num <= '9')
+		return (1);
+	else
+		return (0);
 }
