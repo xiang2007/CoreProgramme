@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 14:46:23 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/14 17:16:53 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/10/15 16:08:15 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,4 @@ t_2l gettime(void)
 
 	gettimeofday(&tv, NULL);
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
-}
-
-int	checknums(char **av)
-{
-	int	i;
-
-	i = 0;
-	while (av[i])
-	{
-		if (ft_isalnum(av[i]))
-			i++;
-		return (-1);
-	}
-	return (1);
 }
