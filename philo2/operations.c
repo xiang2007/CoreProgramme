@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 20:36:46 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/15 17:45:50 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/10/16 17:38:52 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,16 +80,12 @@ void	 p_routine(t_args *ag, t_philo *phi)
 		ag->stop = 1;
 		return ;
 	}
-	while (1)
+	while (!ag->stop)
 	{
-		if (ag->stop == 1)
-			break ; 
+		if (phi->died == 1)
+			break ;
 		p_eat(ag, phi);
-		if (ag->stop == 1)
-			break ;
 		p_sleep(ag, phi);
-		if (ag->stop == 1)
-			break ;
 		p_print('t', phi, ag);
 		usleep(1000);
 	}
