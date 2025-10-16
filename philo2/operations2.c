@@ -1,54 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   monitor.c                                          :+:      :+:    :+:   */
+/*   operations2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/16 11:34:28 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/16 20:54:39 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/10/16 19:38:55 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/10/16 20:55:06 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philos.h"
 
-int	check_death(t_2l c_time, t_philo *phi, t_args *ag)
+int	philo_die(t_philo *phi, t_args *ag)
 {
 	int	i;
-	int	meals;
 
 	i = 0;
-	meals = 0;
 	lock_mutex(&ag->monitor);
-	while (i < ag->num_o_phi)
+	if (ag->stop)
 	{
 		lock_mutex(&phi[i].time);
-		if (c_time - phi[i].last_eaten < ag->die_time)
+		if (ag->all_satisfied)
 		{
-			ag->stop = 1;
-			phi[i].die_time = c_time;
+			printf("All philo satisfied!!\n");
 			unlock_mutex(&phi[i].time);
-			return (philo_die(phi, ag));
-		}
-		unlock_mutex(&phi[i].time);
-		i++;
-	}
-	unlock_mutex(&ag->monitor);
-	return (0);
-}
-
-int	monitor_thread(t_args *ag, t_philo *phi)
-{
-	t_2l	c_time;
-
-	while (1)
-	{
-		c_time = gettime() - ag->start_time;
-		lock_mutex(&ag->monitor);
-		if(check_death(c_time, phi, ag))
 			return (1);
+		}
+		while(i < ag->num_o_phi)
+		{
+			if (phi[i].died == 1)
+			{
+				printf("[%lld]\tPhilo %d has died\n", phi->die_time, phi->id);
+				unlock_mutex(&phi[i].time);
+			}
+			i++;
+		}
 		unlock_mutex(&ag->monitor);
-		usleep(1000);
 	}
 	return (0);
 }

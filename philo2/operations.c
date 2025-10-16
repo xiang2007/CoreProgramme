@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 20:36:46 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/16 17:38:52 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/10/16 20:52:48 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,38 +37,59 @@ void	p_print(char flag, t_philo *phi, t_args *ag)
 	}
 }
 
+void	take_fork(int flag, t_args *ag, t_philo *phi)
+{
+	if (flag == 1)
+	{
+		lock_mutex(&ag->fork[phi->id % ag->num_o_phi]);
+		p_print('f', phi, ag);
+	}
+	if (flag == 2)
+	{
+		lock_mutex(&ag->fork[phi->id + 1]);
+		p_print('f', phi, ag);
+	}
+}
+
 void	p_eat(t_args *ag, t_philo *phi)
 {
 	if (phi->id % 2 == 0)
 	{
-		lock_mutex(&ag->fork[phi->id - 1]);
-		p_print('f', phi, ag);
-		lock_mutex(&ag->fork[phi->id % ag->num_o_phi]);
-		p_print('f', phi, ag);
+		take_fork(2, ag, phi);
+		take_fork(1, ag, phi);
 	}
 	else
 	{
-		lock_mutex(&ag->fork[phi->id % ag->num_o_phi]);
-		p_print('f', phi, ag);
-		lock_mutex(&ag->fork[phi->id - 1]);
-		p_print('f', phi, ag);
+		take_fork(1, ag, phi);
+		take_fork(2, ag, phi);
 	}
+	lock_mutex(&phi->time);
 	phi->last_eaten = gettime();
+	unlock_mutex(&phi->time);
 	p_print('e', phi, ag);
 	usleep(ag->eat_time * 1000);
+	lock_mutex(&phi->eat);
 	phi->meals_eaten++;
-	unlock_mutex(&ag->fork[phi->id - 1]);
+	unlock_mutex(&phi->eat);
 	unlock_mutex(&ag->fork[phi->id % ag->num_o_phi]);
+	unlock_mutex(&ag->fork[phi->id + 1]);
+	return ;
 }
 
 void	p_sleep(t_args *ag, t_philo *phi)
 {
-	lock_mutex(&ag->print);
-	printf("[%lld]\t", (gettime() - ag->start_time));
-	printf("Philo %d is sleeping\n", phi->id);
-	unlock_mutex(&ag->print);
-	usleep(ag->sleep_time * 1000);
-	phi->last_sleep = gettime();
+	if (!ag->stop)
+	{
+		lock_mutex(&ag->print);
+		printf("[%lld]\t", (gettime() - ag->start_time));
+		printf("Philo %d is sleeping\n", phi->id);
+		unlock_mutex(&ag->print);
+		lock_mutex(&phi->time);
+		usleep(ag->sleep_time * 1000);
+		unlock_mutex(&phi->time);
+		phi->last_sleep = gettime();
+	}
+	return ;
 }
 
 void	 p_routine(t_args *ag, t_philo *phi)
@@ -76,7 +97,9 @@ void	 p_routine(t_args *ag, t_philo *phi)
 	if (ag->num_o_phi == 1)
 	{
 		p_print('f', phi, ag);
+		lock_mutex(&phi->time);
 		usleep(ag->die_time * 1000);
+		unlock_mutex(&phi->time);
 		ag->stop = 1;
 		return ;
 	}

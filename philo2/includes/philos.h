@@ -24,6 +24,7 @@ typedef struct s_args
 	pthread_mutex_t	execute;
 	pthread_mutex_t	print;
 	pthread_mutex_t	die;
+	pthread_mutex_t	monitor;
 }					t_args;
 
 typedef struct s_philo
@@ -35,6 +36,7 @@ typedef struct s_philo
 	int				meals_eaten;
 	t_2l			last_eaten;
 	t_2l			last_sleep;
+	t_2l			die_time;
 	pthread_mutex_t	time;
 	pthread_mutex_t	eat;
 }					t_philo;
@@ -55,6 +57,7 @@ void	p_routine(t_args *ag, t_philo *phi);
 t_philo	*init_philos(t_args *arg);
 void	start_philo(t_args *ag, t_philo *philo);
 t_philo	*parse(int ac, char **av, t_args *ag);
-int	monitor_thread(t_args *ag, t_philo *phi);
+int		monitor_thread(t_args *ag, t_philo *phi);
+int		philo_die(t_philo *phi, t_args *ag);
 
 #endif
