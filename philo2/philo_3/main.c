@@ -1,36 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine.c                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/15 12:47:41 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/17 13:34:33 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/10/17 16:53:43 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/10/17 16:53:44 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philos.h"
-
-int	start_philo(t_args *ag, t_philo *philo)
-{
-	int	i;
-
-	i = 0;
-	ag->start_time = gettime();
-	while (i < ag->num_o_phi)
-	{
-		philo[i].last_eaten = ag->start_time;
-		if (pthread_create(&philo[i].thread_id, NULL, 
-			p_routine, (void *)&philo[i]) != 0)
-				return (1);
-		i++;
-	}
-	i = 0;
-	while (i < ag->num_o_phi)
-	{
-		pthread_join(philo[i].thread_id, NULL);
-		i++;
-	}
-	return (0);
-}

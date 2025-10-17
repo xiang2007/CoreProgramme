@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 14:46:23 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/15 16:08:15 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/10/17 14:43:14 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,37 @@ t_2l gettime(void)
 
 	gettimeofday(&tv, NULL);
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
+}
+
+void	print(t_philo *philo, char *message)
+{
+	lock_mutex(&philo->arg->m_meal);
+	lock_mutex(&philo->arg->m_die);
+	if (!philo->arg->stop)
+	{
+		unlock_mutex(&philo->arg->m_die);
+		lock_mutex(&philo->arg->m_print);
+		printf("%lld %d %s\n", gettime() - philo->arg->start_time,
+			philo->id, message);
+		unlock_mutex(&philo->arg->m_print);
+	}
+	unlock_mutex(&philo->arg->m_meal);
+}
+
+void	cleanup(t_args *ag, t_philo *philo)
+{
+	int	i;
+
+	i = 0;
+	while (i < ag->num_o_phi)
+	{
+		pthread_mutex_destroy(&ag->fork[i]);
+		i++;
+	}
+	pthread_mutex_destroy(&ag->m_die);
+	pthread_mutex_destroy(&ag->m_meal);
+	pthread_mutex_destroy(&ag->m_print);
+	free (ag->fork);
+	free (ag);
+	free (philo);
 }

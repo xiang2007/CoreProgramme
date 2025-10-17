@@ -6,111 +6,96 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 20:36:46 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/16 20:52:48 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/10/17 16:49:20 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philos.h"
 
-void	p_print(char flag, t_philo *phi, t_args *ag)
+void	p_eat(t_philo *phi)
 {
-	if (flag == 'f')
-	{
-		lock_mutex(&ag->print);
-		printf("[%lld]\t", (gettime() - ag->start_time));
-		printf("Philo %d pick up a fork\n", phi->id);
-		unlock_mutex(&ag->print);
-	}
-	if (flag == 'e')
-	{
-		lock_mutex(&ag->print);
-		printf("[%lld]\t", (gettime() - ag->start_time));
-		printf("Philo %d is eating\n", phi->id);
-		unlock_mutex(&ag->print);
-	}
-	if (flag == 't')
-	{
-		lock_mutex(&ag->print);
-		printf("[%lld]\t", (gettime() - ag->start_time));
-		printf("Philos %d is thinking\n", phi->id);
-		unlock_mutex(&ag->print);
-	}
-}
+	t_args	*ag;
 
-void	take_fork(int flag, t_args *ag, t_philo *phi)
-{
-	if (flag == 1)
-	{
-		lock_mutex(&ag->fork[phi->id % ag->num_o_phi]);
-		p_print('f', phi, ag);
-	}
-	if (flag == 2)
-	{
-		lock_mutex(&ag->fork[phi->id + 1]);
-		p_print('f', phi, ag);
-	}
-}
-
-void	p_eat(t_args *ag, t_philo *phi)
-{
+	ag = phi->arg;
 	if (phi->id % 2 == 0)
 	{
-		take_fork(2, ag, phi);
-		take_fork(1, ag, phi);
+		lock_mutex(&ag->fork[phi->id % ag->num_o_phi]);
+		print(phi, "has taken a fork");
+		lock_mutex(&ag->fork[phi->id + 1]);
+		print(phi, "has taken a fork");
 	}
 	else
 	{
-		take_fork(1, ag, phi);
-		take_fork(2, ag, phi);
+		lock_mutex(&ag->fork[phi->id + 1]);
+		print(phi, "has taken a fork");
+		lock_mutex(&ag->fork[phi->id % ag->num_o_phi]);
+		print(phi, "has taken a fork");
 	}
-	lock_mutex(&phi->time);
+	lock_mutex(&ag->m_meal);
 	phi->last_eaten = gettime();
-	unlock_mutex(&phi->time);
-	p_print('e', phi, ag);
-	usleep(ag->eat_time * 1000);
-	lock_mutex(&phi->eat);
 	phi->meals_eaten++;
-	unlock_mutex(&phi->eat);
+	print(phi, "is eating");
+	usleep(ag->eat_time * 1000);
 	unlock_mutex(&ag->fork[phi->id % ag->num_o_phi]);
 	unlock_mutex(&ag->fork[phi->id + 1]);
-	return ;
 }
 
-void	p_sleep(t_args *ag, t_philo *phi)
+void	p_sleep_think(t_args *ag, t_philo *phi)
 {
-	if (!ag->stop)
-	{
-		lock_mutex(&ag->print);
-		printf("[%lld]\t", (gettime() - ag->start_time));
-		printf("Philo %d is sleeping\n", phi->id);
-		unlock_mutex(&ag->print);
-		lock_mutex(&phi->time);
-		usleep(ag->sleep_time * 1000);
-		unlock_mutex(&phi->time);
-		phi->last_sleep = gettime();
-	}
-	return ;
+	print(phi, "is sleeping");
+	usleep(ag->sleep_time * 1000);
+	print(phi, "is thinking");
+	if (ag->num_o_phi % 2 == 1)
+		usleep(100);
 }
 
-void	 p_routine(t_args *ag, t_philo *phi)
+void	cycle(t_philo *philo)
 {
-	if (ag->num_o_phi == 1)
+	t_args	*ag;
+
+	ag = philo->arg;
+	while (1)
 	{
-		p_print('f', phi, ag);
-		lock_mutex(&phi->time);
-		usleep(ag->die_time * 1000);
-		unlock_mutex(&phi->time);
-		ag->stop = 1;
-		return ;
-	}
-	while (!ag->stop)
-	{
-		if (phi->died == 1)
+		lock_mutex(&ag->m_die);
+		if (ag->stop || ag->all_satisfied || philo->died)
+		{
+			unlock_mutex(&ag->m_die);
 			break ;
-		p_eat(ag, phi);
-		p_sleep(ag, phi);
-		p_print('t', phi, ag);
-		usleep(1000);
+		}
+		p_eat(philo);
+		lock_mutex(&ag->m_die);
+		if (ag->must_eat != -1 && philo->meals_eaten >= ag->must_eat)
+		{
+			philo->finished = 1;
+			unlock_mutex(&ag->m_die);
+			break ;
+		}
+		unlock_mutex(&ag->m_meal);
+		p_sleep_think(ag, philo);
 	}
-	return ;
+}
+
+void	one_philo(t_philo *philo)
+{
+	print(philo, "pick up a fork");
+	usleep(philo->arg->die_time);
+	printf("%lld %d died\n", gettime(), philo->id);
+	philo->died = 1;
+}
+
+void	*p_routine(void *philo)
+{
+	t_philo	*phi;
+
+	phi = (t_philo *)philo;
+	lock_mutex(&phi->arg->m_die);
+	if (phi->arg->stop)
+		return (unlock_mutex(&phi->arg->m_die), NULL);
+	unlock_mutex(&phi->arg->m_die);
+	if (phi->arg->num_o_phi == 1)
+		return (one_philo(philo), NULL);
+	if (phi->id % 2 == 0)
+		usleep(100);
+	cycle(phi);
+	return (NULL);
 }

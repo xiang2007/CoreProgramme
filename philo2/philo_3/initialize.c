@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Parsing.c                                          :+:      :+:    :+:   */
+/*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/14 14:48:33 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/17 16:49:08 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/10/17 17:13:21 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/10/17 17:20:06 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,46 +46,23 @@ int	checkarg(int ac, t_args *ag)
 	return (2);
 }
 
-t_philo	*init_philos(t_args *arg)
+void	init_mutex(t_args *arg, t_philo *philo)
 {
 	int	i;
-	t_philo	*philo;
 
 	i = 0;
-	philo = malloc(sizeof(t_philo) * arg->num_o_phi);
 	arg->fork = malloc(sizeof(pthread_mutex_t) * arg->num_o_phi);
 	while (i < arg->num_o_phi)
 	{
-		if (pthread_mutex_init(&arg->fork[i], NULL) != 0)
-			return (NULL);
+		pthread_mutex_init(&arg->fork[i], NULL);
 		i++;
 	}
-	pthread_mutex_init(&arg->m_print, NULL);
+	pthread_mutex_init(&arg->m_meal, NULL);
 	pthread_mutex_init(&arg->m_die, NULL);
-	i = 0;
-	while(i < arg->num_o_phi)
-	{
-		philo[i].id = i + 1;
-		philo[i].died = 0;
-		philo[i].last_eaten = gettime();
-		philo[i].last_sleep = 0;
-		philo[i].meals_eaten = 0;
-		i++;
-	}
-	return (philo);
+	pthread_mutex_init(&arg->m_print, NULL);
 }
 
-t_philo	*parse(int ac, char **av, t_args *ag)
+int	initializer(char ac, char **av, t_args *ag, t_philo *phi)
 {
-	t_philo *philo;
-
-	philo = NULL;
-	if (ac >= 5 && ac <= 6)
-	{
-		asign_arguments(ac, av, ag);
-		if (checkarg(ac, ag) != 2)
-			return (NULL);
-		philo = init_philos(ag);
-	}
-	return (philo);
+	
 }

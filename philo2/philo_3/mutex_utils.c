@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine.c                                          :+:      :+:    :+:   */
+/*   mutex_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/15 12:47:41 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/17 13:34:33 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/10/17 17:11:17 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/10/17 17:11:30 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philos.h"
 
-int	start_philo(t_args *ag, t_philo *philo)
+void	lock_mutex(pthread_mutex_t *mutex)
 {
-	int	i;
+	if (pthread_mutex_lock(mutex) != 0)
+	{
+		printf("Error locking mutex\n");
+		return ;
+	}
+	
+}
 
-	i = 0;
-	ag->start_time = gettime();
-	while (i < ag->num_o_phi)
+void	unlock_mutex(pthread_mutex_t *mutex)
+{
+	if (pthread_mutex_unlock(mutex) != 0)
 	{
-		philo[i].last_eaten = ag->start_time;
-		if (pthread_create(&philo[i].thread_id, NULL, 
-			p_routine, (void *)&philo[i]) != 0)
-				return (1);
-		i++;
+		printf("Error unlocking mutex\n");
+		return ;
 	}
-	i = 0;
-	while (i < ag->num_o_phi)
+}
+
+void	destroy_mutex(pthread_mutex_t *mutex)
+{
+	if (pthread_mutex_destroy(mutex) != 0)
 	{
-		pthread_join(philo[i].thread_id, NULL);
-		i++;
+		printf("Error destroying mutex\n");
+		return ;
 	}
-	return (0);
 }

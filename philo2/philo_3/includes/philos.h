@@ -33,16 +33,9 @@ typedef struct s_philo
 	int				died;
 	int				meals_eaten;
 	t_2l			last_eaten;
-	t_2l			last_sleep;
 	pthread_t		thread_id;
 	t_args			*arg;
 }					t_philo;
-
-typedef struct s_philo_data
-{
-	t_args	*ag;
-	t_philo	*philo;
-}			t_philo_data;
 
 int		ft_atoi(const char *str);
 int		ft_isalnum(int num);
@@ -50,12 +43,6 @@ t_2l	gettime(void);
 void	destroy_mutex(pthread_mutex_t *mutex);
 void	unlock_mutex(pthread_mutex_t *mutex);
 void	lock_mutex(pthread_mutex_t *mutex);
-void	*p_routine(void *philo);
-t_philo	*init_philos(t_args *arg);
-int		start_philo(t_args *ag, t_philo *philo);
-t_philo	*parse(int ac, char **av, t_args *ag);
-int		start_monitor(t_philo *philo);
-void	print(t_philo *philo, char *message);
-void	cleanup(t_args *ag, t_philo *philo);
+
 
 #endif
