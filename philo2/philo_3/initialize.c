@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 17:13:21 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/17 17:20:06 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/10/17 17:39:42 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	checkarg(int ac, t_args *ag)
 		return (printf("Number of philo must above 1\n"), 1);
 	if (ag->sleep_time <= 0)
 		return (printf("Sleep time must above 1ms\n"), 1);
-	return (2);
+	return (0);
 }
 
 void	init_mutex(t_args *arg, t_philo *philo)
@@ -62,7 +62,14 @@ void	init_mutex(t_args *arg, t_philo *philo)
 	pthread_mutex_init(&arg->m_print, NULL);
 }
 
+int	init_
+
 int	initializer(char ac, char **av, t_args *ag, t_philo *phi)
 {
+	
+	phi = malloc(sizeof(t_philo) * ag->num_o_phi);
+	asign_arguments(ac, av, ag);
+	if (checkarg == 1)
+		return (1);
 	
 }
