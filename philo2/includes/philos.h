@@ -31,9 +31,10 @@ typedef struct s_philo
 	int				id;
 	int				finished;
 	int				died;
+	int				left_fork;
+	int				right_fork;
 	int				meals_eaten;
 	t_2l			last_eaten;
-	t_2l			last_sleep;
 	pthread_t		thread_id;
 	t_args			*arg;
 }					t_philo;

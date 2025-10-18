@@ -6,7 +6,8 @@
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/push_swap/includes",
                 "${workspaceFolder}/Fract-ol/includes",
-                "${workspaceFolder}/philo2/includes"
+                "${workspaceFolder}/philo2/includes",
+                "${workspaceFolder}/philo_3/includes"
             ],
             "defines": [
                 "_DEBUG",

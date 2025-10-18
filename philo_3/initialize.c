@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 17:13:21 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/17 17:39:42 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/10/18 14:59:21 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philos.h"
+#include "philo.h"
 
 void	asign_arguments(int ac, char **av, t_args *ag)
 {
@@ -22,7 +22,7 @@ void	asign_arguments(int ac, char **av, t_args *ag)
 	else
 	{
 		ag->must_eat = -1;
-		ag->all_satisfied = -1;
+		ag->all_satisfied = 0;
 	}
 	ag->num_o_phi = ft_atoi(av[1]);
 	ag->sleep_time = ft_atoi(av[4]);
@@ -46,12 +46,14 @@ int	checkarg(int ac, t_args *ag)
 	return (0);
 }
 
-void	init_mutex(t_args *arg, t_philo *philo)
+int	init_mutex(t_args *arg)
 {
 	int	i;
 
 	i = 0;
 	arg->fork = malloc(sizeof(pthread_mutex_t) * arg->num_o_phi);
+	if (!arg->fork)
+		return (1);
 	while (i < arg->num_o_phi)
 	{
 		pthread_mutex_init(&arg->fork[i], NULL);
@@ -60,16 +62,40 @@ void	init_mutex(t_args *arg, t_philo *philo)
 	pthread_mutex_init(&arg->m_meal, NULL);
 	pthread_mutex_init(&arg->m_die, NULL);
 	pthread_mutex_init(&arg->m_print, NULL);
+	return (0);
 }
 
-int	init_
-
-int	initializer(char ac, char **av, t_args *ag, t_philo *phi)
+int	init_philo(t_args *ag, t_philo **phi)
 {
-	
-	phi = malloc(sizeof(t_philo) * ag->num_o_phi);
-	asign_arguments(ac, av, ag);
-	if (checkarg == 1)
+	int	i;
+
+	i = 0;
+	*phi = malloc(sizeof(t_philo) * ag->num_o_phi);
+	if (!*phi)
 		return (1);
-	
+	while (i < ag->num_o_phi)
+	{
+		(*phi)[i].id = i + 1;
+		(*phi)[i].finished = 0;
+		(*phi)[i].died = 0;
+		(*phi)[i].meals_eaten = 0;
+		(*phi)[i].left_fork = i;
+		(*phi)[i].right_fork = (i + 1) % ag->num_o_phi;
+		(*phi)[i].last_eaten = gettime();
+		(*phi)[i].arg = ag;
+		i++;
+	}
+	return (0);
+}
+
+int	initializer(int ac, char **av, t_args *ag, t_philo **phi)
+{
+	asign_arguments(ac, av, ag);
+	if (checkarg(ac, ag) == 1)
+		return (1);
+	if (init_philo(ag, phi) == 1)
+		return (1);
+	if (init_mutex(ag) == 1)
+		return (1);
+	return (0);
 }

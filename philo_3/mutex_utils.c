@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mutex_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 17:11:17 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/17 17:11:30 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/10/18 14:31:54 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philos.h"
+#include "philo.h"
 
 void	lock_mutex(pthread_mutex_t *mutex)
 {
@@ -38,4 +38,22 @@ void	destroy_mutex(pthread_mutex_t *mutex)
 		printf("Error destroying mutex\n");
 		return ;
 	}
+}
+
+void	cleanup(t_philo *philo, t_args *ag)
+{
+	int	i;
+
+	i = 0;
+	while (i < ag->num_o_phi)
+	{
+		destroy_mutex(&ag->fork[i]);
+		i++;
+	}
+	destroy_mutex(&ag->m_die);
+	destroy_mutex(&ag->m_meal);
+	destroy_mutex(&ag->m_print);
+	free(ag->fork);
+	free(ag);
+	free(philo);
 }

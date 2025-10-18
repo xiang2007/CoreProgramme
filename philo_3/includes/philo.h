@@ -31,6 +31,8 @@ typedef struct s_philo
 	int				id;
 	int				finished;
 	int				died;
+	int				left_fork;
+	int				right_fork;
 	int				meals_eaten;
 	t_2l			last_eaten;
 	pthread_t		thread_id;
@@ -43,6 +45,11 @@ t_2l	gettime(void);
 void	destroy_mutex(pthread_mutex_t *mutex);
 void	unlock_mutex(pthread_mutex_t *mutex);
 void	lock_mutex(pthread_mutex_t *mutex);
+int		initializer(int ac, char **av, t_args *ag, t_philo **phi);
+void	cleanup(t_philo *philo, t_args *ag);
+void	print(t_philo *philo, char *message);
+void	*p_routine(void *philo);
+int		start_philos(t_philo *philo);
 
 
 #endif
