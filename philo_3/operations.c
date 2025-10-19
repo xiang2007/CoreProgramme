@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 11:43:34 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/19 14:57:54 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/10/19 16:07:28 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ void	p_eat(t_philo *phi)
 	ag = phi->arg;
 	if (phi->id % 2 == 0)
 	{
-		lock_mutex(&ag->fork[phi->left_fork]);
-		print(phi, "Has taken left fork");
 		lock_mutex(&ag->fork[phi->right_fork]);
-		print(phi, "Has taken right fork");
+		print(phi, "Has taken a right fork");
+		lock_mutex(&ag->fork[phi->left_fork]);
+		print(phi, "Has taken a left fork");
 	}
 	else
 	{
-		lock_mutex(&ag->fork[phi->right_fork]);
-		print(phi, "Has taken right fork");
 		lock_mutex(&ag->fork[phi->left_fork]);
-		print(phi, "Has taken left fork");
+		print(phi, "Has taken a left fork");
+		lock_mutex(&ag->fork[phi->right_fork]);
+		print(phi, "Has taken a right fork");
 	}
 	lock_mutex(&ag->m_meal);
 	phi->last_eaten = gettime();
@@ -46,7 +46,10 @@ void	p_sleep_and_think(t_philo *phi)
 	print(phi, "is sleeping");
 	usleep(phi->arg->sleep_time * 1000);
 	print(phi, "is thinking");
-	usleep(1000);
+	if (phi->arg->num_o_phi % 2 == 0)
+		usleep(1000);
+	else
+		usleep(phi->arg->eat_time * 0.9 * 500);
 }
 
 void	life_cycle(t_philo *phi)
@@ -94,6 +97,8 @@ void	*p_routine(void *philo)
 
 	phi = (t_philo *)philo;
 	ag = phi->arg;
+	while (ag->stop)
+		usleep (100);
 	lock_mutex(&ag->m_die);
 	if (ag->stop)
 		return (unlock_mutex(&ag->m_die), NULL);

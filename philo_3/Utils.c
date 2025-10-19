@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 11:40:33 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/18 14:36:47 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/10/19 15:08:57 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	print(t_philo *philo, char *message)
 	}
 	unlock_mutex(&philo->arg->m_die);
 	lock_mutex(&philo->arg->m_print);
-	printf("%lld\tPhilo %d %s\n", gettime() - philo->arg->start_time,
+	printf("%lld\t %d %s\n", gettime() - philo->arg->start_time,
 		philo->id, message);
 	unlock_mutex(&philo->arg->m_print);	
 }

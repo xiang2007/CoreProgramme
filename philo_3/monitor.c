@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 11:36:57 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/19 12:41:08 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/10/19 15:30:04 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,26 @@ void	print_all_sat(t_philo *phi)
 int	check_philo_death(t_philo *phi)
 {
 	t_args *ag;
+	t_2l	current_time;
+	t_2l	last_meal;
 
 	ag = phi->arg;
 	lock_mutex(&ag->m_meal);
 	if (ag->all_satisfied)
 		return (unlock_mutex(&ag->m_meal), 0);
-	if ((gettime() - phi->last_eaten) > ag->die_time)
+	current_time = gettime();
+	last_meal = current_time - phi->last_eaten;
+	unlock_mutex(&ag->m_meal);
+	if (last_meal > ag->die_time)
 	{
-		unlock_mutex(&ag->m_meal);
 		lock_mutex(&ag->m_die);
 		ag->stop = 1;
 		unlock_mutex(&ag->m_die);
 		lock_mutex(&ag->m_print);
-		printf("%lld\tphilo %d died\n", gettime() - ag->start_time, phi->id);
+		printf("%lld\t %d died\n", gettime() - ag->start_time, phi->id);
 		unlock_mutex(&ag->m_print);
 		return (1);
 	}
-	unlock_mutex(&ag->m_meal);
 	return (0);
 }
 

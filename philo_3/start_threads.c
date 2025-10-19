@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 14:13:51 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/19 12:24:12 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/10/19 16:00:19 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ int	start_philos(t_philo *philo)
 	while (i < ag->num_o_phi)
 	{
 		philo[i].last_eaten = ag->start_time;
+		i++;
+	}
+	i = 0;
+	while (i < ag->num_o_phi)
+	{
 		if (pthread_create(&philo[i].thread_id, NULL, p_routine,
 			&philo[i]) != 0)
 				return (1);
