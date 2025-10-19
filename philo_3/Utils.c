@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 11:40:33 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/19 15:08:57 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/10/19 16:19:24 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_atoi(const char *str)
 	return (result * sign);
 }
 
-t_2l gettime(void)
+t_2l	gettime(void)
 {
 	struct timeval	tv;
 
@@ -59,5 +59,5 @@ void	print(t_philo *philo, char *message)
 	lock_mutex(&philo->arg->m_print);
 	printf("%lld\t %d %s\n", gettime() - philo->arg->start_time,
 		philo->id, message);
-	unlock_mutex(&philo->arg->m_print);	
+	unlock_mutex(&philo->arg->m_print);
 }

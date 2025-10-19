@@ -6,12 +6,12 @@
 #    By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/18 14:21:16 by wshou-xi          #+#    #+#              #
-#    Updated: 2025/10/19 12:12:13 by wshou-xi         ###   ########.fr        #
+#    Updated: 2025/10/19 16:31:01 by wshou-xi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -g -pthread -I./includes
+CFLAGS = -Wall -Werror -Wextra -I./includes
 RM = rm -rf
 
 PHISRC = ./initialize.c ./main.c ./mutex_utils.c ./operations.c ./start_threads.c ./Utils.c ./monitor.c

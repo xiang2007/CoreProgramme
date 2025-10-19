@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 17:11:17 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/19 12:35:31 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/10/19 16:20:21 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	lock_mutex(pthread_mutex_t *mutex)
 		printf("Error locking mutex\n");
 		return ;
 	}
-	
 }
 
 void	unlock_mutex(pthread_mutex_t *mutex)

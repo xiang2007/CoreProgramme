@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 11:43:34 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/19 16:07:28 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/10/19 16:20:48 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	p_sleep_and_think(t_philo *phi)
 
 void	life_cycle(t_philo *phi)
 {
-	t_args *ag;
+	t_args	*ag;
 
 	ag = phi->arg;
 	while (1)
@@ -92,7 +92,7 @@ void	single_philo(t_philo *philo)
 
 void	*p_routine(void *philo)
 {
-	t_philo *phi;
+	t_philo	*phi;
 	t_args	*ag;
 
 	phi = (t_philo *)philo;

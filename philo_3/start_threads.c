@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 14:13:51 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/19 16:00:19 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/10/19 16:21:19 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	start_philos(t_philo *philo)
 	while (i < ag->num_o_phi)
 	{
 		if (pthread_create(&philo[i].thread_id, NULL, p_routine,
-			&philo[i]) != 0)
-				return (1);
+				&philo[i]) != 0)
+			return (1);
 		i++;
 	}
 	return (0);

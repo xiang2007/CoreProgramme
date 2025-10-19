@@ -6,17 +6,17 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 16:53:43 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/19 12:12:01 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/10/19 16:19:59 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-t_philo *philo;
-t_args	*arg;
-
 int	main(int ac, char **av)
 {
+	t_philo	*philo;
+	t_args	*arg;
+
 	if (ac < 5 || ac > 6)
 		return (1);
 	arg = malloc(sizeof(t_args));

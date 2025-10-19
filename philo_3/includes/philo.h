@@ -1,5 +1,17 @@
-#ifndef PHILOS_H
-# define PHILOS_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/19 16:24:18 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/10/19 16:29:19 by wshou-xi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef PHILO_H
+# define PHILO_H
 
 # include <stdio.h>
 # include <pthread.h>
@@ -8,7 +20,7 @@
 # include <limits.h>
 # include <unistd.h>
 
-typedef long long t_2l;
+typedef long long	t_2l;
 
 typedef struct s_args
 {

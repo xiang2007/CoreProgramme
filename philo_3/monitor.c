@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 11:36:57 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/19 15:30:04 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/10/19 16:23:58 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	print_all_sat(t_philo *phi)
 
 int	check_philo_death(t_philo *phi)
 {
-	t_args *ag;
+	t_args	*ag;
 	t_2l	current_time;
 	t_2l	last_meal;
 
@@ -104,7 +104,7 @@ int	start_monitor(t_args *ag, t_philo *phi)
 		lock_mutex(&ag->m_die);
 		ag->stop = 1;
 		unlock_mutex(&ag->m_die);
-		while(i < ag->num_o_phi)
+		while (i < ag->num_o_phi)
 		{
 			pthread_join(phi[i].thread_id, NULL);
 			i++;
@@ -113,7 +113,7 @@ int	start_monitor(t_args *ag, t_philo *phi)
 	}
 	pthread_join(monitor, NULL);
 	i = 0;
-	while(i < ag->num_o_phi)
+	while (i < ag->num_o_phi)
 	{
 		pthread_join(phi[i].thread_id, NULL);
 		i++;
