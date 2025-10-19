@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 11:43:34 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/19 12:19:29 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/10/19 14:57:54 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@ void	p_eat(t_philo *phi)
 	if (phi->id % 2 == 0)
 	{
 		lock_mutex(&ag->fork[phi->left_fork]);
-		print(phi, "Has taken a fork");
+		print(phi, "Has taken left fork");
 		lock_mutex(&ag->fork[phi->right_fork]);
-		print(phi, "Has taken a fork");
+		print(phi, "Has taken right fork");
 	}
 	else
 	{
 		lock_mutex(&ag->fork[phi->right_fork]);
-		print(phi, "Has taken a fork");
+		print(phi, "Has taken right fork");
 		lock_mutex(&ag->fork[phi->left_fork]);
-		print(phi, "Has taken a fork");		
+		print(phi, "Has taken left fork");
 	}
 	lock_mutex(&ag->m_meal);
 	phi->last_eaten = gettime();
