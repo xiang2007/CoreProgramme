@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mutex_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 17:11:17 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/18 14:31:54 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/10/19 12:35:31 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	cleanup(t_philo *philo, t_args *ag)
 	int	i;
 
 	i = 0;
+	if (!philo || !ag)
+		return ;
 	while (i < ag->num_o_phi)
 	{
 		destroy_mutex(&ag->fork[i]);

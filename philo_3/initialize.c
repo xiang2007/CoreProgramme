@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 17:13:21 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/18 14:59:21 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/10/19 12:22:40 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ int	init_philo(t_args *ag, t_philo **phi)
 		(*phi)[i].meals_eaten = 0;
 		(*phi)[i].left_fork = i;
 		(*phi)[i].right_fork = (i + 1) % ag->num_o_phi;
-		(*phi)[i].last_eaten = gettime();
 		(*phi)[i].arg = ag;
 		i++;
 	}

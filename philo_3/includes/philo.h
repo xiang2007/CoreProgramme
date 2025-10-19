@@ -50,6 +50,6 @@ void	cleanup(t_philo *philo, t_args *ag);
 void	print(t_philo *philo, char *message);
 void	*p_routine(void *philo);
 int		start_philos(t_philo *philo);
-
+int		start_monitor(t_args *ag, t_philo *phi);
 
 #endif

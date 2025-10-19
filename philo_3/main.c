@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 16:53:43 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/18 23:31:43 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/10/19 12:12:01 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	main(int ac, char **av)
 	if (initializer(ac, av, arg, &philo) == 1)
 		return (cleanup(philo, arg), 1);
 	if (start_philos(philo) == 1)
+		return (cleanup(philo, arg), 1);
+	if (start_monitor(arg, philo) == 1)
 		return (cleanup(philo, arg), 1);
 	cleanup(philo, arg);
 	return (0);

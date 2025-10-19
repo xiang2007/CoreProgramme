@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 11:43:34 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/18 15:07:55 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/10/19 12:19:29 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,13 @@ void	life_cycle(t_philo *phi)
 	ag = phi->arg;
 	while (1)
 	{
-		lock_mutex(&ag->m_die);
+		lock_mutex(&ag->m_meal);
 		if (ag->stop || ag->all_satisfied || phi->died)
 		{
-			unlock_mutex(&ag->m_die);
+			unlock_mutex(&ag->m_meal);
 			break ;
 		}
-		unlock_mutex(&ag->m_die); 
+		unlock_mutex(&ag->m_meal);
 		p_eat(phi);
 		lock_mutex(&ag->m_meal);
 		if ((ag->must_eat != -1) && (phi->meals_eaten >= ag->must_eat))
