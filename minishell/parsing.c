@@ -1,26 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/19 19:46:04 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/23 18:22:40 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/10/23 18:53:14 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/10/23 18:53:15 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
-
-# include <stdio.h>
-# include <unistd.h>
-# include <string.h>
-# include <sys/time.h>
-# include <readline/history.h>
-# include <readline/readline.h>
-# include <sys/types.h>
-# include <stdlib.h>
-
-
-#endif
