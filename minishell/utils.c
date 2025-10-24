@@ -1,34 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/19 19:46:04 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/22 13:23:46 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/10/22 13:23:24 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/10/22 13:23:31 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "minishell.h"
 
-# include <stdio.h>
-# include <unistd.h>
-# include <string.h>
-# include <sys/time.h>
-# include <readline/history.h>
-# include <readline/readline.h>
-# include <sys/types.h>
-# include <stdlib.h>
-# include <fcntl.h>
-
-typedef struct	s_data
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	**env;
+	size_t	len1;
+	size_t	len2;
+	size_t	i;
+	char	*dest;
 
-}				t_data;
-
-char	*ft_strjoin(char const *s1, char const *s2);
-
-#endif
+	i = 0;
+	if (!s1 || !s2)
+		return (NULL);
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	dest = (char *)malloc(len1 + len2 + 1);
+	if (!dest)
+		return (NULL);
+	while (i < len1)
+	{
+		dest[i] = s1[i];
+		i++;
+	}
+	dest[i] = '\0';
+	ft_strlcat(dest, s2, len1 + len2 + 1);
+	return (dest);
+}
