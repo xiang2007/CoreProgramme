@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 10:57:36 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/07/24 15:44:36 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/07/24 15:45:12 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*extractline(char *buffer);
 char	*readfile(char *buffer, int fd);
@@ -18,26 +18,26 @@ char	*polishline(char *buffer, int i, int j);
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer[1024];
 	char		*remain;
 	int			i;
 	int			j;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer = readfile(buffer, fd);
-	if (!buffer)
+	buffer[fd] = readfile(buffer[fd], fd);
+	if (!buffer[fd])
 		return (NULL);
-	remain = extractline(buffer);
+	remain = extractline(buffer[fd]);
 	if (!remain)
 	{
-		free(buffer);
-		buffer = NULL;
+		free(buffer[fd]);
+		buffer[fd] = NULL;
 		return (NULL);
 	}
 	i = 0;
 	j = 0;
-	buffer = polishline(buffer, i, j);
+	buffer[fd] = polishline(buffer[fd], i, j);
 	return (remain);
 }
 
@@ -101,7 +101,7 @@ char	*polishline(char *buffer, int i, int j)
 	char	*temp;
 
 	i = 0;
-	while (buffer[i] && buffer[i] != '\n')
+	while (buffer[i] && (buffer[i] != '\n'))
 		i++;
 	if (!buffer[i])
 	{
@@ -112,13 +112,13 @@ char	*polishline(char *buffer, int i, int j)
 	temp = malloc(ft_strlen(buffer) - i + 1);
 	if (!temp)
 	{
-		free(buffer);
+		free (buffer);
 		return (NULL);
 	}
 	j = 0;
 	while (buffer[i])
 		temp[j++] = buffer[i++];
 	temp[j] = '\0';
-	free(buffer);
+	free (buffer);
 	return (temp);
 }
