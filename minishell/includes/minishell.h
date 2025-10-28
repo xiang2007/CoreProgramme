@@ -6,9 +6,10 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 19:46:04 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/22 13:23:46 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/10/28 17:05:20 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
