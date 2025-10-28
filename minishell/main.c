@@ -3,10 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 18:53:10 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/23 18:53:11 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/10/28 17:32:20 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "minishell.h"
+
+int	main(int ac, char **av)
+{
+	(void)ac;
+	int	status;
+
+	if (fork() == 0)
+		execvp(av[1], av + 1);
+	wait(&status);
+	return (0);
+}
