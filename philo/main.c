@@ -1,0 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/17 16:53:43 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/10/19 16:19:59 by wshou-xi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "philo.h"
+
+int	main(int ac, char **av)
+{
+	t_philo	*philo;
+	t_args	*arg;
+
+	if (ac < 5 || ac > 6)
+		return (1);
+	arg = malloc(sizeof(t_args));
+	if (!arg)
+		return (1);
+	if (initializer(ac, av, arg, &philo) == 1)
+		return (cleanup(philo, arg), 1);
+	if (start_philos(philo) == 1)
+		return (cleanup(philo, arg), 1);
+	if (start_monitor(arg, philo) == 1)
+		return (cleanup(philo, arg), 1);
+	cleanup(philo, arg);
+	return (0);
+}
