@@ -5,21 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/05 19:21:55 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/06/20 17:26:31 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/07/16 10:57:39 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/07/24 14:37:37 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *str)
-{
-	int	i;
+char	*ft_strdup(char *str);
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+int	ft_strlen(char *str)
+{
+	int	size;
+
+	size = 0;
+	if (!str)
+		return (0);
+	while (str[size])
+		size++;
+	return (size);
 }
 
 char	*ft_strchr(const char *src, int c)
@@ -27,7 +31,7 @@ char	*ft_strchr(const char *src, int c)
 	int	i;
 
 	i = 0;
-	if (!src)
+	if (src == NULL)
 		return (NULL);
 	while (src[i])
 	{
@@ -40,52 +44,46 @@ char	*ft_strchr(const char *src, int c)
 	return (NULL);
 }
 
-void	*ft_calloc(size_t nitems, size_t size)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	void	*dst;
-	char	*dst2;
-	size_t	index;
-	size_t	max;
-
-	index = 0;
-	if (!nitems || size <= 0)
-		return (malloc(0));
-	max = nitems * size;
-	if ((max / nitems) != size)
-		return (NULL);
-	dst = malloc(nitems * size);
-	if (!dst)
-		return (NULL);
-	dst2 = (char *)dst;
-	while (index < max)
-	{
-		dst2[index] = 0;
-		index++;
-	}
-	return (dst2);
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	size_t	len1;
-	size_t	len2;
-	size_t	i;
 	char	*dest;
+	char	*start;
 
-	i = 0;
-	if (!s1 || !s2)
+	if (!s2)
 		return (NULL);
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	dest = (char *)malloc(len1 + len2 + 1);
+	if (!s1)
+		return (ft_strdup(s2));
+	dest = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!dest)
 		return (NULL);
-	while (i < len1)
+	start = dest;
+	while (*s1)
+		*dest++ = *s1++;
+	while (*s2)
+		*dest++ = *s2++;
+	*dest = '\0';
+	return (start);
+}
+
+char	*ft_strdup(char *str)
+
+{
+	char	*dst;
+	int		len;
+	int		i;
+
+	i = 0;
+	if (!str)
+		return (NULL);
+	len = ft_strlen(str);
+	dst = (char *)malloc(sizeof(char) * (len + 1));
+	if (!dst)
+		return (NULL);
+	while (i < len)
 	{
-		dest[i] = s1[i];
+		dst[i] = str[i];
 		i++;
 	}
-	dest[i] = '\0';
-	ft_strlcat(dest, s2, len1 + len2 + 1);
-	return (dest);
+	dst[len] = '\0';
+	return (dst);
 }

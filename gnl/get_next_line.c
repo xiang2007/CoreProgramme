@@ -5,77 +5,120 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/05 19:18:52 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/06/20 19:05:48 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/07/16 10:57:36 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/07/24 15:44:36 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*readfile(int fd, char *str);
+char	*extractline(char *buffer);
+char	*readfile(char *buffer, int fd);
+char	*polishline(char *buffer, int i, int j);
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
 	static char	*buffer;
-	char		*line;
+	char		*remain;
+	int			i;
+	int			j;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) > 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer = readfile(fd,buffer);
+	buffer = readfile(buffer, fd);
+	if (!buffer)
+		return (NULL);
+	remain = extractline(buffer);
+	if (!remain)
+	{
+		free(buffer);
+		buffer = NULL;
+		return (NULL);
+	}
+	i = 0;
+	j = 0;
+	buffer = polishline(buffer, i, j);
+	return (remain);
+}
+
+char	*readfile(char *buffer, int fd)
+{
+	int		bytes_read;
+	char	*temp;
+	char	*newbuf;
+
+	temp = malloc (BUFFER_SIZE + 1);
+	if (!temp)
+		return (NULL);
+	bytes_read = 1;
+	while (bytes_read > 0 && !ft_strchr(buffer, '\n'))
+	{
+		bytes_read = read(fd, temp, BUFFER_SIZE);
+		if (bytes_read < 0)
+		{
+			free (temp);
+			free (buffer);
+			return (NULL);
+		}
+		temp[bytes_read] = '\0';
+		newbuf = ft_strjoin(buffer, temp);
+		free (buffer);
+		buffer = newbuf;
+	}
+	free (temp);
 	return (buffer);
 }
 
-char	*readfile(int fd, char *res)
+char	*extractline(char *buffer)
 {
-	int	bytes_read;
-	char	*buffer;
+	int		i;
+	char	*temp;
 
-	if (!res)
-		return (ft_calloc(1, 1));
-	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
-	bytes_read = 1;
-	while (bytes_read > 0)
+	i = 0;
+	if (!buffer)
+		return (NULL);
+	if (buffer[0] == '\0')
+		return (NULL);
+	while (buffer[i] && buffer[i] != '\n')
+		i++;
+	temp = malloc(i + 2);
+	if (!temp)
+		return (NULL);
+	i = 0;
+	while (buffer[i] && buffer[i] != '\n')
 	{
-		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read < 0)
-		{
-			free(buffer);
-			return (NULL);
-		}
-		buffer[BUFFER_SIZE] = '\0';
-		res = ft_free(res, buffer);
-		if (ft_strchr(buffer, '\n'))
-			break ;
+		temp[i] = buffer[i];
+		i++;
 	}
-	free (buffer);
-	return (res);
-}
-
-char	*ft_free(char *src, char *buffer)
-{
-	char *temp;
-	
-	temp = ft_strjoin(src, buffer);
-	free(buffer);
+	if (buffer[i] == '\n')
+		temp[i++] = '\n';
+	temp[i] = '\0';
 	return (temp);
 }
 
-char	*ft_line(char *buffer)
+char	*polishline(char *buffer, int i, int j)
 {
-	char	*line;
-	int		size;
-	int		index;
+	char	*temp;
 
-	index = 0;
-	if (!buffer)
-		return (NULL);
-	size = ft_strlen(buffer);
-	line = malloc((size * sizeof(char)) + 1);
-	if (!line)
-		return (NULL);
-	while (line[index] && line[index] != '\n')
+	i = 0;
+	while (buffer[i] && buffer[i] != '\n')
+		i++;
+	if (!buffer[i])
 	{
-		line[index] = buffer[index];
-		index++;
+		free(buffer);
+		return (NULL);
 	}
+	i++;
+	temp = malloc(ft_strlen(buffer) - i + 1);
+	if (!temp)
+	{
+		free(buffer);
+		return (NULL);
+	}
+	j = 0;
+	while (buffer[i])
+		temp[j++] = buffer[i++];
+	temp[j] = '\0';
+	free(buffer);
+	return (temp);
 }
