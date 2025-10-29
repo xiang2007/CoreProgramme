@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 18:53:10 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/29 16:37:32 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/10/29 23:27:16 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,55 @@
 int		status;
 pid_t	pid;
 
-int	main(int ac, char **av, char **env)
+char	*ft_getenv(char **env)
 {
-	char	*path = NULL;
+	int		i;
+	char	*env_path;
 
-	if (ac > 1)
+	i = 0;
+	env_path = NULL;
+	while (env[i])
 	{
-		pid = fork();
-		path = ft_strjoin("/usr/bin/", av[1]);
-		if (pid == 0)
+		if (ft_strncmp(env[i], "PATH=", 5) == 0)
 		{
-			execve(path, av + 1, env);
-			perror("execve failed");
-			exit(1);
+			env_path = ft_strdup(env[i] + 5);
+			break ;
 		}
+		i++;
 	}
-	wait(&status);
-	free(path);
+	return (env_path);
+}
+
+char	*join_env(char *env, char *cmd)
+{
+	char	*path;
+	char	*half_path;
+	char	*dir;
+	if (!cmd)
+		return (NULL);
+	
+}
+
+int	main(int ac, char **av, char **envp)
+{
+	char	*env;
+
+	(void)av;
+	(void)ac;
+	// while (1)
+	// {
+	// 	line = readline("---> ");
+	// 	path = ft_strjoin("/usr/bin/", *line);
+	// 	if (fork() == 0)
+	// 	{
+	// 		execve(path, line, env);
+	// 		perror("execve failed");
+	// 		exit(1);
+	// 	}
+	// 	free(path);
+	// }
+	// wait(&status);
+	env = ft_getenv(envp);
+	free (env);
 	return (0);
 }
