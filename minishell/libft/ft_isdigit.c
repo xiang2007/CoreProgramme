@@ -1,13 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executing.c                                        :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42kl.edu.m      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 18:53:12 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/29 16:36:52 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/06/04 16:24:29 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/06/04 16:24:31 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+int	ft_isdigit(int digit)
+{
+	if (digit >= '0' && digit <= '9')
+		return (1);
+	else
+		return (0);
+}

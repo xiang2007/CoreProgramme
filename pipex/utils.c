@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 19:39:35 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/09/10 20:07:28 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/10/28 17:14:50 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,9 @@ void	exec(char *cmd, char **env)
 	if (!path)
 	{
 		ft_putstr_fd("Error: Command not found: ", 2);
-        ft_putendl_fd(paths[0], 2);
-        free_all(paths);
-        exit(127);
+		ft_putendl_fd(paths[0], 2);
+		free_all(paths);
+		exit(127);
 	}
 	if (execve(path, paths, env) == -1)
 	{

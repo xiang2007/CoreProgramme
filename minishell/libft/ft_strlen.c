@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 18:53:10 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/29 16:37:32 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/06/04 16:34:23 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/06/06 15:23:14 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int		status;
-pid_t	pid;
-
-int	main(int ac, char **av, char **env)
+size_t	ft_strlen(const char *str)
 {
-	char	*path = NULL;
+	int	i;
 
-	if (ac > 1)
-	{
-		pid = fork();
-		path = ft_strjoin("/usr/bin/", av[1]);
-		if (pid == 0)
-		{
-			execve(path, av + 1, env);
-			perror("execve failed");
-			exit(1);
-		}
-	}
-	wait(&status);
-	free(path);
-	return (0);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

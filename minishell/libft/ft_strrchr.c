@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 18:53:10 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/29 16:37:32 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/06/04 16:37:27 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/07/14 10:14:03 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int		status;
-pid_t	pid;
+int	ft_count(const char *c);
 
-int	main(int ac, char **av, char **env)
+char	*ft_strrchr(const char *s, int c)
 {
-	char	*path = NULL;
+	int	size;
 
-	if (ac > 1)
+	size = ft_strlen((char *)s);
+	while (size >= 0)
 	{
-		pid = fork();
-		path = ft_strjoin("/usr/bin/", av[1]);
-		if (pid == 0)
-		{
-			execve(path, av + 1, env);
-			perror("execve failed");
-			exit(1);
-		}
+		if (s[size] == (char)c)
+			return ((char *)&s[size]);
+		size--;
 	}
-	wait(&status);
-	free(path);
-	return (0);
+	return (NULL);
 }

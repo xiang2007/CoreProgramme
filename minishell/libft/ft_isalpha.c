@@ -1,13 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executing.c                                        :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42kl.edu.m      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 18:53:12 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/29 16:36:52 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/06/04 16:24:11 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/06/04 16:24:13 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+int	ft_isalpha(int alpha)
+{
+	if ((alpha >= 'A' && alpha <= 'Z') || (alpha >= 'a' && alpha <= 'z'))
+		return (1);
+	else
+		return (0);
+}

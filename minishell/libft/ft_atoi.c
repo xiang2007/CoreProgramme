@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 18:53:10 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/29 16:37:32 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/06/04 16:22:53 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/06/06 15:19:25 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int		status;
-pid_t	pid;
-
-int	main(int ac, char **av, char **env)
+int	ft_atoi(const char *str)
 {
-	char	*path = NULL;
+	int	i;
+	int	sign;
+	int	result;
 
-	if (ac > 1)
+	sign = 1;
+	result = 0;
+	i = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '+' || str[i] == '-')
 	{
-		pid = fork();
-		path = ft_strjoin("/usr/bin/", av[1]);
-		if (pid == 0)
-		{
-			execve(path, av + 1, env);
-			perror("execve failed");
-			exit(1);
-		}
+		if (str[i] == '-')
+			sign = -1;
+		i++;
 	}
-	wait(&status);
-	free(path);
-	return (0);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = result * 10 + str[i] - '0';
+		i++;
+	}
+	return (result * sign);
 }

@@ -1,13 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executing.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42kl.edu.m      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 18:53:12 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/29 16:36:52 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/06/04 16:27:34 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/06/04 16:27:36 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
+
+int	ft_lstsize(t_list *lst)
+{
+	int	size;
+
+	size = 0;
+	if (!lst)
+		return (0);
+	while (lst)
+	{
+		lst = lst->next;
+		size++;
+	}
+	return (size);
+}
