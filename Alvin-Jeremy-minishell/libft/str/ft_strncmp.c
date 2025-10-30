@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jchuah <jchuah@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 18:53:14 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/30 10:40:19 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/05/19 14:55:48 by jchuah            #+#    #+#             */
+/*   Updated: 2025/06/06 23:22:04 by jchuah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	ft_strtok(char **av)
+int	ft_strncmp(const char *str1, const char *str2, size_t n)
 {
-	
+	int	diff;
+
+	while (n--)
+	{
+		diff = *(unsigned char *)str1 - *(unsigned char *)str2;
+		if (diff)
+			return (diff);
+		str1++;
+		str2++;
+	}
+	return (0);
 }

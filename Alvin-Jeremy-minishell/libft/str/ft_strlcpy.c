@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jchuah <jchuah@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 18:53:14 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/30 10:40:19 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/03/06 07:46:39 by jchuah            #+#    #+#             */
+/*   Updated: 2025/05/19 16:36:51 by jchuah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	ft_strtok(char **av)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	
+	size_t	i;
+
+	i = 0;
+	while (src[i] && i < size - 1 && size)
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	if (size)
+		dst[i] = '\0';
+	while (src[i])
+		i++;
+	return (i);
 }
