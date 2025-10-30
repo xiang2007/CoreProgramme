@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+         #
+#    By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/22 10:07:57 by wshou-xi          #+#    #+#              #
-#    Updated: 2025/10/29 16:31:33 by wshou-xi         ###   ########.fr        #
+#    Updated: 2025/10/29 22:22:19 by wshou-xi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ clean:
 
 fclean: clean
 	@$(MAKE) -s -C libft fclean
-	@echo finished fclean!!
+	@echo finished fclean
 
 re: fclean all
 
