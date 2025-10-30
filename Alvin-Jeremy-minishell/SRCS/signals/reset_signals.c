@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   reset_signals.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jchuah <jeremychuahtm@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 18:53:14 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/30 10:40:19 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/10/28 23:32:47 by jchuah            #+#    #+#             */
+/*   Updated: 2025/10/29 01:00:58 by jchuah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "ft_signals.h"
 
-void	ft_strtok(char **av)
+void	reset_signals(void)
 {
-	
+	sigint_set(0);
+	sigquit_set(0);
 }

@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_iswhitespace.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akok <akok@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 18:53:14 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/30 10:40:19 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/09/19 12:19:58 by akok              #+#    #+#             */
+/*   Updated: 2025/09/19 12:22:06 by akok             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	ft_strtok(char **av)
+int	ft_iswhitespace(int c)
 {
-	
+	if (c == 32 || (c >= 9 && c <= 13))
+		return (1);
+	return (0);
 }

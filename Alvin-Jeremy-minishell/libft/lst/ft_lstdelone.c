@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jchuah <jchuah@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 18:53:14 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/30 10:40:19 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/05/20 16:33:33 by jchuah            #+#    #+#             */
+/*   Updated: 2025/08/07 19:31:08 by jchuah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	ft_strtok(char **av)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	
+	if (!lst)
+		return ;
+	if (del)
+		del(lst->content);
+	free(lst);
 }

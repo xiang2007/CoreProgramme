@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jchuah <jchuah@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 18:53:14 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/30 10:40:19 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/05/19 10:19:10 by jchuah            #+#    #+#             */
+/*   Updated: 2025/05/19 16:30:09 by jchuah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	ft_strtok(char **av)
+int	ft_isdigit(int c)
 {
-	
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }

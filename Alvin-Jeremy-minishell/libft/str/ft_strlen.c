@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jchuah <jchuah@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 18:53:14 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/30 10:40:19 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/05/19 10:43:12 by jchuah            #+#    #+#             */
+/*   Updated: 2025/06/06 23:26:39 by jchuah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	ft_strtok(char **av)
+size_t	ft_strlen(const char *str)
 {
-	
+	size_t	len;
+
+	if (!str)
+		return (0);
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
 }

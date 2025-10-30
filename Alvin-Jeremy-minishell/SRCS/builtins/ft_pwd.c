@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jchuah <jchuah@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 18:53:14 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/10/30 10:40:19 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/09/22 12:25:06 by jchuah            #+#    #+#             */
+/*   Updated: 2025/10/25 23:46:29 by jchuah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "minishell.h"
+#include "builtins.h"
 
-void	ft_strtok(char **av)
+int	ft_pwd(char *argv[], t_shelldata *shelldata)
 {
-	
+	char	*cwd;
+
+	(void)argv;
+	(void)shelldata;
+	cwd = getcwd(NULL, 0);
+	if (!cwd)
+		return (1);
+	printf("%s\n", cwd);
+	free(cwd);
+	return (0);
 }
