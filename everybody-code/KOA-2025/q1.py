@@ -16,3 +16,10 @@ for i in range(len(instructions)):
 		res2[instructions[i] % length],res2[0] = res2[0],res2[instructions[i] % length]
 
 print(res2[0])
+
+
+instrcutions.split(",")
+for instruction in instructions:
+	steps = int(instruction[1:])
+	if instruction[0] == 'R'
+		goUp()
