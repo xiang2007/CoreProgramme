@@ -39,8 +39,8 @@
 # 				engrave += 1
 # 				print("cycle =", cycle, [r1, r2])
 # 		print(engrave)
-ax = 35300
-ay = -64910
+ax = -79077
+ay = 14068
 tx = ax
 ty = ay
 cycle = 0
@@ -68,6 +68,6 @@ for i in range(1001):
 
 		if inside:
 			engrave += 1
-		ax += 10
-	ay += 10
+		ax += 1
+	ay += 1
 print("engrave is", engrave)
