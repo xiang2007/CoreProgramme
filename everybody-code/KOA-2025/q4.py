@@ -1,33 +1,32 @@
 class node:
 	def __init__(self, data):
-		self.prev = None
-		self.data = data
-		self.next = None
+		self.left_val = None
+		self.right_val = None
 		self.bottom = None
+		self.up = None
+		self.data = data
 
 x = [5,3,7,8,9,10,4,5,7,8,8]
 
 head = node(x[0])
-curr = None
 
-# add node2 to left side of node1
 def	add_left(node1, value):
-	new_node = node(value)
-	node1.left = new_node
-	node1.prev = node(value)
+	node1.left = value
+	return node1
 
-# add node2 to right side of node1
 def	add_right(node1, value):
-	node1.next = node(value)
+	node1.right = value
+	return node1
 
-# add a new node below node1
 def	add_down(node1, value):
-	node1.bottom = node(value)
+	new_node = node(value)
+	new_node.up = node1
+	node1.bottom = new_node
+	return new_node
 
-for i in range(len(x) - 1):
-	curr = node[i]
-	if (curr.data > x[i + 1]):
-		add_left(curr, x[i])
-	elif (curr.data < x[i + 1]):
-		add_left(curr, x[i])
+for i in range(1, len(x)):
+	curr = head
+	placed = False
+	while curr != None
 
+print curr
