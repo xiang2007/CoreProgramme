@@ -4,7 +4,7 @@ class node:
 		self.right_val = None
 		self.bottom = None
 		self.up = None
-		self.data = data
+		self.val = data
 
 x = [5,3,7,8,9,10,4,5,7,8,8]
 
@@ -14,8 +14,8 @@ def	add_left(node1, value):
 	node1.left = value
 	return node1
 
-def	add_right(node1, value):
-	node1.right = value
+def	add_right(node1, value): 
+	node1.right = value 
 	return node1
 
 def	add_down(node1, value):
@@ -26,7 +26,16 @@ def	add_down(node1, value):
 
 for i in range(1, len(x)):
 	curr = head
-	placed = False
-	while curr != None
+	
+	if (curr.val < x[i] and curr.left_val != None):
+		curr = add_left(curr, x[i])
+	elif (curr.val > x[i] and curr.right_val != None):
+		curr = add_right(curr, x[i])
+	elif (curr.left_val != None and curr.right_val != None):
+		curr = add_down(curr , x[i])
+		curr = curr.bottom
+	print(curr.val)
 
-print curr
+while head.bottom != None:
+	print(head.val)
+
