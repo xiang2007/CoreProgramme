@@ -6,17 +6,7 @@ class node:
 		self.up = None
 		self.val = data
 
-x = [5,3,7,8,9,10,4,5,7,8,8]
-
-head = node(x[0])
-
-def	add_left(node1, value):
-	node1.left = value
-	return node1
-
-def	add_right(node1, value): 
-	node1.right = value 
-	return node1
+x = [2,6,5,9,6,9,7,3,2,3,3,7,8,6,1,5,5,3,7,3,1,1,8,4,4,8,3,7,6,9]
 
 def	add_down(node1, value):
 	new_node = node(value)
@@ -29,27 +19,27 @@ def add_node(root, value):
 	while True:
 		if value < curr.val:
 			if curr.left is None:
-				curr.left = add_left(curr, value)
+				curr.left = value
 				break
-		if value > curr.val:
+		elif value > curr.val:
 			if curr.right is None:
-				curr.right = add_right(curr, value)
+				curr.right = value
 				break
+		if curr.bottom is None:
+			new_node = node(value)
+			new_node.up = curr
+			curr.bottom = new_node
+			break
+		else:
+			curr = curr.bottom
 
+
+head = node(x[0])
 
 for i in range(1, len(x)):
-	curr = head
-	while curr is not None:
-		if (curr.val < x[i] and curr.left_val != None):
-			curr = add_left(curr, x[i])
-			break
-		elif (curr.val > x[i] and curr.right_val != None):
-			curr = add_right(curr, x[i])
-			break
-		curr = add_down(curr , x[i])
-		curr = curr.bottom
+	add_node(head, x[i])
 
-while head.bottom != None:
-	print(head.val)
+while head:
+	print(head.val, end='')
 	head = head.bottom
 
