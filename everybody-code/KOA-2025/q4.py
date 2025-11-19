@@ -1,7 +1,7 @@
 class node:
 	def __init__(self, data):
-		self.left_val = None
-		self.right_val = None
+		self.left = None
+		self.right = None
 		self.bottom = None
 		self.up = None
 		self.val = data
@@ -24,18 +24,32 @@ def	add_down(node1, value):
 	node1.bottom = new_node
 	return new_node
 
+def add_node(root, value):
+	curr = root
+	while True:
+		if value < curr.val:
+			if curr.left is None:
+				curr.left = add_left(curr, value)
+				break
+		if value > curr.val:
+			if curr.right is None:
+				curr.right = add_right(curr, value)
+				break
+
+
 for i in range(1, len(x)):
 	curr = head
-	
-	if (curr.val < x[i] and curr.left_val != None):
-		curr = add_left(curr, x[i])
-	elif (curr.val > x[i] and curr.right_val != None):
-		curr = add_right(curr, x[i])
-	elif (curr.left_val != None and curr.right_val != None):
+	while curr is not None:
+		if (curr.val < x[i] and curr.left_val != None):
+			curr = add_left(curr, x[i])
+			break
+		elif (curr.val > x[i] and curr.right_val != None):
+			curr = add_right(curr, x[i])
+			break
 		curr = add_down(curr , x[i])
 		curr = curr.bottom
-	print(curr.val)
 
 while head.bottom != None:
 	print(head.val)
+	head = head.bottom
 
