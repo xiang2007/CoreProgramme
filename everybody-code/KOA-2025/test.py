@@ -15,4 +15,7 @@ for line in lines:
 	_, values = line.split(':', 1)
 	arrays.append([int(n) for n in values.split(",")])
 
-print(arrays)
+for i in range(len(arrays)):
+	print(arrays[i])
+
+# print(arrays)
