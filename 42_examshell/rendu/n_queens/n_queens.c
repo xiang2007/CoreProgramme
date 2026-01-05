@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int a,s, n, *t;
+int *a, *s, n, t;
 
 void dfs(int i, int sum, int k)
 {
@@ -19,13 +19,13 @@ void dfs(int i, int sum, int k)
     dfs(i + 1, sum, k);
 }
 
-int main(int c, char *v)
+int main(int c, char **v)
 {
     if (c < 2)
         return 0;
     t = atoi(v[1]);
     n = c - 2;
-    a = malloc(sizeof(int) n);
+    a = malloc(sizeof(int) * n);
     s = malloc(sizeof(int) * n);
     if (!a || !s)
         return 1;
