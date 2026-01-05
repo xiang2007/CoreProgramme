@@ -5,6 +5,7 @@
 int	perm_size;
 int	total_perm;
 char	**list;
+char	*ori;
 
 void	ft_sort(char *a, int l, int n);
 
@@ -67,8 +68,11 @@ int	main(int ac, char **av)
 		perm_size = ft_strlen(av[1]);
 		total_perm = ft_factorial(perm_size);
 		char	*res = malloc(sizeof(char) * (total_perm + 1));
+		ft_sort(av[1], 0, ft_strlen(av[1]));
 		ft_strcpy(av[1], res);
 		permute(res, 0, perm_size);
 		free(res);
 	}
+	else
+		return (0);
 }
