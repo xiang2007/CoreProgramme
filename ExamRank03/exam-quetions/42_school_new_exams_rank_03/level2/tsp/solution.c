@@ -89,7 +89,7 @@ void generate_perms(float (*array)[2], int *mutable_array, int size,
 		generate_perms(array, mutable_array, size, mutable_index_current + 1,
 						best_distance);
 		// Backtrack: Swap back to restore the array to its state before the recursive call,
-        // allowing other permutations to be generated correctly for the current level.
+		// allowing other permutations to be generated correctly for the current level.
 		temp = mutable_array[mutable_index_current];
 		mutable_array[mutable_index_current] = mutable_array[i];
 		mutable_array[i] = temp;
