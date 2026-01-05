@@ -1,39 +1,41 @@
-#include <stdio.h>
+#include <unistd.h>
 
-void	swap(char *a, char *b)
-{
-	char t = *a; *a = *b; *b = t;
-}
+static int len(char *s) {int i = 0; while(s[i]) i++; return (i);}
 
-void	sort(char *s, int n)
+static void swap(char *a, char *b) { char t = *a; a = *b; b = t; }
+
+static void sort(char *s, int n)
 {
-	for (int i = 0; i < n - 1; i++)
+	for (int i = 0; i < n; i++)
 		for (int j = i + 1; j < n; j++)
 			if (s[i] > s[j])
 				swap(&s[i], &s[j]);
 }
 
-void	perm(char *s, int start, int n)
+static int next_perm(char *s, int n)
 {
-	if (start == n)
-	{
-		puts(s);
-		return;
-	}
-	for (int i = start; i < n; i++)
-	{
-		swap(&s[start], &s[i]);
-		sort(s + start + 1, n - start - 1);
-		perm(s, start + 1, n);
-		swap(&s[start], &s[i]);
-	}
+	int i = n - 2;
+	while (i >= 0 && s[i] >= s[i + 1]) i--;
+	if (i < 0) return 0;
+
+	int j = n - 1;
+	while (s[j] <= s[i]) j--;
+	swap(&s[i], &s[j]);
+
+	for (int l = i + 1, r = n - 1; l < r; l++, r--)
+		swap(&s[l], &s[r]);
+	return 1;
 }
 
-int	main(int ac, char **av)
+int main(int ac, char **av)
 {
-	if (ac != 2) return 0;
-	int n = 0;
-	while (av[1][n]) n++;
+	if (ac != 2) return 1;
+
+	int n = len(av[1]);
 	sort(av[1], n);
-	perm(av[1], 0, n);
+
+	do {
+		write(1, av[1], n);
+		write(1, "\n", 1);
+	} while (next_perm(av[1], n));
 }

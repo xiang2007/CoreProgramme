@@ -1,7 +1,7 @@
 #!/bin/bash
 source ../../../main/colors.sh
 
-expe# Test 2: n=4 (should have exactly 2 solutions as per sub.txt)
+# expe # Test 2: n=4 (should have exactly 2 solutions as per sub.txt)
 echo "${BLUE}Testing n=4 (sub.txt example)...${RESET}"
 ./n_queens_test 4 > output2.txt 2>/dev/null
 lines=$(wc -l < output2.txt)

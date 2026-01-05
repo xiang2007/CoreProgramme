@@ -15,13 +15,13 @@ int	ft_factorial(int n) {if (n <= 1) return (1); else return ((n * ft_factorial(
 
 void	swap(char *a, char *b) {char t = *a; *a = *b; *b = t; }
 
+void	ft_strcpy(char *src, char *dest) {int i; for(i = 0; src[i]; i++) dest[i] = src[i]; dest[i] = '\0';}
+
 void	permute(char *a, int i, int n)
 {
-	if (i == (n - 1)) printf("%s\n", a);
-	else
-	{
-		for (int j = i; j < n; j++)
-		{
+	if (i == (n - 1)) puts(a);
+	else {
+		for (int j = i; j < n; j++) {
 			swap(&a[i], &a[j]);
 			ft_sort(a, i + 1, n);
 			permute(a, i + 1, n);
@@ -31,20 +31,11 @@ void	permute(char *a, int i, int n)
 	}
 }
 
-void	ft_sort(char *a, int l, int n)
-{
+void	ft_sort(char *a, int l, int n) {
 	for (int i = l; i < n - 1; i++)
 		for (int j = i + 1; j < n; j++)
 			if (a[i] > a[j])
 				swap(&a[i], &a[j]);
-}
-
-void	ft_strcpy(char *src, char *dest)
-{
-	int i;
-	for (i = 0; src[i]; i++)
-		dest[i] = src[i];
-	dest[i] = '\0';
 }
 
 int	main(int ac, char **av)
@@ -58,7 +49,8 @@ int	main(int ac, char **av)
 		ft_strcpy(av[1], res);
 		permute(res, 0, perm_size);
 		free(res);
+		return 0;
 	}
 	else
-		return (0);
+		return 1;
 }
