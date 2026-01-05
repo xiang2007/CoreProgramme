@@ -68,7 +68,7 @@ void solve(int col)
 			// Recursively solve for next column
 			solve(col + 1);
 			// Backtrack (remove queen) - implicit since we overwrite
-            // board[col] in next iteration or when function returns
+			// board[col] in next iteration or when function returns
 		}
 	}
 }

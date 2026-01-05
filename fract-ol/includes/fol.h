@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fol.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 16:18:16 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/09/24 11:10:55 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2025/12/18 19:36:57 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define BLUE 0x003366
 # define DBLUE 0x00007F
 # define PURPLE 0x772FB1
-# define MAX_ITER 50
+# define MAX_ITER 5
 # define K1 XK_1
 # define K2 XK_2
 # define K3 XK_3
