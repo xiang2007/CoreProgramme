@@ -10,7 +10,7 @@ int	check_input(string buffer)
 
 int	main()
 {
-	Phonebook phonebook[7];
+	Phonebook phonebook;
 	string	buffer;
 
 	sout << "This program only accepts ADD, SEARCH and EXIT" << std::endl;
@@ -23,7 +23,8 @@ int	main()
 				sout << "Program exited" << std::endl;
 				return 0;
 			}
-			std::cout << "input is: " << buffer << std::endl;
+			else if (buffer == "ADD")
+				add_contact(phonebook);
 		}
 		else {
 			sout << "Invalid argument" << std::endl;

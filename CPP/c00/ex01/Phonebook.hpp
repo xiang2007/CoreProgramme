@@ -7,6 +7,9 @@ class	Phonebook{
 	public:
 		Contact	contacts[7];
 		int		number_of_contacts;
+
+	Phonebook() : number_of_contacts(1) {}
 };
 
+void	add_contact(Phonebook &pb);
 #endif
