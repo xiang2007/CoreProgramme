@@ -2,11 +2,13 @@
 #define CONTACT_HPP
 
 #include <iostream>
-#include <cstring>
-
-#define string std::string
+#include <iomanip>
+#include <cstdlib>
 #define sout std::cout
 #define sin std::cin
+#define string std::string
+#define setw std::setw
+#define right std::right
 
 class Contact{
 	public:

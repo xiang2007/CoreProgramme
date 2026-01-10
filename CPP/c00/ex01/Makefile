@@ -6,11 +6,7 @@ FILES = phonebook_utils.cpp phonebook.cpp
 HEADER = Phonebook.hpp Contact.hpp
 
 SRC = $(FILES)
-OBJS = $(SRC:.cpp=.o)
 NAME = Phonebook
-
-%.o %.cpp:
-	$(CPP) $(CPPFLAGS) -c $< -o $@
 
 $(NAME):
 	$(CPP) $(CPPFLAG) $(SRC) -o $(NAME)

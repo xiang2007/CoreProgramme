@@ -17,7 +17,7 @@ int	main()
 	while (1)
 	{
 		sout << "> ";
-		sin >> buffer;
+		getline(sin >> std::ws, buffer, '\n');
 		if (check_input(buffer)){
 			if (buffer == "EXIT") {
 				sout << "Program exited" << std::endl;
@@ -25,6 +25,8 @@ int	main()
 			}
 			else if (buffer == "ADD")
 				add_contact(phonebook);
+			else if (buffer == "SEARCH")
+				search(phonebook);
 		}
 		else {
 			sout << "Invalid argument" << std::endl;
