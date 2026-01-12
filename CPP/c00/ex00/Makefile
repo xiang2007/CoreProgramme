@@ -2,11 +2,11 @@ CPP = c++
 CPPFLAG = -Wall -Werror -Wextra -std=c++98
 RM = rm -rf
 
-FILES = phonebook_utils.cpp phonebook.cpp
-HEADER = Phonebook.hpp Contact.hpp
+FILES = megaphone.cpp
 
 SRC = $(FILES)
-NAME = phonebook
+
+NAME = megaphone
 
 $(NAME):
 	$(CPP) $(CPPFLAG) $(SRC) -o $(NAME)
