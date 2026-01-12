@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+         #
+#    By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 16:18:33 by wshou-xi          #+#    #+#              #
-#    Updated: 2025/09/24 15:01:22 by wshou-xi         ###   ########.fr        #
+#    Updated: 2026/01/12 16:57:49 by wshou-xi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = cc
+CC = cc -g -pg
 CFLAGS = -Wall -Werror -Wextra -g -I./includes
 LIB = -Lmlx_Linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 RM = rm -rf

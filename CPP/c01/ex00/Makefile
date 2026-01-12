@@ -1,4 +1,4 @@
-CPP = c++
+CPP = c++ -g -pg
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 RM = rm -rf
 
