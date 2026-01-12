@@ -5,36 +5,36 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/12 19:22:58 by wshou-xi          #+#    #+#             */
-/*   Updated: 2026/01/12 19:22:59 by wshou-xi         ###   ########.fr       */
+/*   Created: 2026/01/12 19:24:22 by wshou-xi          #+#    #+#             */
+/*   Updated: 2026/01/12 20:44:14 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ZOMBIE_HPP
-#define ZOMBIE_HPP
-
-#include <iostream>
-#include <cstdlib>
+# define ZOMBIE_HPP
 
 #define string std::string
-#define sin std::cin
 #define sout std::cout
+#define sin std::cin
 
-class Zombie {
+#include <iostream>
+
+class Zombie{
 	private:
 		string name;
 	public:
-		Zombie(string name);
+		Zombie::Zombie();
+		Zombie(string _name);
 		Zombie(const Zombie &other);
-		Zombie& operator=(const Zombie& other);
+		Zombie& operator=(const Zombie &other);
 		~Zombie();
 
-		void	announce(void) const {
-			sout << name << ":\t" << "BraiiiiiiinnnzzzZ..." << std::endl;
-		}
-		void	set_name(string str){
-			name = str;
-		}
+	void	announce(void) const {
+		sout << name << ":\t" << "BraiiiiiiinnnzzzZ..." << std::endl;
+	}
+	void	set_name(string _name){
+		name = _name;
+	}
 };
 
 #endif

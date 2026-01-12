@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/12 19:22:39 by wshou-xi          #+#    #+#             */
-/*   Updated: 2026/01/12 19:22:40 by wshou-xi         ###   ########.fr       */
+/*   Created: 2026/01/12 19:24:16 by wshou-xi          #+#    #+#             */
+/*   Updated: 2026/01/12 20:44:31 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
-#include "Zombie.h"
 
-int	main()
+Zombie::Zombie(string _name)
 {
-	Zombie	*zombie;
-	Zombie	*zomb;
-
-	zombie = new_zombie("Jason");
-	zombie->announce();
-	randomChump("Nick");
-	delete zombie;
-	return 0;
+	name = _name;
 }
+
+Zombie::Zombie(const Zombie &other)
+{
+	name = other.name;
+}
+
+Zombie& Zombie::operator=(const Zombie& other)
+{
+	if (this != &other)
+		name = other.name;
+	return *this;
+}
+
+Zombie::~Zombie()
+{
+	sout << "Zombie " << name << " destoyed.";
+}
+
+Zombie::Zombie() {};
