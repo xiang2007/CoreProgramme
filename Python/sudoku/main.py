@@ -1,0 +1,5 @@
+f = open("file", "r")
+board = f.read()
+board = board.split(",")
+board = list(map(int, board))
+print(board)
