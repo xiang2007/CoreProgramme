@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wshou-xi <wshou-xi@student.42.fr>          +#+  +:+       +#+         #
+#    By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/04 16:40:40 by wshou-xi          #+#    #+#              #
-#    Updated: 2025/06/14 18:08:42 by wshou-xi         ###   ########.fr        #
+#    Updated: 2026/02/04 18:18:46 by wshou-xi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -fPIC
+CFLAGS = -Wall -Werror -Wextra -O3 -fPIC
 AR = ar rcs
 RM = rm -f
 

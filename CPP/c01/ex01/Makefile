@@ -6,7 +6,7 @@
 #    By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/12 19:24:09 by wshou-xi          #+#    #+#              #
-#    Updated: 2026/01/14 11:59:06 by wshou-xi         ###   ########.fr        #
+#    Updated: 2026/02/04 18:16:10 by wshou-xi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ HEADER = Zombie.h
 NAME = zombie
 
 $(NAME):
-	$(CPP) $(CPPFLAG) $(SRC) $(HEADER) -o $(NAME)
+	$(CPP) $(CPPFLAG) $(SRC) -o $(NAME)
 
 all: $(NAME)
 

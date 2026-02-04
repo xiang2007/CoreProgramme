@@ -1,38 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/12 19:24:16 by wshou-xi          #+#    #+#             */
-/*   Updated: 2026/02/04 18:26:25 by wshou-xi         ###   ########.fr       */
+/*   Created: 2026/02/04 18:43:57 by wshou-xi          #+#    #+#             */
+/*   Updated: 2026/02/04 19:01:25 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include <iostream>
+#include <bits/stdc++.h>
 
-Zombie::Zombie(std::string _name)
+int	main()
 {
-	name = _name;
-	std::cout << "Zombie constructer called" << std::endl;
+	std::string str = "HI THIS IS BRAIN";
+	std::string stringPTR& = str;
 }
-
-Zombie::Zombie(const Zombie &other)
-{
-	name = other.name;
-}
-
-Zombie& Zombie::operator=(const Zombie& other)
-{
-	if (this != &other)
-		name = other.name;
-	return *this;
-}
-
-Zombie::~Zombie()
-{
-	sout << "Zombie " << name << " destoyed.\n";
-}
-
-Zombie::Zombie() {};
