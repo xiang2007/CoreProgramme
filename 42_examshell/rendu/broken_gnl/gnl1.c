@@ -1,8 +1,8 @@
-#include "get_next_line.h"
+#include "gnl1.h"
 
-char	strjoin(char *s1, char c)
+char	*strjoin(char *s1, char c)
 {
-	int		i;
+	int	i;
 	char	*res;
 
 	i = 0;
@@ -25,9 +25,9 @@ char	strjoin(char *s1, char c)
 
 char	*get_next_line(int fd)
 {
-	static char		buffer[BUFFER_SIZE];
-	static int	 	pos, len;
-	char			*line = NULL;
+	static char buffer[BUFFER_SIZE];
+	static int pos, len;
+	char	*line = NULL;
 
 	while (1)
 	{

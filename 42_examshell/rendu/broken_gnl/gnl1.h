@@ -1,5 +1,5 @@
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GNL1_H
+# define GNL1_H
 
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE 10
@@ -8,8 +8,5 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
-#include <unistd.h>
-
-char	*get_next_line(int fd);
 
 #endif

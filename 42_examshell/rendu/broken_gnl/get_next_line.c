@@ -1,8 +1,8 @@
 #include "get_next_line.h"
 
-char	*strjoin(char *s1, char c)
+char	*ft_strjoin(char *s1, char c)
 {
-	int		i;
+	int	i;
 	char	*res;
 
 	i = 0;
@@ -26,8 +26,8 @@ char	*strjoin(char *s1, char c)
 char	*get_next_line(int fd)
 {
 	static char	buffer[BUFFER_SIZE];
-	static int	pos, len;
-	char		*line = NULL;
+	static int len, pos;
+	char	*line = NULL;
 
 	while (1)
 	{
@@ -38,9 +38,9 @@ char	*get_next_line(int fd)
 			if (len <= 0)
 				return (line);
 		}
-		if (!(line = strjoin(line, buffer[pos])))
+		if (!(line = ft_strjoin(line, buffer[pos])))
 			return (NULL);
-		if (buffer[pos++] == '\n')
+		if (buffer[pos++] ==  '\n')
 			return (line);
 	}
 }
