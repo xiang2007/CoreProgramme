@@ -2,7 +2,8 @@ CPP = c++
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 RM = rm -rf
 
-SRC = main.cpp
+SRC = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
+HEADER = Zombie.h
 
 NAME = program
 

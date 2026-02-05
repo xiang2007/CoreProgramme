@@ -14,17 +14,16 @@ static void sort(char *s, int n)
 
 static int next_perm(char *s, int n)
 {
-	int i = n - 2;
-	while (i >= 0 && s[i] >= s[i + 1]) i--;
-	if (i < 0) return 0;
+	int pivot = n - 2;
+	while (pivot >= 0 && s[pivot] >= s[pivot + 1])
+		pivot--;
+	
+	int ss = n - 1;
+	while (s[ss] <= s[pivot])
+		ss--;
+	ft_swap(&s[pivot], &s[ss]);
 
-	int j = n - 1;
-	while (s[j] <= s[i]) j--;
-	swap(&s[i], &s[j]);
-
-	for (int l = i + 1, r = n - 1; l < r; l++, r--)
-		swap(&s[l], &s[r]);
-	return 1;
+	int left = pi
 }
 
 int main(int ac, char **av)
