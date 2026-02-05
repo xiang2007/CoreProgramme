@@ -12,10 +12,7 @@ int	main(int ac, char **av)
 		for (int i=1; i<ac; i++)
 		{
 			for (int j=0; j<(int)strlen(av[i]); j++){
-				if (islower(av[i][j]))
-					res += toupper(av[i][j]);
-				else
-					res += av[i][j];
+				res += toupper(av[i][j]);
 			}
 		}
 	}
