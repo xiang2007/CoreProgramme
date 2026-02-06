@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wshou-xi <wshou-xi@student.42kl.edu.m      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/04 16:31:47 by wshou-xi          #+#    #+#             */
-/*   Updated: 2025/06/04 16:31:48 by wshou-xi         ###   ########.fr       */
+/*   Created: 2025/06/04 16:31:36 by wshou-xi          #+#    #+#             */
+/*   Updated: 2025/06/04 16:31:37 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+void	ft_putchar_fd(char c, int fd)
 {
-	int len;
-
-	if (!s)
+	int len = write(fd, &c, 1);
+	if (len < 0)
 		return ;
-	ft_putstr_fd(s, fd);
-	(void)!write(fd, "\n", 1);
+	return ;
 }
