@@ -6,12 +6,12 @@
 #    By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/04 16:40:40 by wshou-xi          #+#    #+#              #
-#    Updated: 2026/02/04 18:18:46 by wshou-xi         ###   ########.fr        #
+#    Updated: 2026/02/06 12:53:12 by wshou-xi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -O3 -fPIC
+CFLAGS = -Wall -Werror -Wextra -fPIC
 AR = ar rcs
 RM = rm -f
 
