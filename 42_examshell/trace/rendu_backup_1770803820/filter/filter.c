@@ -4,9 +4,10 @@
 #endif
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <fcntl.h>
 #include <string.h>
 #include <unistd.h>
-#include <stdlib.h>
 
 char	*strjoin(char *s1, char *s2)
 {
@@ -27,25 +28,31 @@ char	*strjoin(char *s1, char *s2)
 	return (res);
 }
 
+void	errmsg(void)
+{
+	perror("Error");
+	return ;
+}
+
 int	main(int ac, char **av)
 {
 	char	buffer[BUFFER_SIZE];
-	char	*str;
-	size_t n;
-	ssize_t r;
+	char	*res = NULL;
+	size_t	n;
+	ssize_t	r;
 
 	if (ac != 2)
-		return (perror("Erorr"), 1);
-	n = strlen(av[1]);
+		return (errmsg(), 1);
 	while ((r = read(0, buffer, BUFFER_SIZE)))
 	{
 		buffer[r] = '\0';
-		if (!(str = strjoin(str, buffer)))
-			return (1);
+		if (!(res = strjoin(res, buffer)))
+			return 1;
 	}
-	for (char *p = str; n && (p = memmem(str, strlen(str), av[1], n)); p += n)
+	n = strlen(av[1]);
+	for (char *p = res; n && (p = memmem(p, strlen(p), av[1], n)); p += n)
 		memset(p, '*', n);
-	printf("%s\n", str);
-	free(str);
+	printf("%s\n", res);
+	free(res);
 	return 0;
 }
