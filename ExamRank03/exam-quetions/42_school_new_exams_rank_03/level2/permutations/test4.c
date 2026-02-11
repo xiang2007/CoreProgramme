@@ -23,17 +23,17 @@ static void sort(char  *s, int n)
 static int next_perm(char *s, int n)
 {
 	int i = n - 2;
+	int j, l, r;
 	while (i >= 0 && s[i] >= s[i + 1])
 		i--;
 	if (i < 0)
 		return 0;
-
-	int j = n - 1;
-	while (s[j] <= s[i])
+	j = n - 1;
+	while (s[i] >= s[j])
 		j--;
 	swap(&s[i], &s[j]);
-	int l = i + 1;
-	int r = n - 1;
+	l = i + 1;
+	r = n - 1;
 	while (l < r)
 	{
 		swap(&s[l], &s[r]);
@@ -50,8 +50,9 @@ int main(int ac, char **av)
 	int n = len(av[1]);
 	sort(av[1], n);
 
-	do {
+	while (next_perm(av[1], n))
+	{
 		write(1, av[1], n);
 		write(1, "\n", 1);
-	} while (next_perm(av[1], n));
+	}
 }
