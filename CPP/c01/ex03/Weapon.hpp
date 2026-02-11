@@ -8,6 +8,7 @@
 class Weapon{
 	private:
 		string type;
+	
 	public:
 		Weapon();
 		Weapon(string type);
@@ -15,9 +16,5 @@ class Weapon{
 		Weapon &operator=(const Weapon &other);
 		~Weapon();
 };
-
-
-
-
 
 #endif
