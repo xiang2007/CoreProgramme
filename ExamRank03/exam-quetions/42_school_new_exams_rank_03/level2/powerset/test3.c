@@ -1,38 +1,37 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int	target;
-int	size;
+int	target, size;
 int	*nums;
 
-void	printsol(int *num, int n)
+void	printsol(int *set, int n)
 {
 	for (int i = 0; i < n; i++)
 	{
-		printf("%d", num[i]);
+		printf("%d", set[i]);
 		if (i < n - 1)
 			printf(" ");
 	}
 	printf("\n");
 }
 
-static void	solve(int i, int depth, int sum, int *set)
+void	solve(int i, int depth, int sum, int *set)
 {
 	if (i == size)
 	{
 		if (sum == target && (depth || !target))
 			printsol(set, depth);
-		return;
+		return ;
 	}
 	solve(i + 1, depth, sum, set);
 	set[depth] = nums[i];
-	solve(i + 1, depth + 1, sum + set[i], set);
+	solve(i + 1, depth + 1, sum + nums[i], set);
 }
 
 int	main(int ac, char **av)
 {
 	if (ac < 3)
-		return (printf("\n"), 1);
+		return 1;
 	target = atoi(av[1]);
 	size = ac - 2;
 	nums = malloc(sizeof(int) * size);
