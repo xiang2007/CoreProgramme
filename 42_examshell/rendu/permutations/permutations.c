@@ -10,8 +10,7 @@ int	len(char *s)
 
 void	swap(char *s1, char *s2)
 {
-	char	temp;
-	temp = *s1;
+	char temp = *s1;
 	*s1 = *s2;
 	*s2 = temp;
 }
@@ -27,7 +26,7 @@ void	sort(char *s, int n)
 int	next_perm(char *s, int n)
 {
 	int i = n - 2;
-	int j, l, r;
+	int j, l , r;
 
 	while (i >= 0 && s[i] >= s[i + 1])
 		i--;
@@ -50,14 +49,13 @@ int	next_perm(char *s, int n)
 
 int	main(int ac, char **av)
 {
-	int n;
-
 	if (ac != 2)
-		return 1;
-	n = len(av[1]);
+		return (1);
+	int n = len(av[1]);
 	sort(av[1], n);
 	do {
 		write(1, av[1], n);
 		write(1, "\n", 1);
 	}	while(next_perm(av[1], n));
+	return 0;
 }

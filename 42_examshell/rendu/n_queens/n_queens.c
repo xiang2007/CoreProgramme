@@ -1,18 +1,11 @@
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
 
 int	board_size;
 int	*board;
 
-int	ft_abs(int n)
-{
-	if (n < 0)
-		return -n;
-	return n;
-}
-
-void	printsol(void)
+void	printsol()
 {
 	for (int i = 0; i < board_size; i++)
 	{
@@ -21,6 +14,13 @@ void	printsol(void)
 			printf(" ");
 	}
 	printf("\n");
+}
+
+int	ft_abs(int n)
+{
+	if (n < 0)
+		return -n;
+	return n;
 }
 
 int	issafe(int row, int col)
@@ -44,7 +44,7 @@ void	solve(int col)
 	}
 	for (int i = 0; i < board_size; i++)
 	{
-		if (issafe(i, col))
+		if (issafe(i , col))
 		{
 			board[col] = i;
 			solve(col + 1);

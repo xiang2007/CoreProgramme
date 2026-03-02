@@ -1,30 +1,30 @@
 #include "get_next_line.h"
 
-char	*strjoin(char *str, char c)
+char	*strjoin(char *s, char c)
 {
 	int i = 0;
-	char	*line;
+	char	*res;
 
-	while (str && str[i])
+	while (s && s[i])
 		i++;
-	line = malloc(i + 2);
-	if (!line)
+	res = malloc(i + 2);
+	if (!res)
 		return (NULL);
 	i = 0;
-	while (str && str[i])
+	while (s && s[i])
 	{
-		line[i] = str[i];
+		res[i] = s[i];
 		i++;
 	}
-	line[i++] = c;
-	line[i] = '\0';
-	free(str);
-	return (line);
+	res[i++] = c;
+	res[i] = '\0';
+	free(s);
+	return (s);
 }
 
 char	*get_next_line(int fd)
 {
-	static char buffer[BUFFER_SIZE];
+	static char	buffer[BUFFER_SIZE];
 	static int pos, len;
 	char	*line = NULL;
 

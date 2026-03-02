@@ -1,39 +1,31 @@
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 10
-#endif
+#include "get_next_line.h"
 
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <fcntl.h>
-
-char	*strjoin(char *str, char c)
+char	*strjoin(char *s, char c)
 {
-	int i;
-	char *res;
+	int i = 0;
+	char	*res;
 
-	i = 0;
-	while(str && str[i])
+	while (s && s[i])
 		i++;
 	res = malloc(i + 2);
 	if (!res)
 		return (NULL);
 	i = 0;
-	while (str & str[i])
+	while (s && s[i])
 	{
-		res[i] = str[i];
+		res[i] = s[i];
 		i++;
 	}
 	res[i++] = c;
 	res[i] = '\0';
-	free(str);
-	return (str);
+	free(s);
+	return (s);
 }
 
 char	*get_next_line(int fd)
 {
+	static char	buffer[BUFFER_SIZE];
 	static int pos, len;
-	static buffer[BUFFER_SIZE];
 	char	*line = NULL;
 
 	while (1)
@@ -41,7 +33,7 @@ char	*get_next_line(int fd)
 		if (pos >= len)
 		{
 			len = read(fd, buffer, BUFFER_SIZE);
-			if (len <= pos)
+			if (len < pos)
 				return (line);
 		}
 		if (!(line = strjoin(line, buffer[pos])))

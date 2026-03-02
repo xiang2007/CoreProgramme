@@ -1,19 +1,18 @@
-#include <unistd.h>
 #include <stdio.h>
+#include <unistd.h>
 
-int len(char *s)
+int	len(char *s)
 {
 	int i = 0;
-	while (s[i] != '\0')
+	while (s[i])
 		i++;
 	return i;
 }
 
-int min_to_remove(char *s)
+int	min_to_remove(char *s)
 {
-	int open, close = 0;
+	int open = 0, close = 0;
 	int i = 0;
-
 	while (s[i])
 	{
 		if (s[i] == '(')
@@ -30,37 +29,34 @@ int min_to_remove(char *s)
 	return open + close;
 }
 
-void solve(char *s, int n, int i, int to_remove, int removed)
+void	solve(char *s, int i, int n, int to_remove, int removed)
 {
 	if (i == n)
 	{
 		if (removed == to_remove && min_to_remove(s) == 0)
 			puts(s);
-		return;
+		return ;
 	}
 	if (removed > to_remove)
-		return;
+		return ;
 	if (s[i] == '(' || s[i] == ')')
 	{
 		char c = s[i];
 		s[i] = ' ';
-		solve(s, n, i + 1, to_remove, removed + 1);
+		solve(s, i + 1, n, to_remove, removed + 1);
 		s[i] = c;
-		solve(s, n, i + 1, to_remove, removed);
+		solve(s, i + 1, n, to_remove, removed);
 	}
 	else
-		solve(s, n, i + 1, to_remove, removed);
+		solve(s, i + 1, n, to_remove, removed);
 }
 
-int main(int argc, char **argv)
+int	main(int ac, char **av)
 {
-	if (argc != 2)
-	{
-		write(1, "\n", 1);
-		return 0;
-	}
-	char *s = argv[1];
-	int to_remove = min_to_remove(s);
+	if (ac != 2)
+		return (write(1, "\n", 1), 0);
+	char *s = av[1];
+	int	to_remove = min_to_remove(s);
 	if (to_remove == 0)
 	{
 		puts(s);
