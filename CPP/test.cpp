@@ -1,48 +1,52 @@
-#include <iostream>
-using namespace std;
+#include "test.hpp"
 
-class Box{
-	private:
-		int	*value;
-	
-	public:
-		Box (int value); // Constructor
-		Box (const Box &other); // Copy constructor
-		Box &operator=(const Box &other); // Copy asignment operator
-		~Box(); // Destructor
-
-		void	show() const;
-};
-
-Box::Box(int _value)
+Test::Test(int _a, int _b)
 {
-	cout << "construtor called" << endl;
-	value = new int(_value);
+	std::cout << "Construtor called" << std::endl;
+	a = new int(_a);
+	b = new int(_b);
 }
 
-Box::Box(const Box &other)
+Test::Test(const Test& other)
 {
-	cout << "copy constrctor called" << endl;
-	value = new int(*other.value);
+	std::cout << "Copy constructor called" << std::endl;
+	a = new int(*other.a);
+	b = new int(*other.b);
 }
 
-Box& Box::operator=(const Box &other)
+Test& Test::operator=(const Test &other)
 {
-	cout << "Copy assignment called" << endl;
-	if (this != &other)
-	{
-		delete value;
-		new int (*other.value);
+	std::cout << "Copy assignment operator called" << std::endl;
+	if (this != &other) {
+		delete a;
+		delete b;
+		a = new int(*other.a);
+		b = new int(*other.b);
 	}
 	return *this;
 }
 
-Box::~Box()
+Test::~Test()
 {
-	cout << "destructor called" << endl;
-	delete value;
+	std::cout << "destructor called" << std::endl;
+	delete a;
+	delete b;
 }
 
-void	Box::show() const{
-	cout << "Value is: " << *value << endl;
+void Test::show() const{
+	std::cout << "a is :" << *a << std::endl;
+	std::cout << "b is :" << *b << std::endl;
+}
+
+int	main()
+{
+	Test a(10, 20);
+	Test b = a; // Copy constructor
+	Test c(200 , 200);
+	c = a; // Copy asignment
+
+	a.show();
+	b.show();
+	c.show();
+	return (0);
 }

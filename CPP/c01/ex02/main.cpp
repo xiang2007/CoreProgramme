@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:43:57 by wshou-xi          #+#    #+#             */
-/*   Updated: 2026/03/02 20:01:13 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2026/03/14 11:38:40 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main()
 	std::cout << "Memery address of stringPTR is: " << &stringPTR << "\n";
 	std::cout << "Memory address of stringREF is: " << &stringREF << "\n";
 	std::cout << "Value of string is " << str << "\n";
-	std::cout << "Value of stringPTR is: " << stringPTR << "\n";
+	std::cout << "Value of stringPTR is: " << *stringPTR << "\n";
 	std::cout << "Value of stringREF is: " << stringREF << std::endl;
 	return 0;
 }
