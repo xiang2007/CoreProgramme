@@ -3,19 +3,21 @@
 
 #include <iostream>
 
+using std::string;
+using std::cout;
+using std::cin;
+using std::endl;
+
 class Weapon{
 	private:
-		std::string type;
+		string type;
 	
 	public:
-		Weapon();
-		Weapon(std::string type);
-		Weapon(const std::string &other);
-		Weapon& operator=(const Weapon &other);
+		Weapon(const string& name);
 		~Weapon();
 
-		std::string	&get_type();
-		void	set_type(const std::string);
+		const	string& getType(void) const;
+		void	setType(const string& Type);
 };
 
 #endif
