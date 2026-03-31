@@ -22,8 +22,19 @@ void	Harl::error(void)
 
 void	Harl::complain(string level)
 {
-	switch (level.empty())
-	{
-		case 
+	string sub[5] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	void (Harl::*ptr[4])(void);
+
+	ptr[0] = &Harl::debug;
+	ptr[1] = &Harl::info;
+	ptr[2] = &Harl::warning;
+	ptr[3] = &Harl::error;
+	ptr[4] = NULL;
+	for (int i = 0; i < 4; i++) {
+		if (level == sub[i]) {
+			(this->*ptr[i])();
+			return ;
+		}
 	}
+	cout << "Harl is speechless" << endl;
 }
