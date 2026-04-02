@@ -19,7 +19,7 @@ Fixed &Fixed::operator=(const Fixed &ot) {
 
 Fixed::~Fixed(void)
 {
-	cout << "Desturcor called" << endl;
+	cout << "Destructor called" << endl;
 }
 
 int	Fixed::getRawBits(void) const

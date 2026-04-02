@@ -29,11 +29,13 @@ Fixed &Fixed::operator=(const Fixed &ot) {
 	return *this;
 }
 
-
+std::ostream& operator<<(std::ostream &os, const Fixed& ot) {
+	return os << ot.toFloat();
+}
 
 Fixed::~Fixed(void)
 {
-	cout << "Desturcor called" << endl;
+	cout << "Destructor called" << endl;
 }
 
 int	Fixed::getRawBits(void) const
