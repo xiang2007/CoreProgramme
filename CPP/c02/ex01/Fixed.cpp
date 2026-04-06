@@ -7,7 +7,7 @@ Fixed::Fixed(void) {
 
 Fixed::Fixed(const Fixed& ot) {
 	cout << "Copy constructor called" << endl;
-	value =  ot.value;
+	value = ot.value;
 }
 
 Fixed::Fixed(const int i)
@@ -19,7 +19,7 @@ Fixed::Fixed(const int i)
 Fixed::Fixed(const float f)
 {
 	cout << "Float constructor called" << endl;
-	value = f;
+	value = roundf(f * (1 << int_literal));
 }
 
 Fixed &Fixed::operator=(const Fixed &ot) {
@@ -52,10 +52,10 @@ void	Fixed::setRawBits(int const raw)
 
 float Fixed::toFloat(void) const
 {
-	return ((float)value);
+	return ((float)(value / (float)(1 << int_literal)));
 }
 
 int Fixed::toInt(void) const
 {
-	return ((int)value);
+	return ((int)(value / (float)(1 << int_literal)));
 }

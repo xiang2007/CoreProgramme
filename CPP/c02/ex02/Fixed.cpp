@@ -19,8 +19,9 @@ Fixed::Fixed(const int i)
 Fixed::Fixed(const float f)
 {
 	cout << "Float constructor called" << endl;
-	value = f;
+	value = roundf(f * (1 << int_literal));
 }
+
 
 Fixed &Fixed::operator=(const Fixed &ot) {
 	cout << "Copy asignment operator called" << endl;
@@ -87,32 +88,30 @@ Fixed Fixed::operator/(const Fixed& l) const
 	return (res);
 }
 
-Fixed &Fixed::operator++() const
+Fixed &Fixed::operator++()
 {
-	float res = getRawBits();
-	Fixed r(res += FLT_EPSILON);
-	return (r);
+	value++;
+	return *this;
 }
 
-Fixed &Fixed::operator--() const
+Fixed &Fixed::operator--()
 {
-	float res = getRawBits();
-	Fixed r(res -= FLT_EPSILON);
-	return (r);
+	value--;
+	return *this;
 }
 
-Fixed Fixed::operator++(int) const
+Fixed Fixed::operator++(int)
 {
-	float res = getRawBits();
-	Fixed r(res += FLT_EPSILON);
-	return (r);
+	Fixed r;
+	r.value++;
+	return r;
 }
 
-Fixed Fixed::operator--(int) const
+Fixed Fixed::operator--(int)
 {
-	float res = getRawBits();
-	Fixed r(res -= FLT_EPSILON);
-	return (r);
+	Fixed r;
+	r.value--;
+	return r;
 }
 
 Fixed::~Fixed(void)
@@ -120,16 +119,30 @@ Fixed::~Fixed(void)
 	cout << "Destructor called" << endl;
 }
 
-Fixed &Fixed::min(Fixed n1, Fixed n2) const
+Fixed &Fixed::min(Fixed& n1, Fixed& n2)
 {
 	if (n1.getRawBits() < n2.getRawBits())
 		return (n1);
 	return (n2);
 }
 
-Fixed &Fixed::min(Fixed const n1, Fixed const n2) const
+const Fixed& Fixed::min(const Fixed& n1, const Fixed& n2)
 {
 	if (n1.getRawBits() < n2.getRawBits())
+		return (n1);
+	return (n2);
+}
+
+Fixed &Fixed::max(Fixed& n1, Fixed& n2)
+{
+	if (n1.getRawBits() > n2.getRawBits())
+		return (n1);
+	return (n2);
+}
+
+const Fixed& Fixed::max(const Fixed& n1, const Fixed& n2)
+{
+	if (n1.getRawBits() > n2.getRawBits())
 		return (n1);
 	return (n2);
 }
@@ -148,10 +161,10 @@ void	Fixed::setRawBits(int const raw)
 
 float Fixed::toFloat(void) const
 {
-	return ((float)value);
+	return ((float)(value / (float)(1 << int_literal)));
 }
 
 int Fixed::toInt(void) const
 {
-	return ((int)value);
+	return ((int)(value / (float)(1 << int_literal)));
 }
