@@ -4,7 +4,7 @@ RM = rm -rf
 
 SRC = main.cpp
 
-NAME = program
+NAME = sed
 
 $(NAME):
 	$(CPP) $(CPPFLAG) $(SRC) -o $(NAME)

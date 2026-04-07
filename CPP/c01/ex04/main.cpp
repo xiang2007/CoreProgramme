@@ -24,7 +24,7 @@ int main(int ac, char **av) {
 	file_in.open(av[1], ios::in);
 	if (!file_in)
 		return (cout << "File '" << av[1] << "' not found" << endl, 1);
-	if (!file_in.eof())
+	if (file_in.peek() == std::ifstream::traits_type::eof())
 		return (cout << "'" << av[1] << "' is a empty file" << endl, 1);
 	string s;
 	while (file_in.is_open()) {

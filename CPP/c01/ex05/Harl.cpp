@@ -23,7 +23,7 @@ void	Harl::error(void)
 void	Harl::complain(string level)
 {
 	string sub[5] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-	void (Harl::*ptr[4])(void);
+	void (Harl::*ptr[5])(void);
 
 	ptr[0] = &Harl::debug;
 	ptr[1] = &Harl::info;
