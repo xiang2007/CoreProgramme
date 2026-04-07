@@ -3,26 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 00:30:59 by marvin            #+#    #+#             */
-/*   Updated: 2025/09/20 01:40:47 by marvin           ###   ########.fr       */
+/*   Updated: 2026/02/06 12:45:02 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fol.h"
-
-static int	*asign_color(int *temp)
-{
-	temp[0] = RED;
-	temp[1] = ORANGE;
-	temp[2] = YELLOW;
-	temp[3] = GREEN;
-	temp[4] = BLUE;
-	temp[5] = DBLUE;
-	temp[6] = PURPLE;
-	return (temp);
-}
 
 static int	interpolate_color(int c1, int c2, t_d t)
 {
@@ -49,20 +37,17 @@ static int	get_color(t_d n, int iter, t_data *data)
 	t_d		f;
 	t_color	color;
 	int		i;
-	int		*palette;
+	const int	palette[7] = {RED, ORANGE, YELLOW, GREEN, BLUE, DBLUE, PURPLE};
 
 	res = 0;
 	if (iter == MAX_ITER)
 		return (BLACK);
-	palette = (int *)malloc(sizeof(int) * 7);
-	palette = asign_color(palette);
 	res = ((iter + 1) - (log(log(fabs(n)))) / log(2));
 	f = res - floor(res);
 	color.color_number = data->color_num;
 	i = ((int)floor(res)) % color.color_number;
 	color.c1 = palette[i];
 	color.c2 = palette[(i + 1) % color.color_number];
-	free(palette);
 	return (interpolate_color(color.c1, color.c2, f));
 }
 

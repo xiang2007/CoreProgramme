@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 19:24:16 by wshou-xi          #+#    #+#             */
-/*   Updated: 2026/02/04 18:26:25 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2026/04/07 14:40:21 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,6 @@ Zombie::Zombie(std::string _name)
 {
 	name = _name;
 	std::cout << "Zombie constructer called" << std::endl;
-}
-
-Zombie::Zombie(const Zombie &other)
-{
-	name = other.name;
-}
-
-Zombie& Zombie::operator=(const Zombie& other)
-{
-	if (this != &other)
-		name = other.name;
-	return *this;
 }
 
 Zombie::~Zombie()

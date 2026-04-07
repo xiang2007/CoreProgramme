@@ -20,16 +20,16 @@ void	ft_putnbr_fd(int n, int fd)
 	nbr = (long)n;
 	if (nbr == 0)
 	{
-		write(fd, "0", 1);
+		(void)!write(fd, "0", 1);
 		return ;
 	}
 	if (nbr < 0)
 	{
 		nbr = -nbr;
-		write(fd, "-", 1);
+		(void)!write(fd, "-", 1);
 	}
 	if (nbr >= 10)
 		ft_putnbr_fd(nbr / 10, fd);
 	d = nbr % 10 + '0';
-	write(fd, &d, 1);
+	(void)!write(fd, &d, 1);
 }

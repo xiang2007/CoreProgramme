@@ -6,7 +6,7 @@
 /*   By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 19:24:22 by wshou-xi          #+#    #+#             */
-/*   Updated: 2026/03/02 19:47:15 by wshou-xi         ###   ########.fr       */
+/*   Updated: 2026/04/07 14:40:23 by wshou-xi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ class Zombie{
 	public:
 		Zombie();
 		Zombie(std::string _name);
-		Zombie(const Zombie &other);
-		Zombie& operator=(const Zombie &other);
 		~Zombie();
 
 	void	announce(void) const {

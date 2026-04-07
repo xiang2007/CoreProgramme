@@ -6,13 +6,13 @@
 #    By: wshou-xi <wshou-xi@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 16:18:33 by wshou-xi          #+#    #+#              #
-#    Updated: 2026/02/10 13:17:50 by wshou-xi         ###   ########.fr        #
+#    Updated: 2026/02/04 18:18:27 by wshou-xi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = cc
-CFLAGS = -Wall -Werror -Wextra -g -I./includes
-LIB = -Lmlx_Linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm
+CC = cc -g -pg
+CFLAGS = -Wall -Werror -Wextra -O3 -g -I./includes
+LIB = -Lmlx_Linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 RM = rm -rf
 
 FTSRC = ./mandelbrot.c ./arithmetic.c ./utils1.c ./fractol.c ./julia.c ./event.c
