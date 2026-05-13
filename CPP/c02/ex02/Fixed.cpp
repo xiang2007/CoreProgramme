@@ -24,7 +24,7 @@ Fixed::Fixed(const float f)
 
 
 Fixed &Fixed::operator=(const Fixed &ot) {
-	cout << "Copy asignment operator called" << endl;
+	cout << "Copy assignment operator called" << endl;
 	if (this != &ot)
 		value = ot.value;
 	return *this;
