@@ -1,4 +1,5 @@
 #include "test.hpp"
+#include <cmath>
 
 Test::Test(int _a, int _b)
 {
@@ -38,15 +39,29 @@ void Test::show() const{
 	std::cout << "b is :" << *b << std::endl;
 }
 
+// int	main()
+// {
+// 	Test a(10, 20);
+// 	Test b = a; // Copy constructor
+// 	Test c(200 , 200);
+// 	c = a; // Copy asignment
+
+// 	a.show();
+// 	b.show();
+// 	c.show();
+// 	return (0);
+// }
+
+using namespace std;
+
 int	main()
 {
-	Test a(10, 20);
-	Test b = a; // Copy constructor
-	Test c(200 , 200);
-	c = a; // Copy asignment
+	float a = 2.1;
+	float c;
+	int	temp;
 
-	a.show();
-	b.show();
-	c.show();
-	return (0);
+	temp = (int)(a * (1 << 8));
+	cout << temp << endl;
+	c = (float)((float)temp / (1 << 8));
+	cout << c << endl;
 }
