@@ -34,17 +34,46 @@ FragTrap::~FragTrap(void) {
 }
 
 void FragTrap::attack(const string& target) {
-	cout << "FragTrap " << name << " attacks " << target << ", causing " << attack_dmg << " of damage" << endl;
+	if (this->energy > 0 && this->hit_point > 0) {
+		this->energy--;
+		cout << "FragTrap " << COLOR_GREEN << this->name << " attacks " << target << " causing " << this->attack_dmg << " points of damage!" << COLOR_DEFAULT << '\n';
+	}
+	else if (this->energy <= 0 && this->hit_point > 0) {
+		cout << "FragTrap " << COLOR_YELLOW << this->name << " tried to attack but ran out of energy" << COLOR_DEFAULT << '\n';
+	}
+	else {
+		cout << "FragTrap " << COLOR_RED << this->name << " is defeated and can't attack anymore" << COLOR_DEFAULT << '\n';
+	}
 }
 
 void FragTrap::takeDamage(unsigned int amount) {
-	cout << "FragTrap " << name << " took " << amount << " of damage" << endl; 
+	if (this->hit_point <= 0) {
+		cout << "FragTrap " << this->name << COLOR_RED << this->name << " is defeated" << COLOR_DEFAULT << '\n';
+	}
+	this->hit_point -= amount;
+	if (this->hit_point <= 0) {
+		this->hit_point = 0;
+		cout << "FragTrap " << COLOR_RED << this->name << " got hit by a fatal strike of " << amount << " damage and died" << COLOR_DEFAULT << '\n';
+	}
+	else {
+		cout << "FragTrap "<< COLOR_GREEN << this->name << " took " << amount << " of damage. Remaining Hp: " << this->hit_point << COLOR_DEFAULT << '\n';
+	}
 }
 
 void FragTrap::beRepaired(unsigned int amount) {
-	cout << "FragTrap " << name << " repaired " << amount << " amount of hp" << endl;
+	if (this->hit_point > 0 && this->energy > 0) {
+		cout << "FragTrap " << COLOR_GREEN << this->name << " repaired " << amount << " point of health" << COLOR_DEFAULT << '\n';
+		this->hit_point += amount;
+		this->energy--;
+	}
+	else if (this->hit_point > 0 && this->energy <= 0) {
+		cout << "FragTrap " << COLOR_YELLOW << this->name << " tried to repair itself but ran out of energy" << COLOR_DEFAULT << '\n';
+	}
+	else {
+		cout << "FragTrap " << COLOR_RED << this->name << " tried to repair itself but it's defeated" << COLOR_DEFAULT << '\n';
+	}
 }
 
 void FragTrap::highFiveGuys(void) {
-	cout << "FragTrap says high five!" << endl;
+	cout << "FragTrap " << this->name << " says high five!" << endl;
 }

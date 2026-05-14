@@ -3,7 +3,7 @@
 
 Test::Test(int _a, int _b)
 {
-	std::cout << "Construtor called" << std::endl;
+	std::cout << "Constructor called" << std::endl;
 	a = new int(_a);
 	b = new int(_b);
 }

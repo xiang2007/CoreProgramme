@@ -2,10 +2,10 @@ CPP = c++
 CPPFLAGS = -Wall -Werror -Wextra -O3 -std=c++98
 RM = rm -rf
 
-SRC = ClapTrap.cpp main.cpp
-HEADER = ClapTrap.hpp
+SRC = ClapTrap.cpp main.cpp ScavTrap.cpp
+HEADER = ClapTrap.hpp ScavTrap.hpp
 
-NAME = ClapTrap
+NAME = ScavTrap
 
 $(NAME):
 	$(CPP) $(CPPFLAG) $(SRC) -o $(NAME)
